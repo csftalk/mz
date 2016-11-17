@@ -1,0 +1,62 @@
+.title{
+	margin: 0px auto;
+	height: 35px;
+	width: 215px;
+	margin-top: 55px;
+	overflow: hidden;
+}
+.title i{
+	background: url(/resources/uc/web/member/images/title.png) no-repeat;
+	_background-image: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/resources/uc/web/member/images/title.png');
+}
+.flow{
+	margin: 0px auto;
+	height: 70px;
+	width: 630px;
+	margin-top: 45px;
+	margin-bottom: 60px;
+	overflow: hidden;
+}
+.flow i{
+	background: url(/resources/uc/web/member/images/step.png) no-repeat;
+	_background-image: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/resources/uc/web/member/images/step.png');
+}
+ .middle{
+ 	width: 343px;
+ 	margin: 0px auto;
+ }
+ .mainForm{
+ 	width: 670px;
+ 	margin: 0px auto;
+ }
+ #imgKey {
+	width: 88px;
+	height: 36px;
+	margin-left: 7px;
+	margin-top: 14px;
+}
+#kapkey {
+	vertical-align: top;
+	font-size: 16px;
+	width: 220px;
+	border: none;
+	outline: none;
+	height: 50px;
+	line-height: 22px;
+	*height: 49px;
+	*line-height: 50px;
+}
+#account,#kapkey{
+	line-height: 22px;
+	padding: 14px 0;
+	height: 22px;
+	*height: 21px;
+}
+/*reset*/
+span.error, span.otherError{
+	display: block;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}

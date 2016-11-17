@@ -1,0 +1,46 @@
+<extend name="Public/base"/>
+<block name="title">setting</block>
+<block name="main">
+    <div class="page-container">
+
+	<table class="table table-border  table-bg ">
+		
+		<tbody>
+			
+			<tr>
+				<td width="100">{{$data['because']}}：</td>
+				<td>
+					<input type="radio" value="on" name="$data['id']"<if condition="$data['result'] eq 'on'">checked</if>/>开启 &nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" value="off" name="$data['id']"<if condition="$data['result'] eq 'off'">checked</if>/>关闭 
+				</td>
+				<td><button class="btn">修改</button></td>
+				
+			</tr>
+			
+		</tbody>
+	</table>
+</div>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript">
+
+$('.btn').click(function(){
+	
+	var val = $('input:checked').val();
+	$.post('setting',{val:val}, function(res){
+		if(res == 'ok'){
+	            	 	layer.msg('修改成功!',{icon:1,time:1000});
+	             }else {
+	                           layer.msg('修改失败!',{icon: 6,time:1000});
+	             }
+	});
+});
+	
+
+</script>
+
+
+</block>
+
+
+

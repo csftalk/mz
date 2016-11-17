@@ -1,0 +1,215 @@
+<extend name="Public/base" />
+<block name="title">确认订单—魅族商城</block>
+<block name="head">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/order/layout-a3af69f6f7.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/order/add.css" type="text/css" charset="UTF-8">
+<!-- <link rel="stylesheet" href="__PUBLIC__/Home/css/order/css.css" type="text/css" charset="UTF-8"> -->
+<script type="text/javascript" src="__PUBLIC__/Home/layer/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Home/layer/layer.js"></script> 
+<!-- <link rel="stylesheet" href="__PUBLIC__/Home/css/order/style.css" type="text/css" charset="UTF-8"> -->
+<!-- <link rel="stylesheet" href="http://store.res.meizu.com/resources/php/store/j/order/css/add.css?v=?20160411" type="text/css" charset="UTF-8"> -->
+
+</block>
+
+<block name="main">
+   <form action="{{:U('Order/suborder')}}" method="post">
+    <input type="hidden" name="getdata" value='{{$getData}}' />
+    <div class="order">
+        <div class="mzcontainer order-header clearfix">
+            <div class="order-title">确认订单</div>
+            <ul class="order-bread clearfix">
+                <li class="order-bread-module active">购物车</li>
+                <li class="order-bread-module active">确认订单</li>
+                <li class="order-bread-module">在线支付</li>
+                <li class="order-bread-module">完成</li>
+            </ul>
+        </div>
+
+        <div class="open_new">
+                <!-- <button class="open_btn" onclick="javascript:onclick_open();">使用新地址</button> -->
+        </div>
+      
+        <div class="mzcontainer order-address" id="addressModule">
+            <div class="order-address-title">
+                收货人信息
+                <div class="order-address-title-tips" id="orderAddressHasOldTips">
+                    <i class="order-address-tips-icon"></i>因配送地址库升级，部分地址需升级后方可使用！
+                </div>
+            </div>
+
+
+        <div class="Caddress">
+        <div class="box">
+            <button id="addaddres" type="button" class="btn" style="margin:5px 0; width:100px">添加新地址</button>
+        </div>
+
+            
+            <foreach name="list" item="v">
+                <div id="{{$v.id}}">
+                <input type="radio" name="id" value="{{$v.id}}" checked style="margin:5px 0;">
+                 收货人：{{$v.getman}}&ensp;地址：{{$v.province}}{{$v.city}}{{$v.district}}{{$v.detailed}}&ensp;电话：{{$v.phone}}
+
+                  <a href=javascript:; title="修改地址" onclick="editaddres({{$v.id}})" >修改</a>                    
+                  <!-- <a title="删除地址" href="{{:U('Order/delAddres', ['id'=>$v['id']])}}">删除</a> -->
+
+                    <a href=javascript:; onclick="dellink({{$v.id}})";>删除</a>
+
+                 <br>
+                 </div>
+            </foreach>
+                
+        </div>
+
+    </div>
+        
+        <div class="mzcontainer order-product">
+            <div class="order-product-title">确认订单信息</div>
+            <div class="order-product-list" id="orderProductList"><table cellspacing="0" cellpadding="0"><thead><tr><th class="order-product-table-name"><div class="order-product-supplier">供应商：<span class="order-product-supplier-name">魅族</span><div class="order-product-supplier-tips">由“魅族”负责发货，并提供售后服务</div></div></th><th class="order-product-table-price">单价</th><th class="order-product-table-num">数量</th><th class="order-product-table-total">小计</th><th class="order-product-table-express">配送方式</th></tr></thead><tbody><tr><td class="order-product-table-name"><img class="order-product-image" src="__PUBLIC__/Uploads/{{$pic.pic_path}}"><div class="order-product-name"><a target="_blank" class="order-product-link" href="{{:U('Detail/index', ['id'=>$glist['id']])}}">{{$glist.name}}<br>{{$goodsAtt}}</a></div></td><td class="order-product-table-price"><p></p><span class="order-product-price">{{$pslist.price}}</span></td><td class="order-product-table-num">{{$gamount}}</td><td class="order-product-table-total"><p class="order-product-price red">{{:number_format($pslist['price']*$gamount, 2, '.', '')}}</p></td><td class="order-product-table-express" rowspan="1"><p>快递配送：运费<span class="order-product-price red">0.00</span></p>
+            
+            </td></tr></tbody><tfoot><tr><td colspan="5"><div class="order-product-info"><div class="order-product-invoice clearfix"><div class="order-product-invoice-type">发票类型：电子发票<div class="order-product-invoice-icon"></div></div><div class="order-product-invoice-title">发票抬头：默认为收货人姓名</div></div><div class="order-product-remark"><span class="order-product-remark-title">备注</span><textarea class="order-product-remark-input" placeholder="备注..." maxlength="45" name="message"></textarea></div></div><div class="order-product-total">合计：<span class="order-product-price red">{{:number_format($pslist['price']*$gamount, 2, '.', '')}}</span></div></td></tr></tfoot></table></div>
+        </div>
+        
+        <div class="mzcontainer order-total clearfix">
+            <div class="order-total-content">
+                <div class="order-total-row">
+                    总金额
+                    <div class="order-total-price" id="totalOrderPrice">{{:number_format($pslist['price']*$gamount, 2, '.', '')}}</div>
+                </div>
+                <div class="order-total-row order-total-discount" id="totalCouponRow">
+                    优惠券优惠
+                    <div class="order-total-price sub">0.00</div>
+                </div>
+                <div class="order-total-row order-total-discount" id="totalRedRow">
+                    红包抵扣
+                    <div class="order-total-price sub">0.00</div>
+                </div>
+                <div class="order-total-row order-total-discount" id="totalRepoRow">
+                    回购券抵扣
+                    <div class="order-total-price sub">0.00</div>
+                </div>
+                <div class="order-total-row">
+                    运费
+                    <div class="order-total-price" id="totalExpressPrice">0.00</div>
+                </div>
+                <div class="order-total-line"></div>
+                <div class="order-total-row">
+                    应付：
+                    <div class="order-total-price total" id="totalPayPrice">{{:number_format($pslist['price']*$gamount, 2, '.', '')}}</div>
+                </div>
+                <!-- <div class="order-total-row order-total-valid-row">
+                    <input class="order-total-valid-input" placeholder="验证码*" maxlength="4" id="validInput" type="text">
+                    <img class="order-total-valid-image" id="validCode" src="%E7%A1%AE%E8%AE%A4%E8%AE%A2%E5%8D%95-%E9%AD%85%E6%97%8F%E5%95%86%E5%9F%8E_files/get.png">
+                </div> -->
+                    <div id="captcha" style="margin:10px 0" name="111"></div>
+                    
+
+                    <div><button type="submit" class="btn">提交订单</button></div>
+                
+            </div>
+        </div>
+    </div>
+</form>
+    
+
+    
+<!-- end content -->
+
+<script src="http://static.geetest.com/static/tools/gt.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+
+<script>
+
+//添加新地址
+$('#addaddres').on('click', function(){
+ layer.open({
+        type: 2,
+        //skin: 'layui-layer-lan',
+        title: '添加收货地址',
+        fix: false,
+        shadeClose: true,
+        maxmin: true,
+        area: ['700px', '450px'],
+        content: '__URL__/addaddres.html',
+        closeBtn: 1,
+       
+       end: function () {
+                location.reload();
+            }
+    });
+});
+
+// 修改地址
+function editaddres(id)
+{
+    layer.open({
+        type: 2,
+        //skin: 'layui-layer-lan',
+        title: '修改收货地址',
+        fix: false,
+        shadeClose: true,
+        maxmin: true,
+        area: ['700px', '450px'],
+        // content: "{{:U('Order/editAddres', ['id'=>['"+ id +"']])}}",
+        content: "__URL__/editaddres/id/"+id,
+    });
+}
+</script>
+
+<!-- 滑块验证 -->
+<script>
+    var handler = function (captchaObj) {
+        // 将验证码加到id为captcha的元素里
+        captchaObj.appendTo("#captcha");
+     };
+    // 获取验证码
+    $.get("{{:U('Home/Order/geetest_show_verify')}}", function(data) {
+        // 使用initGeetest接口
+        // 参数1：配置参数，与创建Geetest实例时接受的参数一致
+        // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+        initGeetest({
+            gt: data.gt,
+            challenge: data.challenge,
+            product: "float", // 产品形式
+            offline: !data.success
+        }, handler);
+    },'json');
+    // 检测验证码
+    function check_verify(){
+        // 组合验证需要用的数据
+        var test=$('.geetest_challenge').val();
+        var postData={
+            geetest_challenge: $('.geetest_challenge').val(),
+            geetest_validate: $('.geetest_validate').val(),
+            geetest_seccode: $('.geetest_seccode').val()
+        }
+        // 验证是否通过
+        $.post("{:U('Home/Index/geetest_ajax_check')}", postData, function(data) {
+            if (data==1) {
+                alert('验证成功');
+            }else{
+                alert('验证失败');
+            }
+        });
+    }
+</script>
+
+<!-- 删除用户地址 -->
+<script>
+function dellink(id){
+$.ajax({
+         url: "{{:U('Order/delAddres')}}",  
+         type: "GET",
+         data:{"id":id},
+         dataType: "json",
+         error: function(){  
+            alert(data.info);  
+         },  
+         success: function(data){ 
+            alert(data.info);
+            $("#"+id).remove();
+         }
+     });
+}    
+</script>    
+
+</block>	

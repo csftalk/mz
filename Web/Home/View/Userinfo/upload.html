@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0046)https://i.flyme.cn/uc/webjsp/membericon/modify -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="description" content="欢迎登录和注册魅族Flyme账号，您可以体验手机云服务功能，包括：在线下载应用，同步手机数据和查找手机等，让您的手机管理更加智能。">
+	<meta name="keywords" content="魅族  meizu 登录flyme 云服务  查找手机  充值账号  MX M9 MX2">
+	<meta content="width=1080" name="viewport">
+	<title>账号管理</title>
+	<link href="__PUBLIC__/Home/css/baseup.css" type="text/css" rel="Stylesheet">
+	<link href="__PUBLIC__/Home/css/headup.css" type="text/css" rel="Stylesheet">
+	<link href="__PUBLIC__/Home/css/jqueryup-ui.css" type="text/css" rel="Stylesheet">
+	<link href="__PUBLIC__/Home/css/jqueryup.ui.datepicker.css" type="text/css" rel="Stylesheet">
+	<link href="__PUBLIC__/Home/css/mzhead20130905up.css" type="text/css" rel="Stylesheet">
+	<link href="__PUBLIC__/Home/css/modifyIconup.css" type="text/css" rel="Stylesheet">
+	<link href="__PUBLIC__/Home/css/jqueryup.Jcrop.min.css" type="text/css" rel="stylesheet">
+</head>
+<body style="min-height: 1000px;">
+	<div id="content" class="content">
+		
+
+
+
+	
+<input type="hidden" id="mz_csrf_tks" value="">
+<div class="headWrap">
+	<a href="http://www.meizu.com/index.html" class="headLogo"><i class="i_icon"></i></a>
+	<ul class="headLeft">
+		<li class="head-store">
+			<a href="http://store.meizu.com/" class="" hidefocus=""><i class="i_icon"></i></a>
+		</li>
+		<li class="head-products">
+			<a href="http://www.meizu.com/products/pro5/summary.html" class="" hidefocus=""><i class="i_icon"></i></a>
+		</li>
+		<li class="head-retail">
+			<a href="http://retail.meizu.com/" class="" hidefocus=""><i class="i_icon"></i></a>
+		</li>
+		<li class="head-flyme">
+			<a href="http://www.flyme.cn/" class="" hidefocus=""><i class="i_icon"></i></a>
+		</li>
+		<li class="head-services">
+			<a href="http://service.meizu.com/" class="" hidefocus=""><i class="i_icon"></i></a>
+		</li>
+		<li class="head-bbs">
+			<a href="http://bbs.meizu.cn/" class="" hidefocus=""><i class="i_icon"></i></a>
+		</li>
+	</ul>
+
+	<div class="headRight">
+		<span id="loginWrap" style="">
+			<a id="head-name" class="linkAGray" href="{{:U('Userinfo/index')}}" title="{{$list['name']}}">{{$list['name']}}</a>
+			<span class="line_head">|</span>
+			<a id="head-logout" class="linkAGray" href="{{:U('Login/logout')}}">退出</a>
+		
+		</span>
+		<span id="unloginWrap" style="display:none;">
+			<a href="javascript:window.location.href%20=%20&#39;https://login.flyme.cn/sso/logout?useruri=&#39;+encodeURIComponent(window.location.href);" class="head-name">登录</a>
+			<span class="line_head">|</span>
+			<a href="https://i.flyme.cn/register" class="head-logout">注册</a>
+		</span>
+	</div>
+</div>
+
+		<div class="flymeContent">
+			
+
+<style type="text/css">
+	.navWrap{
+		height: 58px;
+		border-bottom: #e4e7e9 1px solid;
+	}
+	.navWrap .nav{
+		display: block;
+		float: left;
+		line-height: 58px;
+	}
+	.navWrap .nav li{
+		position: relative;
+		display: inline-block;
+		margin-right: 40px;
+		width: 100px;
+		height: 100%;
+		float: left;
+	}
+	.navWrap .nav li a{
+		display: inline-block;
+		width: 100%;
+		height: 56px;
+		font-size: 16px;
+		text-align: center;
+	}
+	.navWrap .nav .current{
+		margin: 0px auto;
+		height: 2px;
+		width: 100px;
+		overflow: hidden;
+		background-color: #1daeed;
+	}
+</style>
+<div id="navWrap" class="navWrap">
+	<ul class="nav">
+		<li id="accountManage"><a href="https://i.flyme.cn/uc/webjsp/member/detail" class="linkABlue">账号管理</a><div class="current"></div></li>
+	</ul>
+</div>
+<div class="clear"></div>
+
+			<div id="mainWrap" class="mainWrap">
+				<div id="topWrap" class="topWrap">
+					<div class="top-leftWrap">
+						<span class="display fontBig">当前头像</span>
+						<img id="userImg" src="__PUBLIC__/Uploads/{{$list['pic_head']}}" width="100">
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="grayBorderB">
+					<div class="titleWrap">
+						<div class="leftWrap-bottom">
+							<span class="fright">支持jpg、jpeg、png、bmp格式，文件小于5M</span>
+							<span class="fontBig fleft">设置新头像</span>
+						</div>
+						<div class="clear"></div>
+					</div>
+			    </div>
+				<div id="upload">
+					<form action="{{:U('Userinfo/upload')}}" method="post" id="uploadForm" name="uploadForm" enctype="multipart/form-data">
+						<div class="lineWrap grayTip divFloat" id="bg4chooseImg">
+							<a id="chooseImg" class="normalInput">
+								<em><i><img src="__PUBLIC__/Home/images/image.png"></i>选择照片</em>
+							</a>
+						</div>
+						<input type="file" id="file" name="file" class="file" size="28">
+					</form>
+					<div class="contain">
+							<div class="frame marginOrgFrame originalImg">
+								<img src="" id="pic" width="302" height="302">
+							</div>
+					</div>
+					<div class="lineWrap ftop" style="">
+						<a onclick="sendForm()" class="fullBtnBlue fleft" id="save">保存</a>
+						<a class="fullBtnGray black iconCancel fleft" id="cancel" href="{{:U('Userinfo/index')}}">取消</a>
+					</div>
+					<script type="text/javascript">
+						function sendForm(){ 
+							//alert(1);
+							var form = document.getElementById("uploadForm");
+							form.submit();	
+						}
+					</script>
+				</div>
+					<form id="scropForm" name="scropForm" enctype="application/x-www-form-urlencoded">
+						<input type="hidden" id="origIconUrl" name="origIconUrl" value="https://image.meizu.com/image/uc/423ab7a3c1724a0aafaef7ff8a18f492z?t=946656000000">
+						<input type="hidden" id="x" name="x" value="140">
+						<input type="hidden" id="y" name="y" value="132">
+						<input type="hidden" id="w" name="w" value="50">
+						<input type="hidden" id="h" name="h" value="50"> 
+					</form>
+			</div>
+		</div>
+	</div>
+	
+
+
+
+
+<div id="flymeFooter" class="footerWrap" style="top: 869px;">
+	<div class="footerInner">
+		<div class="footer-layer1">
+			<div class="footer-innerLink">
+				<a href="http://www.meizu.com/about.html" target="_blank" title="关于魅族">关于魅族</a>
+				<img class="foot-line" src="__PUBLIC__/Home/picture/space.gif">
+				<a href="http://hr.meizu.com/" target="_blank" title="工作机会">工作机会</a>
+				<img class="foot-line" src="__PUBLIC__/Home/picture/space.gif">
+				<a href="http://www.meizu.com/contact.html" target="_blank" title="联系我们">联系我们</a>
+				<img class="foot-line" src="__PUBLIC__/Home/picture/space.gif">
+				<a href="http://www.meizu.com/legalStatement.html" target="_blank" title="法律声明">法律声明</a>
+				<img class="foot-line" src="__PUBLIC__/Home/picture/space.gif">
+				<a href="javascript:void(0);" id="globalName" class="footer-language" title="简体中文">简体中文&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="footer-service">
+				<span class="service-label">客服热线</span>
+				<span class="service-num">400-788-3333</span>
+				<a id="service-online" class="service-online" href="javascript:void(0);" title="在线客服">在线客服</a>
+			</div>
+			<div class="footer-outerLink">
+				<a class="footer-sinaMblog" href="http://weibo.com/meizumobile" target="_blank"><i class="i_icon"></i></a>
+				
+				<a id="footer-weChat" class="footer-weChat" href="javascript:void(0);" target="_blank"><i class="i_icon"></i></a>
+				<a class="footer-qzone" href="http://user.qzone.qq.com/2762957059" target="_blank"><i class="i_icon"></i></a>
+			</div>
+			<div id="globalContainer" class="footer-language_menu" style="left: 475.625px; bottom: 89px;">
+				<a href="https://i.flyme.cn/uc/webjsp/membericon/modify?lang=en_US" id="i18n-link" title="English" class="ClobalItem">English</a>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div id="flymeCopyright" class="copyrightWrap">
+			<div class="copyrightInner">
+				<span>©2016 Meizu Telecom Equipment Co., Ltd. All rights reserved.</span>
+				<a href="http://www.miitbeian.gov.cn/" class="linkAGray" target="_blank">备案号: 粤ICP备13003602号-4</a>
+				<a href="http://www3.res.meizu.com/static/cn/widget/footer/images/icp2_b2dcb54.jpg" class="linkAGray" target="_blank">经营许可证编号: 粤B2-20130198</a>
+				<a target="_blank" href="http://www2.res.meizu.com/zh_cn/images/common/com_licence.jpg" hidefocus="true" class="linkAGray">营业执照</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="wechatPic"></div>
+</body>
+	<script>
+		var file = document.getElementById('file');
+		var pic = document.getElementById('pic');
+
+		file.onchange = function(){
+			//console.dir(file.files);
+			pic.src = window.URL.createObjectURL(file.files[0]);
+		}
+
+	</script>
+</html>

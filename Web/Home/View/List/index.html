@@ -1,0 +1,121 @@
+<extend name="Public/base"/>
+<block name="title">商品列表</block>
+<block name="head">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/layout-ccf3cf704c.css"> 
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/main-37d634f.css">
+    <style type="text/css">.site-gotop{position:fixed;width:44px;bottom:50px;left:50%;margin-left:640px;display:none}.gotop-suggest,.gotop-arrow{display:inline-block;width:44px;height:44px;background:#b4b4b4 no-repeat 50%50%;cursor:pointer}.gotop-suggest{background-image:url(http://store.res.meizu.com/resources/php/store/static/detail/assets/img/suggest.png)}.gotop-arrow{background-image:url(http://store.res.meizu.com/resources/php/store/static/detail/assets/img/gotop-arrow.png);margin-top:5px}</style>
+
+</block>
+
+<block name="main">
+ <!--下面是模板标签，不可删除-->
+<main class="wrapper" id="main">
+    <div class="container">
+        <section class="crumbs clearfix">
+            <a data-mtype="store_list_mbx_1" href="{{:U('Index/index')}}">首页</a>
+
+            <if condition="$lever eq null">
+                        &nbsp;&gt;&nbsp;<span class="crumbs-level" id="crumbsLevel">全部商品</span>
+            <else />
+                     &nbsp;&gt;&nbsp;<span class="crumbs-level" id="crumbsLevel"><a href="{{:U('index')}}?pid=0" data-mtype="store_list_mbx_2" data-cateid="73">全部商品</a>&nbsp;&gt;&nbsp;{{$lever}}</span>
+            </if>
+
+        </section>
+
+        <section class="selector" id="selector">
+            <!--  分类部分 start -->
+                <div class="sl-category" id="slCategory">
+                </div>
+            <div class="sl-prop" id="slProp">
+                        <div class="sl-line-wrap">
+                            <div class="mod-key"><span>分类：</span></div>
+                            <div class="mod-value">
+                                <div class="mod-value-list">
+                                    <ul>
+                                           
+
+                                           <foreach name="category" item="vo">
+                                                        <li>
+                                                            <a   title="{{$vo.name}}" href="{{:U('index')}}?pid={{$vo.id}}">{{$vo.name}}</a>
+                                                        </li>
+
+                                           </foreach>
+                                          
+                                    </ul>
+                                </div>
+                            </div>
+                                <div class="mod-ext">
+                                    <a class="sl-e-more J_extMore" href="javascript:;" style="">更多<i></i></a>
+                                </div>
+
+                        </div>
+                       
+            </div>
+        </section>
+
+    <section class="filter clearfix" id="filter">
+        <div class="filter-order" id="J_filterOrder">
+            
+           <!-- <a data-tag="1" data-mtype="store_list_sx_2" href="http://lists.meizu.com/page/list?categoryid=76&amp;rc=cb&amp;click=store_index_cdh_2#">
+                新品
+            </a>
+            <a data-tag="2" data-mtype="store_list_sx_3" href="http://lists.meizu.com/page/list?categoryid=76&amp;rc=cb&amp;click=store_index_cdh_2#">
+                价格<i class="icon-arrow-down"></i>
+            </a>-->
+        </div>
+        
+    </section>
+
+    <section class="goods-list" id="goodsList">
+        <ul class="goods-list-wrap clearfix" id="goodsListWrap">
+
+            <foreach name="list" item="vo">
+                            <li class="gl-item">
+                                <dl class="gl-item-wrap">
+                                    <dd class="mod-pic">
+                                        <a data-mtype="store_list_kw_1" target="_blank" href="{{:U('Detail/index')}}?id={{$vo.id}}" title="">
+                                            <img width="220" height="220" src="__PUBLIC__/Uploads/{{$vo.pic_path}}">
+                                        </a>
+                                    </dd>
+                                    <dd class="mod-name">
+                                        <a data-mtype="store_list_kw_1" target="_blank" href="{{:U('Detail/index')}}?id={{$vo.id}}" title="">
+                                        {{$vo.name}}
+                                        </a>
+                                    </dd>
+                                    <dd class="mod-price">
+                                        <em>￥</em>
+                                        <i>
+                                            {{$vo.price}}
+                                        </i>
+                                    </dd>
+                                </dl>
+                            </li>
+            </foreach> 
+
+        </ul>
+    </section>
+
+<if condition="$list eq null">
+    <section class="empty clearfix" id="empty" style="display:block;">
+        <div class="empty-bd">
+            <div class="empty-bd-pic"></div>
+            <div class="empty-bd-info">
+                <h4 class="yahei">抱歉没有找到相关商品</h4>
+                <p>建议您：<br>
+                    1.适当减少筛选条件<br>
+                    2.尝试其他关键字
+                </p>
+            </div>
+        </div>
+    </section>
+</if>
+
+    <section class="pages" id="pages" style="display: none;">
+    <div class="ui-paginate"><span class="p-prev disabled p-elem"></span><span class="current p-elem">1</span><span class="p-next disabled p-elem"></span></div></section>
+   
+    </div>
+</main>  
+</div>
+</block>
+
+

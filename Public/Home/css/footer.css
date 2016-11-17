@@ -1,0 +1,133 @@
+.footer{
+	/*border: 1px solid red;*/
+	height: 436px;
+	background-color: #fafafc;
+}
+.footer_1{
+	/*border: 1px solid blue;*/
+	height: 140px;
+	padding: 38px 8px 26px;
+}
+.footer_2{
+	/*border: 1px solid green;*/
+	height: 75px;
+}
+.footer_3{
+	width: 240px;
+	height: 100%;
+	float: left;
+	text-align: center;
+	/*background: url(../images/7.png) no-repeat 50% 0;*/
+}
+.footer_4{
+	border-right: 1px solid #BBB;
+	height: 60px;
+	margin-top: 7px;
+	float: left;
+}
+.footer_3 p{
+	margin-top: 15px;
+}
+
+.footer_3 p>span:first-child{
+	font-size: 16px;
+	color: #666;
+	font-weight: 700;
+}
+.footer_3 p>span:last-child{
+	font-weight: 400;
+}
+.footer_5{
+	height: 180px;
+	border-top: 1px solid #DEDEDE;
+	border-bottom: 1px solid #DEDEDE;
+	padding: 30px 0;
+}
+
+ul,li{
+	padding: 0;
+	margin:0;
+	text-align: center;
+
+}
+.footer_6{
+	float: left;
+	width:230px;
+	height: 100%;
+}
+.footer_6 ul{
+	list-style: none;
+	font-weight: 400px;
+}
+.footer_6 a{
+	color: #666;
+	font-size: 12px;
+}
+.footer_6 a:hover{
+	color: #00c3f5;
+}
+.footer h4{
+	width: 235px;
+	text-align: center;
+	font-size: 14px;
+	color: #333;
+	margin-bottom: 10px;
+}
+.weixin{
+	width: 250px;
+	height: 285px;
+	margin-left: 127px;
+    margin-top: -210px;
+    z-index: 15;
+    display: none;
+    position: relative;
+}
+}
+#tel>a{
+	color:#1fa7ea;
+	font-size: 24px;
+	margin:20px 0 14px;
+}
+#last{
+	background: #1fa7ea;
+	width: 160px;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+	font-size: 12px;
+	border-radius: 2px;
+	margin:0 auto;
+	margin-top:10px;
+}
+#last>a{
+	color: #FFF;
+}
+#last:hover{
+	background-color: #4dcff6;
+}
+.footer_7{
+	padding: 38px 0 56px;
+	text-align: center;
+}
+.footer_7 a{
+	margin-left: 10px;
+	color: #666;
+	font-size: 12px;
+}
+.backtop{
+	width: 44px;
+	height: 44px;
+	display: block;
+	cursor: pointer;
+	float: right;
+	position: fixed;
+	/*top:280px;*/
+	right: 0;
+	bottom: 100px;
+	display: none;
+	background: #b4b4b4 url(../images/top.png) no-repeat 50% 50%
+}
+
+.phone_1{
+	width: 1200px;
+}

@@ -1,0 +1,199 @@
+<extend name="Public/base" />
+<block name="title">收银台-魅族商城</block>
+<block name="head">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/order/layout-ccf3cf704c.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/payment_new.css" type="text/css" charset="UTF-8">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/order/add.css" type="text/css" charset="UTF-8">
+
+<script type="text/javascript" src="__PUBLIC__/Home/layer/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Home/layer/layer.js"></script> 
+<style>
+    .pay{border: 1px solid #ddd;}
+    .pay:hover{border: 1px solid #00C3F5;}
+    input[name="pay"]{margin:0 5px;}
+    label{margin:0 20px 0 0;}
+    .border{padding-bottom: 15px;border-bottom: 1px solid #e0e0e0;}
+</style>
+
+</block>
+
+<block name="main">
+
+<div id="payment">
+        <div class="mzcontainer">
+            <if condition="$orders.pay_status eq 1">
+                <div class="payment_header clearfix">
+                    <h2>订单已支付！</h2>      
+                </div>
+            <elseif condition="$orders.post_status eq 3" />
+                 <div class="payment_header clearfix">
+                    <h2>订单已取消！</h2>       
+                </div>
+            <else />
+                <div class="payment_header clearfix">
+                    <div class="icon">
+                        <div class="payment_icon success"></div>
+                    </div>
+                    <div class="info">
+                        <div class="main">
+                            <h2>订单提交成功，应付金额 <span>{{$orders.price}}</span> 元</h2>
+                                <p class="tips">该宝贝为付款减库存,拍下并不代表购买成功哦。请您尽快付款，付款后我们将会尽快安排发货。</p>
+                            <p>订单号：{{$ordersdata.oid}}&nbsp;&nbsp;&nbsp;&nbsp;
+                                    请您在 <span id="payTimer"> 24小时 </span> 内完成支付，否则订单会被自动取消
+                            </p>
+                        </div>
+                        <div class="other border">
+                            <div class="tr">
+                                <div class="td name">商品</div>
+                                <div class="td value">
+                                            <span class="prod"> {{$ordersdata.g_name}}&ensp;{{$ordersdata.g_attr_str}} X {{$ordersdata.g_number}}
+                                            </span>
+                                </div>
+                            </div>
+                            <div class="tr">
+                                <div class="td name">收货地址</div>
+                                <div class="td value">
+                                <!-- // province city district detailed -->
+                                {{$addresStr[0].province}}{{$addresStr[0].city}}{{$addresStr[0].district}}{{$addresStr[0].detailed}}&ensp;&ensp;收件人：{{$addresStr[0].getman}}&ensp;&ensp;联系手机：{{$addresStr[0].phone}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other">
+                            <form id="subpay"  method="post">
+                                <label><input type="radio" name="pay" value="{{$orders.id}}" checked /><img src="__PUBLIC__/Home/images/pc_wxqrpay.png" class="pay"></label>
+                                <label><input type="radio" name="pay" value="{{$orders.id}}" /><img src="__PUBLIC__/Home/images/alipaypcnew.png" class="pay"></label>
+                                <input class="btn" type="button" onclick="submitPay({{$orders.id}})" value="确认支付">
+                            </form>
+                        </div>
+                        <!-- <tr class="empty">
+                            <td></td>
+                        </tr>
+                        <form action="{{:U('Weixinpay/index')}}" method="post">
+                            <button class="btn" id="goToPay" type="submit">微信支付</button>
+                            <input type="hidden" name="orderId" value="{{$orders.id}}">
+                        </form> -->
+                    </div>
+                    
+                </div>
+            </if>    
+
+            <!-- <div class="tab_panel" id="tabPanel">
+                <ul class="btns clearfix">
+                    <li class="active">在线支付</li>
+                </ul>
+                <ul class="panels clearfix ">
+                    <li class="tools_choose active">
+                        <div class="clearfix"> -->
+                                    <!-- huabei -->
+                                    <!-- <div class="radio-box huabei" data-bank="huabei" data-val="Huabei">
+                                        <div class="radio"></div>
+                                        <div class="payment_icon"></div>
+                                    </div> -->
+                            <!--end huabei -->
+                           <!--  <div class="radio-box alipay active" data-bank="alipay" data-val="Alipay">
+                                <div class="radio"></div>
+                                <div class="payment_icon"></div>
+                            </div>
+                        </div>
+
+                        <div class="huabei-select" id="huabeiSelect" style="display: none;">
+                            <div class="header">使用花呗分期</div>
+                            <div class="content clearfix"><div><div class="select-box active"><div class="price">￥ 783.96 x 3期</div><div class="fee">含手续费：￥ 17.63/ 期</div></div><div class="select-box"><div class="price">￥ 400.41 x 6期</div><div class="fee">含手续费：￥ 17.24/ 期</div></div><div class="select-box"><div class="price">￥ 206.91 x 12期</div><div class="fee">含手续费：￥ 15.33/ 期</div></div></div></div>
+                        </div>
+
+                            <div class="clearfix">
+                                <div class="radio-box boc" data-bank="boc" data-val="BOCB2C">
+                                    <div class="radio"></div>
+                                    <div class="payment_icon"></div>
+                                </div>
+                                <div class="radio-box ccb" data-bank="ccb" data-val="CCB">
+                                    <div class="radio"></div>
+                                    <div class="payment_icon"></div>
+                                </div>
+                                <div class="radio-box aboc" data-bank="aboc" data-val="ABC">
+                                    <div class="radio"></div>
+                                    <div class="payment_icon"></div>
+                                </div>
+                                <div class="radio-box icbc" data-bank="icbc" data-val="ICBCB2C">
+                                    <div class="radio"></div>
+                                    <div class="payment_icon"></div>
+                                </div>
+                                <div class="radio-box bocm" data-bank="bocm" data-val="COMM">
+                                    <div class="radio"></div>
+                                    <div class="payment_icon"></div>
+                                </div>
+                                <div class="radio-box cmb" data-bank="cmb" data-val="CMB">
+                                    <div class="radio"></div>
+                                    <div class="payment_icon"></div>
+                                </div>
+                                <div class="radio-box psbc" data-bank="psbc" data-val="PSBC-DEBIT">
+                                    <div class="radio"></div>
+                                    <div class="payment_icon"></div>
+                                    <input type="radio" name="paymentWay">
+                                </div>
+                                <div class="radio-box ibc" data-bank="ibc" data-val="CIB">
+                                    <div class="radio"></div>
+                                    <div class="payment_icon"></div>
+                                </div>
+                            </div>
+                            <div class="bank_detail">
+                                <table id="bankDetail" cellpadding="0" cellspacing="0" style="display: none;">
+                                    <thead>
+                                    <tr>
+                                        <th width="150px">银行名称</th>
+                                        <th width="400px">限额</th>
+                                        <th width="146px">支持卡种</th>
+                                        <th width="145px">客服电话</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody><tr><td><div class="payment_icon aboc"></div></td><td class="quota">储蓄卡：动态口令卡用户单笔限额1000元，每日限额3000元；<br>准贷记卡：动态口令卡用户单笔限额1000元，每日限额3000元；移动证书用户无限额。<br>（注：农行企业版的支付限额以在银行设置的限额为准）</td><td>借记卡/准贷记卡</td><td>95599</td></tr></tbody>
+                                </table>
+                            </div>
+                        <a href="javascript:;" class="go_to_pay" id="goToPay">立即支付</a>
+                    </li>
+                    <li class="qrcode_pay">
+                        <iframe src="" frameborder="0"></iframe>
+                    </li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+    <form id="realForm" action="/submit" method="post" target="_blank">
+        <!-- 支付工具 ALIPAY/WECHATPAY -->
+        <input type="hidden" name="payTool" value="ALIPAY">
+        <!-- 与原来的paymentWay参数一致 -->
+        <input type="hidden" name="payMethod" value="Alipay">
+        <input type="hidden" name="token" value="fc83da4e6b303f1e50643d4f8b041b98">
+        <input type="hidden" name="huabei" value="3">
+    </form>
+<script>
+//选择不同的支付方式跳转到不同的页面
+function submitPay(id){
+    if(document.getElementsByName("pay")[0].checked){
+        layer.open({
+        type: 2,
+        title:"微信支付",
+        area: ['735px', '482px'],
+        fixed: false, //不固定
+        maxmin: true,
+        content: "__ROOT__/Home/Weixinpay/qrcode/id/"+id,
+        //关闭弹窗刷新父级页面
+        end: function () {
+            location.reload();
+        }
+        });
+
+     // document.getElementById("subpay").action="{{:U('Weixinpay/index')}}";
+     // document.getElementById("subpay").submit();
+    }
+     
+    if(document.getElementsByName("pay")[1].checked){
+     document.getElementById("subpay").action="{{:U('Alipay/index')}}";
+     document.getElementById("subpay").submit();
+    } 
+}   
+
+
+</script>    
+
+</block>	

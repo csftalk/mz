@@ -1,0 +1,192 @@
+.main{
+	width:100%;
+
+	height:1200px;
+}
+.head{
+	width:100%;
+	
+	height:15%;
+	float:left;
+	
+}
+body{
+	margin:0px;
+	
+}
+.bottom{
+	height:10%;
+width:100%;	
+float:left;
+}
+
+.content{
+	width:100%;
+	height:75%;
+	
+	clear:both;
+}
+.top1{
+	margin-top:50px;
+width:100%;
+
+margin-left:50px;	
+float:left;
+}
+.attr{
+	float:left;
+	margin-left:70px;
+	font-size:20px;
+}
+.top2{
+	text-decoration:none;
+	color:black;
+}
+.attr1{
+		font-size:16px;
+		text-decoration:none;
+		color:#7F7F7F;
+}
+.content_one{
+		margin-left:140px;
+		
+		height:200px;
+		width:400px;
+		margin-top:20px;
+		clear:both;
+}
+
+.attr2{
+	margin-left:50px;
+	margin-top:130px;
+	
+	height:50px;
+	
+}
+.attr3{
+		float:left;
+		margin-left:80px;
+		line-height:50px;
+		font-size:16px;
+		letter-spacing:10px;
+}
+.img{
+		float:left;
+	
+}
+
+.second{
+	margin-top:20px;	
+	margin-left:20px;
+	
+}
+.user{
+	color:#32A5E7;
+	text-decoration:none;
+}
+.b1{
+	color:#7F7F7F;
+}
+.b2{
+		color:#32A5E7;
+		text-decoration:none;
+}
+.b5{
+		color:#32A5E7;
+		text-decoration:none;
+}
+.b4{
+		color:#32A5E7;
+		text-decoration:none;
+}
+.b3{
+		color:#515151;
+}
+
+.one{
+		margin-left:20px;
+		
+}
+.b6{
+		color:#32A5E7;
+		text-decoration:none;
+}
+.three{
+	float:left;
+	
+	position:relative;
+	left:50px;
+}
+.safe{
+		clear:both;
+	position:relative;
+	top:30px;
+}
+.four{
+	position:relative;
+	top:10px;
+	left:700px;
+}
+.right{
+	float:right;	
+}
+.content_second{
+	height:500px;
+   width:800px;	
+   margin-left:140px;
+  
+}
+.a3{
+	margin-top:100px;
+}
+.bottom_one{
+	margin-left:80px;
+margin-top:50px;	
+}
+.bottom_second{
+		margin-top:30px;
+		margin-left:80px;
+}
+.form{
+	position:fixed;
+	left:310px;
+	float:left;
+	display:none;
+}
+.name{
+	position:relative;
+	top:-20px;
+	left:170px;
+	text-decoration:none;
+}
+.password{
+	position:relative;
+	left:650px;
+	top:30px;
+	
+}
+.phone{
+	position:relative;
+	left:650px;
+	top:30px;
+	
+}
+
+.email{
+	position:relative;
+	left:650px;
+	top:30px;
+	
+}
+.mibao{
+	position:relative;
+	left:650px;
+	top:30px;
+	
+}
+
+
+
+
+
+

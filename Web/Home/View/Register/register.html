@@ -1,0 +1,215 @@
+﻿
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="欢迎登录和注册魅族Flyme账号，您可以体验手机云服务功能，包括：在线下载应用，同步手机数据和查找手机等，让您的手机管理更加智能。" />
+	<meta name="keywords" content="魅族  meizu 登录flyme 云服务  查找手机  充值账号  MX M9 MX2" />
+	<meta content="width=1080" name="viewport"/>
+	<title>注册Flyme账号</title>
+	<link href="__PUBLIC__/Home/css/basere.css" type="text/css" rel="Stylesheet"/>
+	<link href="__PUBLIC__/Home/css/nameregisterre.css" type="text/css" rel="Stylesheet"/>
+	<!--阿里pt.js-->
+	<!--<script src="js/pt.js" data-app="ewogICJjb21tb24iOiB7CiAgICAiYXBwa2V5IjogIlJIVjIiLAogICAgInVzZUN1c3RvbVRva2VuIjogZmFsc2UsCiAgICAic2NlbmUiOiAiUmVnaXN0ZXIiLAogICAgImZvcmVpZ24iOiAwCiAgfSwKICAidWFiIjogewogICAgIkV4VGFyZ2V0IjogWwogICAgICAicHdkaWQiCiAgICBdLAogICAgInVzZUN1c3RvbVRva2VuIjogZmFsc2UsCiAgICAiRm9ybUlkIjogIm15X2Zvcm0iLAogICAgIkxvZ1ZhbCI6ICJ1YV9sb2ciLAogICAgIlNlbmRJbnRlcnZhbCI6IDIwLAogICAgIlNlbmRNZXRob2QiOiAzLAogICAgIk1heE1DTG9nIjogMTUwLAogICAgIk1heEtTTG9nIjogMTUwLAogICAgIk1heE1QTG9nIjogMTUwLAogICAgIk1heEdQTG9nIjogNSwKICAgICJNYXhUQ0xvZyI6IDE1MCwKICAgICJHUEludGVydmFsIjogNTAsCiAgICAiTVBJbnRlcnZhbCI6IDUwLAogICAgIk1heEZvY3VzTG9nIjogMTUwLAogICAgImlzU2VuZEVycm9yIjogMSwKICAgICJJbWdVcmwiOiAiLy9jZmQuYWxpeXVuLmNvbS9jb2xsZWN0b3IvYW5hbHl6ZS5qc29ucCIsCiAgICAiR2V0QXR0cnMiOiBbCiAgICAgICJocmVmIiwKICAgICAgInNyYyIKICAgIF0sCiAgICAiRmxhZyI6IDE5NjU1NjcKICB9LAogICJ1bWlkIjogewogICAgInRpbWVvdXQiOiAzMDAwLAogICAgInRpbWVzdGFtcCI6ICIkIXRpbWVzdGFtcCIsCiAgICAidG9rZW4iOiAiJCF0b2tlbiIsCiAgICAic2VydmljZVVybCI6ICJodHRwczovL3ludWYuYWxpcGF5LmNvbS9zZXJ2aWNlL3VtLmpzb24iLAogICAgImFwcE5hbWUiOiAiJCFhcHBOYW1lIiwKICAgICJjb250YWluZXJzIjogewogICAgICAiZmxhc2giOiAiY29udGFpbmVyIiwKICAgICAgImRjcCI6ICJjb250YWluZXIiCiAgICB9CiAgfQp9"></script>-->
+</head>
+<body>
+	<div id='content' class="content">
+		
+
+
+<div class=ucSimpleHeader id="header">
+	<a href="{{:U('Index/index')}}" class='meizuLogo'><i class='i_icon'></i></a>
+	<div id="trigger">
+		<a href="{{:U('Login/login')}}" id="toLogin" class='linkAGray'>登录</a>
+		<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+		<a href="{{:U('Register/register')}}" id="toRegister" class='linkAGray'>注册</a>
+    </div>
+</div>
+		<div class='middle'>
+			<form action="{{:U('Register/add')}}" onsubmit="return send()" method="post">
+				<div class="number">
+					<a class="linkABlue" id="toNameRegister" href="/nameRegister">账号名注册</a>
+				</div>
+					<div class="normalInput">
+						<input type="text" name="username" id="inp" maxlength='32' placeholder='账号'/>		
+					</div>
+				<div class='lineWrap normalInput'>
+					<input type="password" name="pwd" id="pwd" maxlength="16" autocomplete="off" placeholder='密码'/>
+				</div>
+				<div class='lineWrap normalInput'>
+					<input type="email" name="email" class="email" placeholder='安全邮箱' maxlength='32'/>
+				</div>
+				<div class='lineWrap normalInput'>
+					<input type="text" name="yzm" id="yzm" maxlength="6" placeholder='邮件验证码'/>
+					<span id="code"></span>
+					<a  href="javascript:void(0);" class="linkABlue getKey" onclick="emailyz()" >获取验证码</a>
+				</div>
+				<div id='rememberField' class="rememberField">
+					<span><input name="acceptFlyme" id="acceptFlyme" type="checkbox" value="1" checked='checked'></span>
+					<label class='pointer' for="acceptFlyme" tabindex="0">我已阅读并接受</label>
+					<a href="/serviceAgreement" target='_blank' class="linkABlue">《Flyme服务协议条款》</a>
+				</div>
+				<input type="hidden" name="vCodeTypeValue" value="16" />
+				<span id='acceptError' class='otherError' style='display:none;'>请确认已阅读并同意Flyme服务协议条款</span>
+				<button type="submit" style="color:white; width:340px; height:40px; background-color:#00A7ED; font-size:30px">注册</button>
+				<span id="span"></span>
+			</form>
+		<input type="hidden" name="appuri" value="" id="appuri" />
+		<input type="hidden" name="useruri" value="http://www.meizu.com/" id="useruri" />
+		<input type="hidden" name="service" value="www" id="service" />
+		<input type="hidden" name="sid" value="" id="sid" />
+		</div>
+	</div>
+	
+<script>
+
+		
+	var inp = document.getElementById('inp');
+	var pwd = document.getElementById('pwd');
+	var span = document.getElementById('span');
+	var yzm = document.getElementById('yzm');
+	var getyzm = document.getElementById('getyzm');
+	inp.onfocus = function(){
+		span.style.color="#00A7ED";
+		span.innerHTML = '请设置4-32个由数字、字母、汉字组成的账户名';
+	}
+	inp.onblur = function(){
+		if (inp.value.length < 4) {
+            span.innerHTML = '<font color="red"> 用户名请大于四个字符</font>';
+        }else{
+        	span.innerHTML = '';
+        }
+	}
+	pwd.onfocus = function(){
+		span.style.color = '#00A7ED';
+		span.innerHTML = '请设置大于5个字符的密码'
+	}
+	pwd.onblur = function(){
+		if(pwd.value.length < 6){
+			span.innerHTML = '<font color="red"> 密码请大于五个字符</font>';
+		}else{
+			span.innerHTML = '';
+		}
+	}
+	function send(){
+		if(inp.value.length < 4){
+			inp.focus();
+			span.innerHTML = "<font color='red'>请设置长度为4-32个字符的账户名</font>";
+			return false;
+		}
+
+		if(pwd.value.length < 6){
+			pwd.focus();
+			span.innerHTML = "<font color='red'>请设置大于5个字符的密码</font>";
+			return false;
+		}
+
+		if (yzm.value.length == 0) {
+			pwd.focus();
+			span.innerHTML = "<font color='red'>请输入验证码</font>";
+			return false;
+		}else if(yzm.value.length != 6){
+			pwd.focus();
+			span.innerHTML = "<font color='red'>请输入六位数的验证码</font>";
+			return false;
+		}else if(yzm.value.length == 6){
+			span.innerHTML = " ";
+		}
+
+		
+	}
+</script>
+
+<div id='flymeFooter' class='footerWrap'>
+	<div class='footerInner'>
+		<div class='footer-layer1'>
+			<div class='footer-innerLink'>
+				<a href="http://www.meizu.com/about.html" target="_blank" title="关于魅族">关于魅族</a>
+				<img class="foot-line" src="__PUBLIC__/Home/picture/space.gif">
+				<a href="http://hr.meizu.com" target="_blank" title="工作机会">工作机会</a>
+				<img class="foot-line" src="__PUBLIC__/Home/picture/space.gif">
+				<a href="http://www.meizu.com/contact.html" target="_blank" title="联系我们">联系我们</a>
+				<img class="foot-line" src="__PUBLIC__/Home/picture/space.gif">
+				<a href="http://www.meizu.com/legalStatement.html" target="_blank" title="法律声明">法律声明</a>
+				<img class="foot-line" src="__PUBLIC__/Home/picture/space.gif">
+				<a href="javascript:void(0);" id="globalName" class="footer-language" title="简体中文">简体中文&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class='footer-service'>
+				<span class='service-label'>客服热线</span>
+				<span class='service-num'>400-788-3333</span>
+				<a id='service-online' class='service-online' href="javascript:void(0);" title="在线客服">在线客服</a>
+			</div>
+			<div class='footer-outerLink'>
+				<a class='footer-sinaMblog' href="http://weibo.com/meizumobile" target="_blank"><i class='i_icon'></i></a>
+				
+				<a id='footer-weChat' class='footer-weChat' href="javascript:void(0);" target="_blank"><i class='i_icon'></i></a>
+				<a class='footer-qzone' href="http://user.qzone.qq.com/2762957059" target="_blank"><i class='i_icon'></i></a>
+			</div>
+			<div id="globalContainer" class="footer-language_menu">
+				<a href="javascript:void(0)" id="i18n-link" title="English" class="ClobalItem">English</a>
+	            <script>
+					;(function() {
+						var u = decodeURIComponent(location.href)
+		                var r = /lang=([^&\s]+)/
+		                var lowB = !('addEventListener' in window)
+		                var addEvent = lowB ? window.attachEvent : window.addEventListener
+
+						if(r.test(u)) u = u.replace(r, 'lang=en_US')
+						else u += (~u.indexOf('?') ? '&' : '?') + 'lang=en_US'
+
+						addEvent(lowB ? 'onload' : 'load', function() {document.getElementById('i18n-link').setAttribute('href',u)})
+					}());
+				</script>
+			</div>
+		</div>
+		<div class='clear'></div>
+		<div id='flymeCopyright' class="copyrightWrap">
+			<div class="copyrightInner">
+				<span>©2016 Meizu Telecom Equipment Co., Ltd. All rights reserved.</span>
+				<a href="http://www.miitbeian.gov.cn/" class='linkAGray' target="_blank">备案号: 粤ICP备13003602号-4</a>
+				<a href="http://www3.res.meizu.com/static/cn/widget/footer/images/icp2_b2dcb54.jpg" class='linkAGray' target="_blank">经营许可证编号: 粤B2-20130198</a>
+				<a target="_blank" href="http://www2.res.meizu.com/zh_cn/images/common/com_licence.jpg" hidefocus="true" class="linkAGray">营业执照</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="wechatPic"></div>
+<script type="text/javascript">
+(function() {
+    var ga = document.createElement('script'), s;
+    ga.type = 'text/javascript';
+    ga.src = ('https:' == document.location.protocol ? 'https://tongji-res.meizu.com' : 'http://tongji-res1.meizu.com') + '/resources/tongji/flow.js';
+    s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
+
+	<script charset="utf-8" type="text/javascript" src="__PUBLIC__/Home/js/jqueryre-1.7.1.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/jqueryre.form.js" charset="utf-8"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/jqueryre.validate.js" charset="utf-8"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/utilsre.js" charset="utf-8"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/flymere.elements.js" charset="utf-8"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/basere.js" charset="utf-8"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/jqueryre.autoemail.js" charset="utf-8"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/nameregisterre.js" charset="utf-8"></script>
+	<!--接入风控sh.min.js-->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/shre.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/cryppre.min.js" charset="utf-8"></script>
+	<script type="text/javascript">
+	function emailyz(){
+		var email = $('.email').val();
+			$.post("{{:U('Register/sendMail')}}",{key:email},function(res){
+				if(res == 'ok'){
+					$('#span').text('发送成功请耐心等待!').css('color','black').css('line-height','50px').css('display','block');
+				}else{
+					$('#span').text('发送失败请再试一遍').css('color','red').css('line-height','50px').css('display','block');
+				}
+			},'json');
+	 }
+	</script>
+	</body>
+</html>

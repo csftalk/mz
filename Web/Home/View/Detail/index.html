@@ -1,0 +1,338 @@
+﻿<extend name="Public/base"/>
+<block name="title">{{$gData['name']}}</block>
+<block name="head">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/layout-d6b4a37ed3.css" />
+        <script src="__PUBLIC__/Home/js/jquery-1.7.2.min.js"> </script>
+        <link rel="stylesheet" href="__PUBLIC__/Home/css/main-e6bfa9b.css">
+        <style>
+            .selected{
+                border:1px solid #3AB5EA;
+            }
+        </style>
+</block>
+
+
+<block name="main">
+                            <!--下面是模板标签，不可删除-->
+        <main class="wrapper page-detail">
+            <div class="container">
+                <section class="crumbs clearfix">
+                            <a data-mtype="store_de_mbx_1" href="{{:U('Index/index')}}">首页</a>&nbsp;&gt;&nbsp;
+                            <a class="ellipsis crumbs-title">{{$gData['name']}}</a>
+                </section>
+                <section class="row">
+                    <div class="preview" id="preview">
+                        <div class="preview-booth">
+                            <a href="javascript:;" >
+                                <img id="J_imgB" src="__PUBLIC__/Uploads/{{$descPath[0]['pic_path']}}" height="375" width="375"
+                                     alt="">
+                            </a>
+                        </div>
+                        <ul class="preview-thumb clearfix" id="J_previewThumb">
+                                <li class="current">
+                                    <a data-mtype="store_de_tp_1" href="#"><img
+                                            src="__PUBLIC__/Uploads/{{$descPath[0]['pic_path']}}" width="75" height="75" onclick="img(this)" id="img1"></a>
+                                </li>
+                                <li >
+                                    <a data-mtype="store_de_tp_2" href="#"><img
+                                            src="__PUBLIC__/Uploads/{{$descPath[1]['pic_path']}}" width="75" height="75" onclick="img(this)" id="img2"></a>
+                                </li>
+                                <li >
+                                    <a data-mtype="store_de_tp_3" href="#"><img
+                                            src="__PUBLIC__/Uploads/{{$descPath[2]['pic_path']}}" width="75" height="75" onclick="img(this)" id="img3"></a>
+                                </li>
+                                <li >
+                                    <a data-mtype="store_de_tp_4" href="#"><img
+                                            src="__PUBLIC__/Uploads/{{$descPath[3]['pic_path']}}" width="75" height="75" onclick="img(this)" id="img4"></a>
+                                </li>
+                                <script type="text/javascript">
+                                function img(obj) {
+                                    var img = document.getElementById('J_imgB');
+                                    img.src = obj.src; 
+                                } 
+                                </script>
+                        </ul>
+                    </div>
+                    <div class="property" id="property">
+                    <form action="{{:U('Order/order')}}" method="post">
+                            <div class="property-hd">
+                                <input type="hidden" name="gid" value="{{$gData['id']}}"/>
+                                <!--商品名称-->
+                                <h1>{{$gData['name']}}</h1>
+                                <!--商品描述-->
+                                <p class="mod-info ">{{$gData['desc']}}</p>
+                            </div>
+                            <div class="property-sell">
+                                <dl class="property-sell-price clearfix">
+                                    <dt class="vm-metatit" id="J_discountTag">价<span class="s-space"></span><span
+                                            class="s-space"></span>格：
+                                    </dt>
+                                    <dd>
+                                        <div class="mod-price">
+                                            <small>¥</small>
+                                            <!--价格-->
+                                            <span  class="vm-money" id="vm_money">0</span>
+                                            
+                                        </div>
+                                        <div class="mod-original" id="J_originalPrice" style="display:none;"></div>
+                                        <div class="mod-activity">
+                                        </div>
+                                        <div class="mod-countdown" id="J_discountCountDown" style="display:none;">
+                                        </div>
+                                    </dd>
+                                </dl>
+                               
+                            </div>
+                            <div class="property-set">
+                            <if condition="empty($data)">
+                                    <dl class="property-set-sale" data-property="默认">
+                                        <dt class="vm-metatit">默认</dt>
+                                        <dd class="clearfix">
+                                                <input type="hidden" name="att[]" value="">
+                                               
+                                                    <a data-value="默认"
+                                                   data-mtype="store_de_sp_1_1" href="#"
+                                                   title="默认" onclick="choose(this)">
+                                                        <span>默认</span>
+                                                </a>
+                                                
+                                        </dd>
+                                    </dl>
+                            <else />
+                                <foreach name="data" item="vo">
+                                    <dl class="property-set-sale" data-property="{{$vo[0]}}">
+                                        <dt class="vm-metatit">{{$vo[0]}}</dt>
+                                        <dd class="clearfix">
+                                                <input type="hidden" name="att[]" value="">
+                                                <foreach name="vo[1]" item="v">
+                                                    <a data-value="{{$v['id']}}"
+                                                   data-mtype="store_de_sp_1_1" href="#"
+                                                   title="{{$v['value']}}" onclick="choose(this)">
+                                                        <span>{{$v['value']}}</span>
+                                                </a>
+                                                </foreach> 
+                                        </dd>
+                                    </dl>
+        
+                                </foreach>
+
+
+                            </if>
+                              
+                                   
+                                    
+                                    
+                            </div>
+                            <script>
+                                       function choose(obj)
+                                       {
+                                            var val = $(obj).attr('data-value'); 
+                                            $(obj).siblings('input').val(val);
+                                            $(obj).addClass("selected").siblings('a').removeClass("selected");
+                                            getDesc();
+                                           // alert($(obj).siblings('input').val());
+                                            
+                                       }
+                                    </script>
+                            <div class="property-service">
+                                    <dl class="property-service-item clearfix">
+                                        <dt class="vm-metatit">支<span class="s-space"></span><span class="s-space"></span>持：
+                                        </dt>
+                                        <dd class="mod-bd" id="J_prodService">
+                                            <span><i
+                                                    class="icon icon-service"></i>花呗分期</span>
+                                            
+                                        </dd>
+                                    </dl>
+                                <dl class="property-service-provider clearfix">
+                                    <dt class="vm-metatit">服<span class="s-space"></span><span class="s-space"></span>务：
+                                    </dt>
+                                    <dd class="clearfix">
+                                        <span id="J_installmentInfo"></span>
+                                            本商品由 魅族 负责发货并提供售后服务
+                                    </dd>
+                                </dl>
+                                <dl class="property-service-provider clearfix">
+                                    <dt class="vm-metatit">库<span class="s-space"></span><span class="s-space"></span>存：
+                                    </dt>
+                                    <dd class="clearfix">
+                                        <span id="J_store"></span>
+                                            <!--库存-->
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="property-buy">
+                                <p class="vm-message" id="J_message">
+                                </p>
+                                <dl class="property-buy-quantity">
+                                    <dt class="vm-metatit">数<span class="s-space"></span><span class="s-space"></span>量：
+                                    </dt>
+                                    <dd class="clearfix">
+                                        <div class="mod-control">
+                                            <a title="减少" href="javascript:;" class="vm-minus">-</a>
+                                            <!--购买的数量-->
+                                            <input type="text" value="1" id="J_quantity"
+                                                   data-max="500" name="amount">
+                                            <a title="增加" href="javascript:;" class="vm-plus">+</a>
+                                        </div>
+                                        <div>
+                                            <button  class="btn btn-primary btn-lg "
+                                               data-mtype="store_de_buy" href="javascript:void(0);" type="submit"><i></i>立即购买</button>
+                                            <a class="vm-favorite" id="J_favorite" href="#"><i class="icon icon-favorite"></i>收藏</a>
+                                          
+                                            <p class="vm-service" id="J_panicBuyingWrap"></p>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                    </form>
+                    </div>
+                </section>
+            </div>
+            <div class="detail-tab anim detail-fast-float" id="detailFast">
+                <div class="fixed-container">
+                    <ul class="clearfix">
+                        <li class="current">
+                            <a href="#">商品详情</a>
+                        </li>
+                        <li>
+                            <a href="#">规格参数</a>
+                        </li>
+                            
+                    </ul>
+                    <div class="shortcut trans">
+                        <div class="mod-buy">
+                            <a href="javascript:void(0);" id="J_btnBuyShortcut" class="btn btn-primary btn-lg"><i></i>现在购买</a>
+                        </div>
+                        <!--价格-->
+                        <div class="mod-total trans">
+                            {{$gData['name']}} <small class="vm-price">¥</small> <em class="vm-price" id="vm_price">0</em>
+                            <p class="vm-title" id="J_summaryName">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mod-title">
+
+                    </div>
+                </div>
+            </div>
+            <section class="row detail" id="detail">
+                <div style="height:62px;">
+                    <div class="detail-tab" id="detailTabFixed">
+                        <div class="fixed-container">
+                            <ul class="clearfix">
+                                <li class="current">
+                                    <a data-mtype="store_de_xq_1" href="#">商品详情</a>
+                                </li>
+                                <li>
+                                    <a data-mtype="store_de_xq_2" href="#">规格参数</a>
+                                </li>
+                                    
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-content container">
+                    <div class="introduce" id="introduce" style="display:block;">
+                            <foreach name="showPath" item="vo">
+                                     <img class="lazy" src="__PUBLIC__/Uploads/{{$vo['pic_path']}}" width="1240" alt="">
+                            </foreach>
+                           
+                           
+                          
+                    </div>
+                    <div class="standard" id="standard">
+                        <table class="standard-table">
+                            <tbody>
+                                    <tr class="standard-table-group">
+                                        <th colspan="2">
+                                            基础信息
+                                        </th>
+                                    </tr>
+                                    <foreach name="info" item="vo">
+                                            <tr>
+                                                <th>{{$vo[0]}}</th>
+                                                <td>{{$vo[1]}}</td>
+                                        </tr>
+                                    </foreach>
+                                        
+                            </tbody>
+                        </table>
+                    </div>
+                        
+                </div>
+            </section>
+        </main>
+
+        <script type="text/javascript">
+            //商品源数据
+            var MZ = {};
+                MZ.modelData = {}
+        </script>
+        <script src="__PUBLIC__/Home/js/layout-cb7d0b1f3b.js" type="text/javascript"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/pkg-detail-7108b78.js"></script>
+
+
+<script type="text/javascript">
+    $(function(){
+        $('.property-set dd').each(function(){
+             $(this).children('a').first().get(0).click();
+            // alert(1111);
+        });
+       getDesc();
+    });
+var arr = []; //缓存
+var price = [];
+var store = [];
+    function getDesc(){
+        var str = $('input[name="att[]"]').map(function(){
+            return $(this).val();
+        }).get().join(",");
+        var img1 = document.getElementById('img1');
+        var img2 = document.getElementById('img2');
+        var img3 = document.getElementById('img3');
+        var img4 = document.getElementById('img4');
+        var J_imgB = document.getElementById('J_imgB');
+        var vm_money = document.getElementById('vm_money');
+        var vm_price = document.getElementById('vm_price');
+        var J_store = document.getElementById('J_store');
+       var gid = $('input[name="gid"]').val();
+       var path = '__PUBLIC__/Uploads/';  //路径前缀
+        if (arr[str]) {
+                img1.src = path + arr[str][0]['pic_path'];
+                img2.src = path + arr[str][1]['pic_path'];
+                img3.src = path + arr[str][2]['pic_path'];
+                img4.src = path + arr[str][3]['pic_path'];
+                J_imgB.src = img1.src;
+                vm_price.innerHTML = vm_money.innerHTML = price[str];
+                 J_store.innerHTML = store[str];
+        } else{
+            $.get('{{:U('desc')}}', {str:str, gid:gid},function(res){
+                if (res[0] == 1) {
+                   
+                    img1.src = path + res[1][0]['pic_path'];
+                    img2.src = path + res[1][1]['pic_path'];
+                    img3.src = path + res[1][2]['pic_path'];
+                    img4.src = path + res[1][3]['pic_path'];
+                    J_imgB.src = img1.src;
+                    // alert(res[2]);
+                    vm_price.innerHTML = res[2];
+                    vm_money.innerHTML = res[2];
+                     J_store.innerHTML = res[3];
+                    arr[str] = res[1]; //缓存
+                    price[str] = res[2];
+                    store[str] = res[3];
+                }
+           }, 'json');
+        }
+       
+    }
+</script>
+
+
+
+
+</block>
+
+

@@ -1,0 +1,142 @@
+<extend name="Public/basef" />
+<br><br>
+<block name="title">订单详情</block>
+
+
+<block name="mainF">
+
+<div class="bk-gray f-16 text-c" style="background:#F2F2F2;">订单编号：<font color="red">{{$listdata.oid}}</font></div> 
+
+<div style="width:95%; margin:auto;">
+
+<!-- <table class="table table-bordered radius mt-10 f-14">
+  <tr>
+    <td>
+      <p class="lh-16">2016-10-18 21:39：订单创建成功，订单编号：1610180001</p>
+      <p  class="lh-16">2016-10-18 21:41：买家付款成功，支付金额：351323.9元</p>
+      <p  class="lh-16">2016-10-18 21:41：买家付款成功，支付金额：351323.9元</p>
+    </td>
+  </tr>
+</table> -->
+
+
+
+  <!-- <form action="__URL__/add" method="post" class="form form-horizontal" id="form-user-add"> -->
+  
+    <table class="table table-border table-bordered radius mt-10">
+      <th style="background:#F2F2F2;" colspan="2">商品详情</th>
+      <th width="100"style="background:#F2F2F2;">商品价格</th>
+      <th width="100" style="background:#F2F2F2;">商品总金额</th>
+      <tr>
+        <td class="text-l text-c" height="100" width="100">
+          <a target="_blank" href="__ROOT__/Home/Detail/index.html?id={{$listdata.g_id}}"><img src="__PUBLIC__/Uploads/{{$listdata.pic_path}}" alt="{{$listdata['g_name']}}" width="80"></a>
+        </td>
+        <td>
+          <a target="_blank" href="__ROOT__/Home/Detail/index.html?id={{$listdata.g_id}}">
+            {{$listdata['g_name']}}<br>{{$listdata['g_attr_str']}}
+          </a>
+        </td>
+        <td class="text-c">{{$listdata['g_number']}} * {{$listdata['g_price']}}</td>
+        <td><font color="red">{{:number_format($listdata['g_number'] * $listdata['g_price'], 2, '.', '')}}</font></td>
+      </tr>
+    </table>
+      <table class="table table-bordered radius mt-10">
+        <tr>
+          <th style="background:#F2F2F2;">收货信息</th>
+        </tr>
+        <tr>
+          <td>
+           <!-- //province city district -->
+            <p>会员账号：{{$user.username}} &ensp;&ensp;(ID:{{$user.id}})</p>
+            <form action="{{:U('Orders/edit')}}" method="post">
+            <input type="hidden" name="id" value="{{$list.id}}">
+            <p>收货姓名：<input type="text" name="getman" value="{{$list.getman}}" class="input-text radius size-MINI" style="width: 25%"> &ensp;&ensp;
+              联系电话：<input type="text" name="phone" value="{{$list.phone}}" class="input-text radius size-MINI" style="width: 25%">
+            </p>
+            <p>收货地址：
+              
+              <!-- 地区 此处是三级联动代码  input-text radius size-MINI-->
+              <select name="province" id="province" onchange="loadArea(this.value,'city')" class="select radius size-MINI" style="width: 15%">
+                  <option value="-1" selected>省份/直辖市</option>
+                  <volist name="province" id="vo">
+                      <option value="{{$vo['id']}}" <if condition="$vo['id'] eq $info['province']" >selected</if> >{{$vo['areaname']}}</option>
+                  </volist>
+              </select>
+              <select name="city" id="city" onchange="loadArea(this.value,'district')" class="select radius size-MINI" style="width: 15%">
+                  <option value="-1">市/县</option>
+                  <volist name="city" id="vo">
+                      <option value="{{$vo['id']}}" <if condition="$vo['id'] eq $info['city']">selected</if> >{{$vo['areaname']}}</option>
+                  </volist>
+              </select>
+              <select name="district" id="district" onchange="loadArea(this.value,'null')" class="select radius size-MINI" style="width: 15%">
+                  <option value="-1">镇/区</option>
+                  <volist name="district" id="vo">
+                      <option value="{{$vo['id']}}" <if condition="$vo['id'] eq $info['district']">selected</if> >{{$vo['areaname']}}</option>
+                  </volist>
+              </select>
+              <!-- 地区 此处是三级联动代码-->
+
+            <input type="text" class="input-text radius size-MINI" name="detailed" value="{{$list.detailed}}" style="width:150px">
+
+            </p>
+            <p>买家留言：{{$list.message}}</p>
+            <input type="submit" value="修改收货信息" class="btn btn-secondary radius size-MINI" />
+            </form>
+          </td>
+        </tr> 
+      </table> 
+</div> 
+
+
+  </form>
+</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui.admin/js/H-ui.admin.js"></script>
+<!-- <script type="text/javascript">
+$(function(){
+  $('.skin-minimal input').iCheck({
+    checkboxClass: 'icheckbox-blue',
+    radioClass: 'iradio-blue',
+    increaseArea: '20%'
+  });
+  
+  $("#form-user-add").Validform({
+    tiptype:2,
+    callback:function(form){
+      form[0].submit();
+      var index = parent.layer.getFrameIndex(window.name);
+      parent.$('.btn-refresh').click();
+      parent.layer.close(index);
+    }
+  });
+});
+</script> -->
+
+<script>
+function loadArea(areaId,areaType) {
+  var ajaxurl = "{{:U('Orders/edit')}}";
+    $.get(ajaxurl,{'areaId':areaId},function(data){
+          // console.log(data);
+        if(areaType=='city'){
+           $('#'+areaType).html('<option value="-1">市/县</option>');
+           $('#district').html('<option value="-1">镇/区</option>');
+        }else if(areaType=='district'){
+           $('#'+areaType).html('<option value="-1">镇/区</option>');
+        }
+        if(areaType!='null'){
+            $.each(data,function(no,items){
+                $('#'+areaType).append('<option value="'+items.id+'">'+items.areaname+'</option>');
+              console.log(items.areaname);
+            });
+        }
+    });
+}
+</script>
+
+</block>
+

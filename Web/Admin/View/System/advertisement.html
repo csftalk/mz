@@ -1,0 +1,77 @@
+<extend name="Public/base" />
+<block name="title">产品展示图</block>
+<block name="main">
+<div class="page-container">
+<div class="mt-20">
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+		<thead>
+			<tr class="text-c">
+				
+				<th width="100">展示图片</th>
+				<th width="70">链接地址</th>
+				<th width="70">排序</th>
+				<th width="100">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		
+			<foreach name="list" item="vo">
+				<tr class="text-c">
+					
+					<td>
+						<img width="100" class="picture-thumb" src="__PUBLIC__/Uploads/{{$vo['because']}}">
+					</td>
+					<td width="70">
+	                 				 <input type="text" value="{{$vo['result']}}" name="link" onblur="save(this,{{$vo['id']}})" class="input-text radius"  <if condition="$vo['result'] eq '空'">disabled="disabled"</if>/>  
+	                			</td>
+	                			<td width="70">
+	                 				 <input type="text" value="{{$vo['course']}}" name="sort" onblur="save(this,{{$vo['id']}})" class="input-text radius"  <if condition="$vo['course'] eq '空'">disabled="disabled"</if> />  
+	                			</td>
+					<td width="100">
+						<a class="btn btn-default" href="{{:U('advertisement_add')}}?id={{$vo['id']}}">新增/修改</a> 
+						<a class="btn btn-default" href="javascript:;" onclick="member_del(this,{{$vo['id']}})">删除</a></td>
+				</tr>
+				
+			</foreach>	
+		</tbody>
+	</table>
+	</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui.admin/js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+/*删除*/
+function member_del(obj,id){
+	layer.confirm('确认要删除吗？',function(index){
+		
+		$.get('{{:U('advertisement_del')}}', {id:id}, function(res){
+			
+			if (res == 'ok') {
+				layer.msg('已删除!',{icon:1,time:1000});
+				window.location.reload();	
+			}else{
+				layer.msg('删除失败!',{icon:5,time:1500});	
+			}
+		});
+		
+	});
+}
+/*修改排序/链接地址*/
+function save(obj,id){
+
+	var val = $(obj).val();
+	var name = $(obj).attr('name');
+	$.post('{{:U('advertisement_save')}}', {id:id, name:name, val:val}, function(res){
+		if (res == 'ok') {
+			layer.msg('修改成功！',{icon:1,time:1000});
+		} else {
+			layer.msg('修改失败!',{icon:5,time:1500});
+		}
+		
+	});
+	
+}
+</script> 
+</block>

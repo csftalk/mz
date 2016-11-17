@@ -1,0 +1,84 @@
+<extend name="Public/base" />
+<block name="title">属性新增</block>
+<block name="main">
+	<article class="page-container">
+	<a href="{{:U('Type/index')}}">分类列表</a>><a href="{{:U('TypeAtt/index')}}?id={{$typeid}}">{{$typename}}属性</a>>新增
+	<form action="{{:U('add')}}?id={{$typeid}}" method="post" class="form form-horizontal" id="form-member-add">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>属性名：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="属性名" name="key">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>唯一性：</label>
+			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
+				<div class="radio-box">
+					<input name="is_only" type="radio"  value="1"checked>
+					<label for="sex-1">不可选</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" name="is_only" value="2">
+					<label for="sex-2">可选</label>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">可选值：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<textarea name="value" cols="" rows="" class="textarea"  placeholder="输入可选值，以逗号分隔。如:1,2,3" onKeyUp="textarealength(this,100)"></textarea>
+				<p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+			</div>
+		</div>
+	</form>
+</article>
+<!--_footer 作为公共模版分离出去--> 
+
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/jquery.validate.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/messages_zh.min.js"></script> 
+
+<!--/_footer /作为公共模版分离出去--> 
+
+<!--请在下方写此页面业务相关的脚本--> 
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("#form-member-add").validate({
+		rules:{
+			key:{
+				required:true,
+				minlength:2,
+				maxlength:16
+			},
+			is_only:{
+				required:true,
+			},
+			
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			//$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			//parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	}
+	});
+});
+</script>
+</block>

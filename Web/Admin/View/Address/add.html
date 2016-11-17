@@ -1,0 +1,102 @@
+<extend name="Public/basef" />
+
+<block name="title">添加地址</block>
+
+<block name="mainF">
+<div class="page-container">
+  <form action="__URL__/add" method="post" class="form form-horizontal" id="form-user-add">
+   
+    <div style="width:95%; margin:auto;">
+    <table class="table table-border table-bordered radius" >
+      <tr>
+        <td class="text-r" style="background:#F8F8F8;widows: 100px">UID：</td>
+        <td >
+          <input type="text" class="input-text va-m" name="uid" id="" />
+        </td>
+      </tr>
+      <tr>
+        <td class="text-r" style="background:#F8F8F8;widows: 100px">收货人：</td>
+        <td>
+          <input type="text" class="input-text va-m" name="getman" id="" />
+        </td>
+      </tr>
+      <tr>
+        <td class="text-r" style="background:#F8F8F8;widows: 100px">联系手机：</td>
+        <td>
+          <input type="text" class="input-text va-m" name="phone" id="" />
+        </td>
+      </tr>
+
+      <tr>
+        <td class="text-r" style="background:#F8F8F8;widows: 100px">地区：</td>
+        <td>
+          <!-- 地区 此处是三级联动代码-->
+            <php>
+                $province=D('Area')->where(array('level'=>1))->select(); /*获取省级地区*/
+            </php>
+                  <select name="province" id="province" onchange="loadArea(this.value,'city')" class="select input-text" style="width: 30%">
+                  <!-- <select name="s2"  onChange="(document.forms[0].text1.value=this.value)"> -->
+                      <option value="-1" selected>省份/直辖市</option>
+                      <volist name="province" id="vo">
+                          <option value="{{$vo['id']}}">{{$vo['areaname']}}</option>
+                      </volist>
+                  </select>
+                  <select name="city" id="city" onchange="loadArea(this.value,'district')" class="select input-text" style="width: 30%">
+                      <option value="-1">市/县</option>
+                  </select>
+                  <select name="district" id="district" onchange="loadArea(this.value,'null')" class="select input-text" style="width: 30%">
+                      <option value="-1">镇/区</option>
+                  </select>
+          <!-- 地区 此处是三级联动代码-->
+        </td>
+      </tr>
+      <tr>
+        <td class="text-r" style="background:#F8F8F8;widows:100px">详细地址：</td>
+        <td><input type="text" class="input-text va-m" name="detailed" /></td>
+      </tr>
+      <tr>
+        <td class="text-c text-r" style="background:#F8F8F8">
+         <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+        </td>
+        <td></td>
+      </tr>
+    </table>
+    </div>
+  </div>  
+    
+    <div class="row cl">
+      <div class="col-9 col-offset-2">
+       
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui.admin/js/H-ui.admin.js"></script>
+<script>
+function loadArea(areaId,areaType) {
+  var ajaxurl = "{{:U('Address/add')}}";
+    $.get(ajaxurl,{'areaId':areaId},function(data){
+          // console.log(data);
+        if(areaType=='city'){
+           $('#'+areaType).html('<option value="-1">市/县</option>');
+           $('#district').html('<option value="-1">镇/区</option>');
+        }else if(areaType=='district'){
+           $('#'+areaType).html('<option value="-1">镇/区</option>');
+        }
+        if(areaType!='null'){
+            $.each(data,function(no,items){
+                $('#'+areaType).append('<option value="'+items.id+'">'+items.areaname+'</option>');
+            });
+        }
+    });
+}
+</script>
+
+</block>
+

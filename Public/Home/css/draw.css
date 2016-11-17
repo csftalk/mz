@@ -1,0 +1,123 @@
+.meizu-header-wrap-sub{margin:0 auto; width: 1040px;}
+    .meizu-header-logo{display:inline; float:left; padding:30px 0}
+    .meizu-header-logo-img{display:block; width:115px; height:20px; background-repeat:no-repeat; background-position:center center; background-image:url(http://www2.res.meizu.com/zh_cn/images/common/logo-new.png); background-image:-webkit-image-set(url(http://www2.res.meizu.com/zh_cn/images/common/logo-new.png) 1x,url(http://www2.res.meizu.com/zh_cn/images/common/logo-new@2x.png) 2x)}
+    .meizu-header-link{display:inline;overflow:hidden}
+    .meizu-header-link li{display:inline; float:left}
+    .meizu-header-link a{display:block; padding:31px 19px 30px;line-height: 21px;}
+    .meizu-header-log{display:inline; float:right; padding:32px 0 0 30px; text-align:right; font-size:12px}
+    .meizu-header-sub{z-index:100; display:none; position:absolute; left:0; top:70px;  background-color:#fff; border-bottom:1px solid #e9e9e9;min-width: 100%;}
+    .meizu-header-sub-product{display:inline; float:left; text-align:center;}
+    .meizu-header-sub-product a{padding: 20px 0px 0px; -webkit-transition:opacity .5s ease-in-out; -o-transition:opacity .5s ease-in-out; transition:opacity .5s ease-in-out; cursor: pointer; position: relative; z-index: 99}
+    .meizu-header-sub-product a:hover{color:#515151}
+    .meizu-header-sub-products{overflow:hidden; padding-left: 368px}
+
+    #meizu-header-sub-accesory .meizu-header-sub-products{padding-left: 452px;}
+    #meizu-header-sub-meilan .meizu-header-sub-products{padding-left: 206px;}
+    #meizu-header-sub-pro .meizu-header-sub-products{padding-left: 228px;}
+    #meizu-header-sub-pro .meizu-header-sub-desc{text-indent: -7px;}
+    #meizu-header-sub-router .meizu-header-sub-products{padding-left: 509px;}
+    .meizu-header-sub-img,.meizu-header-sub-img img{
+     position:relative;
+     z-index:-1
+    }
+    .meizu-header-sub-img,.meizu-header-sub-img img{position:relative; z-index:-1}
+    .meizu-header-sub-img{display: block;height:80px; padding:0 10px 5px 10px;}
+    .meizu-header-sub-img img{height:80px;}
+    .meizu-header-sub-product .meizu-header-sub-desc{padding-bottom: 11px;padding-top: 5px;color: #666;font-size: 12px;}
+    .meizu-header-link-product:hover .meizu-header-sub,.meizu-header-link-product.hover .meizu-header-sub{display:block}
+    .meizu-header-link-product:hover .meizu-header-link-product-a,.meizu-header-link-product.hover .meizu-header-link-product-a{color:#31a5e7}
+
+    .meizu-header-sub-product a {
+    display: block;
+    padding: 0 11px 7px;
+    -webkit-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+    cursor:pointer;
+    position: relative;
+    z-index: 99
+    }
+
+    .meizu-header-sub-img img,.meizu-header-sub-desc{display: block;white-space:nowrap;}
+    .login-box {
+        float: right;
+    }
+    .loginArea {
+        padding: 24px 11px 29px 15px;
+    }
+    .loginArea {
+        border-left: 1px #FFF solid;
+        border-right: 1px #FFF solid;
+        border-top: 3px #FFF solid;
+        padding-top: 25px;
+        height: 24px;
+        background: #fff;
+    }
+    .loginArea-hover {
+        height: 29px;
+        border-left: 1px #e5e5e5 solid;
+        border-right: 1px #e5e5e5 solid;
+        border-top: 3px #00a7ea solid;
+    }
+
+    .u-box {
+        display: none;
+        border: solid 1px #e5e5e5;
+        border-bottom: none;
+        border-top: solid 3px #1395E4;
+        position: absolute;
+        height: 78px;
+        width: 60px;
+        top: 0;
+        right: 0;
+        background-color: #fff;
+        z-index: 2;
+    }
+    .log-dropdown {
+        display: none;
+        position: absolute;
+        right: -36px;
+        z-index: 99999;
+        width: 150px;
+        background-color: #fff;
+        top: 58px;
+        padding: 10px 10px 0;
+        border: solid 1px #e5e5e5;
+        border-top: none;
+        box-sizing: border-box;
+    }
+    .log-dropdown li {
+        padding: 0 5px;
+       text-align: center;
+    }
+    .log-img-box {
+        display: inline-block;
+        position: relative;
+        z-index: 99;
+    }
+    .log-img-box img {
+        vertical-align: middle;
+    }
+    .log-img-box .user-avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+    }
+    .log-dropdown a {
+        display: block;
+        font-size: 14px;
+        color:#000000;
+        line-height: 34px;
+        height: 34px;
+    }
+    .log-dropdown .actmanage_mzcust {
+        border-bottom: 1px solid #E5E5E5;
+        color: #32a5e7 !important;
+    }
+    .log-dropdown .logout_mzcust{
+        margin: 0px -16px;
+        border-width: 1px 1px 0px 1px;
+        border-style: solid;
+        border-color: #E5E5E5;
+        background-color: #FAFAFA;
+    }

@@ -1,0 +1,90 @@
+<extend name="Public/base" />
+<block name="title">添加图片</block>
+<block name="main"> 
+	<div class="page-container">
+	<div class="cl pd-5 bg-1 bk-gray mt-20">
+    <div class="f-l"><a class="btn btn-default" href="{{:U('index')}}?id={{$pid}}&gid={{$gid}}">返回查看图片</a></div><div class="f-r"><a class="btn btn-default">删除</a></div>
+    </div>
+<div>
+  <form action="{{:U('PicDesc/add')}}?pid={{$pid}}&gid={{$gid}}" method="post" enctype="multipart/form-data">
+    <div>
+        <ul>
+            <li><label>图片一(正 面)：</label><input type="file" name="file1"/></li>
+            <li><label>图片二(侧面1)：</label><input type="file" name="file2"/></li>
+            <li><label>图片三(侧面2)：</label><input type="file" name="file3"/></li>
+            <li><label>图片四(背 面)：</label><input type="file" name="file4"/></li>
+        </ul>
+    </div>
+    <input type="submit" value="保存" class="btn btn-default"/>
+    </form>
+    <div class="portfolio-content">
+		<ul class="cl portfolio-area" id="ul_img">
+			
+            <li class="item">
+				<div class="portfoliobox">
+					
+					<div class="picbox"><img src="temp/Thumb/keting.jpg"></div>
+					<div class="textbox">客厅 </div>
+				</div>
+			</li>
+             <li class="item">
+				<div class="portfoliobox">
+					
+					<div class="picbox"><img src="temp/Thumb/keting.jpg"></div>
+					<div class="textbox">客厅 </div>
+				</div>
+			</li>
+            
+             <li class="item">
+				<div class="portfoliobox">
+					
+					<div class="picbox"><img src="temp/Thumb/keting.jpg"></div>
+					<div class="textbox">客厅 </div>
+				</div>
+			</li>
+            
+             <li class="item">
+				<div class="portfoliobox">
+					
+					<div class="picbox"><img src="temp/Thumb/keting.jpg"></div>
+					<div class="textbox">客厅 </div>
+				</div>
+			</li>
+            
+            
+
+		</ul>
+	</div>
+
+     
+</div>
+
+<script src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script>
+<script>
+   
+    //alert();
+    $('input[type="file"]').each(function(){
+       
+       $(this).change(function(){
+       
+       var index = $('input[type="file"]').index(this);
+       
+       var url = $('#ul_img img').get(index).src = window.URL.createObjectURL(this.files[0]);
+       //$('#ul_img img').get(index).previousElementSibling.href = url;
+       });
+    });
+    
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</block>

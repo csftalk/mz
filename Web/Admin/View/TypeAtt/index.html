@@ -1,0 +1,72 @@
+<extend name="Public/base" />
+<block name="title">类型属性</block>
+<block name="main">
+
+	<div class="mt-20">
+	<a href="{{:U('Type/index')}}">分类列表</a>>{{$typename}}属性
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+	<caption>{{$typename}}属性</caption>
+	<thead>
+		<tr class="text-c">
+			
+			<th width="80">属性ID</th>
+			<th width="100">属性名</th>
+			<th width="40">唯一性</th>
+			<th width="90">属性值</th>
+			
+			<th width="100">操作</th>
+		</tr>
+	</thead>
+	<tbody>
+	<if condition="!empty($list)">
+		<foreach name="list" item="v">
+			
+
+				<tr class="text-c">
+					
+					<td>{{$v.id}}</td>
+					<td>{{$v.key}}</td>
+					<td><if condition="$v.is_only == 1" >不可选<else /> 可选</if></td>
+					<td>{{$v.value}}</td>
+					
+					<td class="td-manage"><a style="text-decoration:none"  href="{{:U("add" )}}?id={{$typeid}}" title="添加"><i class="Hui-iconfont">&#xe676;</i></a> <a title="编辑" href="{{:U('save')}}?id={{$v.id}}" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,{{$v.id}})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+				</tr>
+		</foreach>
+	<else />
+		<tr>
+			<td colspan="5">暂时没有属性,去<a style="text-decoration:none"  href="{{:U("add" )}}?id={{$typeid}}" title="添加属性" class="c-primary"><i class="Hui-iconfont">&#xe610;</i>添加类属性</a></td>
+		</tr>
+	</if>
+		</tbody>
+	</table>
+	</div>
+	
+	<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+	<script type="text/javascript" src="__PUBLIC__/Admin/lib/layer/2.1/layer.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/lib/laypage/1.2/laypage.js"></script> 
+	<script type="text/javascript" src="__PUBLIC__/Admin/lib/My97DatePicker/WdatePicker.js"></script> 
+	<script type="text/javascript" src="__PUBLIC__/Admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+	<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui/js/H-ui.js"></script> 
+	<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui.admin/js/H-ui.admin.js"></script> 
+
+	<script type="text/javascript">
+		/*用户-删除*/
+		function member_del(obj,id){
+			layer.confirm('确认要删除吗？',function(index){
+
+
+				$.get('{{:U('TypeAtt/del')}}', {id:id},function(res){
+					if (res == 1) {
+					$(obj).parents("tr").remove();
+					layer.msg('已删除!',{icon:1,time:1000});
+					}  else {
+						layer.msg('删除失败!',{icon:1,time:1000});
+					}
+				});
+				
+			});
+		}
+
+
+	</script>
+</block>

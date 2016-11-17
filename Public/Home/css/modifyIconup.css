@@ -1,0 +1,185 @@
+body,.mz_header{background:none;background-color: #fff;}
+.file {
+  	width: 120px;
+  	filter: alpha(opacity : 0);
+  	opacity: 0;
+  	cursor: pointer;
+  	margin-bottom: 0px;
+}
+#save,#cancel{
+	width: 138px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 18px;
+	text-align: center;
+	margin-bottom: 0px;
+}
+#cancel{
+	margin-left: 25px;
+}
+.ftop{
+	margin-top: 28px;
+	margin-bottom: 28px;
+	height: 50px;
+}
+.divFloat{
+	position: absolute;
+}
+.display{
+	display: block;
+}
+.fontBig{
+	font-size: 18px;
+	text-align: start;
+}
+.fright{
+	font-size:14px;
+	text-align: start;
+}
+#userImg {
+	width: 100px;
+	height: 100px;
+	margin-top: 15px;
+	margin-bottom: 20px;
+	}
+.instrunction{
+	font-size:14px;
+	margin-right:60px;
+	margin-bottom:10px;
+	margin-top:-5px;
+	float: left
+}
+.commonFrame{
+	float: left;
+}
+.marginBigFrame{
+	float: left;
+}
+.marginOrgFrame{
+	float: left;
+}
+.originalMaxWH{
+	max-width: 300px;
+	max-height: 300px;
+}
+.bigImgTop{
+	width: 200px;margin-right: 35px; height:200px; overflow:hidden; margin-top:20px; position:absolute; top:380px; left:375px;
+}
+.middleImgTop{
+	width: 100px;margin-right: 35px; height:100px; overflow:hidden; margin-top:20px; position:absolute; top:380px; left:605px;
+}
+.smallImgTop{
+	width: 50px;margin-right: 35px; height:50px; overflow:hidden; margin-top:20px; position:absolute; top:380px; left:735px;
+}
+.bigImg{
+	width: 100%; height: 200px;
+}
+.middleImg{
+	width: 100%; height: 100px;
+}
+.smallImg{
+	width: 100%; height: 50px;
+}
+.originalImg{
+	width: 300px; height: 300px; margin-right: 70px; position: relative;
+}
+.originalImgW300H300{
+	width: 300px; height: 300px;
+}
+#origImg{
+	position: absolute;
+}
+.imgTip{
+	display: inline-block;
+	text-align: center;
+	height: 20px;
+	margin-top: 20px;
+}
+.big{
+	width: 200px;
+}
+.common{
+	width: 100px;
+}
+.small{
+	width: 50px;
+	margin-left: -1px;
+}
+.top-leftWrap {
+	float: left;
+	padding-top: 20px;
+}
+.leftWrap-bottom{
+	height: 33px;
+}
+.fbottom {
+	margin-bottom: 20px;
+	margin-right: 60px;
+}
+#chooseImg{
+	width: 120px;
+	cursor: pointer;
+	height: 30px;
+	line-height:30px;
+	display: block;
+	text-align: center;
+	border: solid 1px #e3e5e6;
+	padding: 0px 0px;
+	margin-bottom: 0px;
+}
+#chooseImg em i{
+	display: inline-block;
+	vertical-align: -12px;
+	*vertical-align: -5px;
+	overflow: hidden;
+	width: 30px;
+	height: 30px;
+	margin-left: 3px;
+	margin-right:5px;
+	margin-bottom: 3px;
+	background: url("/resources/uc/web/member/images/act.png") -194px -325px no-repeat;
+}
+#chooseImg em{
+	font-style: normal;
+}
+#chooseImg input{
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	width: 80px;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+#file{height: 30px;line-height: 30px; position:absolute; z-index:10; text-indent:-9999px;}
+#bg4chooseImg{z-index:9}
+#mainWrap {
+	width: 1000px;
+	margin: 0px auto;
+	overflow: hidden;
+	background: #ffffff;
+	position: initial;
+	/*max-height: 740px;*/
+}
+
+.contain {
+	height: 300px;
+	width: 1000px;
+	margin-top: 5px;
+}
+div.frame {
+	border: solid 1px #ddd;
+	/*overflow:hidden;*/
+}
+#uploadForm{
+	position: relative;
+	height: 32px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.topWrap{
+	margin-bottom: 15px;
+}
+.top-leftWrap,.grayBorderB .fontBig,#upload{
+	padding-left: 17px;
+}

@@ -1,0 +1,48 @@
+<table class="table table-border table-bordered table-bg table-hover table-sort" id="example">
+            
+				<thead>
+					<tr class="text-c">
+						<th width="40"><input name="" type="checkbox" value=""></th>
+						<th width="40">ID</th>
+						<th width="60">缩略图</th>
+						<th width="100">产品名称</th>
+                        <th width="100">类型</th>
+						<th>描述</th>						
+						<th width="100">商品状态</th>
+						<th width="100">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+                    <if condition="!empty($list)">
+                
+                        <foreach name="list" item="v">
+					<tr class="text-c va-m">
+						<td><input name="goodid[]" type="checkbox" value="{{$v.id}}"></td>
+						<td>{{$v.id}}</td>
+						<td><img width="60" class="product-thumb" src="__PUBLIC__/Uploads/<if condition="$v.pic eq ''">sshot-60.png<else/>{{$v.pic}}</if>" height="65px" ></td>
+						<td class="text-l"><b class="text-success">{{$v.name}}</b> </td>
+                        					<td><span class="price">{{$v.typename}}</td>
+						<td class="text-l">{{$v.desc}}</td>
+						
+						<td class="td-status">
+				                            
+				                            
+				          		  	<if condition="$v.status eq 1 ">新添加
+							<elseif condition="$v.status eq 2 "/>在出售
+							<else />已下架
+
+				          		  	</if>
+
+                           				 </td>
+						<td class="td-manage">
+						
+						 <a style="text-decoration:none" class="ml-5" onClick="rollBack(this,{{$v.id}})" href="javascript:;" title="还原"><i class="Hui-iconfont">&#xe66b;</i></a> <a style="text-decoration:none" class="ml-5" onClick="product_del(this,{{$v.id}})" href="javascript:;" title="删除产品"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+					</tr>
+                    </foreach>
+                    <else />
+                       
+                    
+                    </if>
+				</tbody>
+			</table>
+            

@@ -1,0 +1,190 @@
+﻿<extend name="Public/base" />
+
+
+
+<block name="title">地址管理</block>
+
+<block name="main">
+
+<style>
+.b-page {
+  background: #fff;
+  box-shadow: 0px 1px 2px 0px #E2E2E2;
+}
+.page {
+  width: 100%;
+  padding: 30px 15px;
+  background: #FFF;
+  text-align: center;
+  overflow: hidden;
+}
+.page .first,
+.page .prev,
+.page .current,
+.page .num,
+.page .current,
+.page .next,
+.page .end {
+  padding: 4px 8px;
+  margin: 0px 5px;
+  display: inline-block;
+  color: #008CBA;
+  border: 1px solid #F2F2F2;
+  border-radius: 5px;
+}
+.page .first:hover,
+.page .prev:hover,
+.page .current:hover,
+.page .num:hover,
+.page .current:hover,
+.page .next:hover,
+.page .end:hover {
+  text-decoration: none;
+  background: #F8F5F5;
+}
+.page .current {
+  background-color: #008CBA;
+  color: #FFF;
+  border-radius: 5px;
+  border: 1px solid #008CBA;
+}
+.page .current:hover {
+  text-decoration: none;
+  background: #008CBA;
+}
+.page .not-allowed {
+  cursor: not-allowed;
+}
+
+</style>
+
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 订单管理 <span class="c-gray en">&gt;</span> 地址列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<div class="cl pd-5 bg-1 bk-gray">
+	
+		<form action="{{:U('Address/index')}}">
+			
+			<!-- <a href="{{:U('Address/add')}}" class="btn btn-primary-outline radius size-S">添加地址(测试)</a> -->
+			<a class="btn btn-primary-outline radius size-S" href="javascript:;" onclick="admin_role_add('添加地址','__URL__/add.html','800')"><i class="Hui-iconfont">&#xe600;</i> 添加地址</a>
+			<!-- <a href="" class="btn btn-primary radius size-S">全部订单</a>  -->
+			<!-- <a href="" class="btn btn-primary-outline radius size-S">未付款</a>
+			<a href="" class="btn btn-primary-outline radius size-S">待发货</a>
+			<a href="" class="btn btn-primary-outline radius size-S">已发货</a>
+			<a href="" class="btn btn-primary-outline radius size-S">成交订单</a> -->
+
+			<div class="f-r">
+					联系人：<input type="text" name="getman" id="" value="{{$Think.get.getman}}" class="input-text radius size-S mr-10" style="width:15%">
+					联系电话：<input type="text" name="phone" id="" value="{{$Think.get.phone}}" class="input-text radius size-S" style="width:15%">
+					街道地址：<input type="text" name="detailed" id="" value="{{$Think.get.detailed}}" class="input-text radius size-S mr-10" style="width:15%">
+					<input type="submit" value="搜索" class="btn btn-success radius size-S">
+				<button formaction="{{:U('Address/out')}}" class="btn btn-secondary radius size-S">导出Execel</button>
+				<!-- <a type="button" value="导出Execel" class="btn btn-success radius size-S"> -->
+			</div>
+		</form>
+
+
+	</ul>
+	
+	</div>
+	<table class="table table-border table-bordered table-hover table-bg">
+		<thead>
+			<!-- <tr>
+				<th scope="col" colspan="6">订单管理</th>
+			</tr> -->
+			<tr class="text-c">
+				<th width="100">ID</th>
+				<th width="100">用户名</th>
+				<th width="150">收货人</th>
+				<th width="150">联系手机</th>
+				<th>地址</th>
+				<th width="100">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		<if condition="$list eq null">
+			<tr class="text-c">
+				<td colspan="6">亲，查无数据！！</td>
+			</tr>
+		</if>
+
+		<foreach name="list" item="v">
+			<tr class="text-c">
+				<td>{{$v['id']}}</td>
+				<td >{{$v['username']}}</td>
+				<td >{{$v['getman']}}</td>
+				<td >{{$v['phone']}}</td>
+				<td >{{$v['province']}}{{$v['city']}}{{$v['district']}}{{$v['detailed']}}</td>
+				<td class="f-14">
+
+					<a title="修改地址" href="javascript:;" onclick="admin_role_edit('修改地址','{{:U(\'Address/edit\', [\'id\'=>$v[\'id\']])}}','1')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+
+					<a title="删除" href="{{:U('Address/del', ['id'=>$v['id']])}}"  class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+				</td>
+			</tr>
+		</foreach>
+			
+		</tbody>
+	</table>
+	{{$btn}}
+</div>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/layer/2.1/layer.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui.admin/js/H-ui.admin.js"></script> 
+
+<script>
+	$('li').click(function(){
+		//装逼写法
+		// $(this).addClass('cur').siblings().removeClass('cur').parent().next().children().eq($(this).index()).css('display', 'block').siblings().css('display', 'none');
+		
+		//1.改变li的背景颜色
+		$(this).addClass('btn btn-primary radius size-S').siblings().removeClass('cur');
+		//2.显示相应的div
+		// $('btn btn-primary-outline radius size-S').eq($(this).index()).css('display','block').siblings().css('display','none')
+	});
+</script>	
+
+<script type="text/javascript">
+/*管理员-角色-添加*/
+function admin_role_add(title,url,w,h){
+	layer_show(title,url,w,h);
+}
+/*管理员-角色-编辑*/
+function admin_role_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*管理员-角色-删除*/
+function admin_role_del(obj,id){
+	layer.confirm('商品删除须谨慎，确认要删除吗？',function(index){
+		//此处请求后台程序，下方是成功后的前台处理……
+		
+		
+		$(obj).parents("tr").remove();
+		layer.msg('已删除!',{icon:1,time:1000});
+	});
+}
+</script>
+<script type="text/javascript">
+/*管理员-角色-添加*/
+function admin_role_add(title,url,w,h){
+	layer_show(title,url,w,h);
+}
+/*管理员-角色-编辑*/
+function admin_role_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*管理员-角色-删除*/
+function admin_role_del(obj,id){
+	layer.confirm('商品删除须谨慎，确认要删除吗？',function(index){
+		//此处请求后台程序，下方是成功后的前台处理……
+		
+		
+		$(obj).parents("tr").remove();
+		layer.msg('已删除!',{icon:1,time:1000});
+	});
+}
+</script>
+
+</block>

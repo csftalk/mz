@@ -1,0 +1,378 @@
+<extend name="Public/base" />
+<block name="title">订单详情-魅族商城</block>
+<block name="head">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/layout-a3af69f6f7.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/aoi.css" type="text/css" charset="UTF-8">
+
+<script type="text/javascript" src="__PUBLIC__/Home/layer/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Home/layer/layer.js"></script> 
+<style>
+    .sureGet .ui-pop-main .ui-pop-cont{
+        line-height: 28px !important;
+        margin: 64px auto 30px !important;
+        padding:0 30px;
+    }
+    .font-14{
+        font-size: 14px;
+    }
+    .big-font{
+        font-size: 18px;
+    }
+</style> 
+
+
+</style>   
+
+</block>
+
+<block name="main">
+
+    <div class="store-wrap">
+        <div class="crumbs">
+            <a href="http://store.meizu.com/index.html">首页&gt;</a><a href="http://me.meizu.com/member/index">我的商城&gt;</a><a href="http://ordercenter.meizu.com/list/index.html?type=99" class="active">我的订单</a>
+        </div>
+        <div class="main clearfix">
+    <div class="left-nav f-fl">
+        <div class="nav-main">
+            <a href="javascript:;" class="type-title"><i class="iconfont icon-orderCenter"></i>订单中心</a>
+            <a href="{{:U('Order/index')}}" class="ml">我的订单</a>
+            <a href="{{:U('Order/address')}}" class="ml active">地址管理</a>
+            <a href="###" class="ml ">以下待开发</a>
+            <a href="###" class="ml ">我的回购单</a>
+            <a href="###" class="ml ">我的意外保</a>
+            <a href="javascript:;" class="type-title"><i class="iconfont icon-selfCenter"></i>个人中心</a>
+            <a href="###" class="ml ">我的收藏</a>
+            <a href="###" class="ml ">消息提醒</a>
+            <a href="###" class="ml ">建议反馈</a>
+            <a href="javascript:;" class="type-title"><i class="iconfont icon-moneyCenter"></i>资产中心</a>
+            <a href="###" class="ml ">我的优惠券</a>
+            <a href="###" class="ml ">我的红包</a>
+            <a href="###" class="ml ">我的回购券</a>
+            <a href="javascript:;" class="type-title"><i class="iconfont icon-serverCenter"></i>服务中心</a>
+            <a href="###" class="ml" style="width: 105px">退款/退换货跟踪</a>
+            <a href="###" class="ml ">意外保</a>
+            <a href="###" class="ml ">以旧换新</a>
+        </div>
+    </div>
+        <div class="right-content f-fr">
+                <foreach name="orders" item="v">
+                <div class="orderDetail-main">
+                    <div class="type-tab-btn">
+                        <a href="javascript:;" class="active">订单详情</a>
+                    </div>
+                    <div class="process">
+                        <ul class="line-text clearfix">
+                            <li class="active">提交订单</li>
+                            <li class="">买家已付款</li>
+                            <li class="">发货中</li>
+                            <li class="">交易完成</li>
+                        </ul>
+                        <ul class="line-time clearfix">
+                            <li class="active">2016-11-01 17:22:46</li>
+                            <li class=""></li>
+                            <li class=""></li>
+                            <li class=""></li>
+                        </ul>
+                    </div>
+                            <if condition="($v.pay_status eq '未支付') AND ($v.post_status eq '未发货')">
+                    <div class="item info status">
+                            <div class="goPay clearfix order-item">
+                                <div class="left f-fl">
+                                    <p><span class="order-status">订单状态：</span><span class="red">未付款</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>应付金额：<i class="red">￥{{$v.price}}</i></span></p>
+                                    <p class="line2">
+                                        <a href="http://store.meizu.com/marrive/summary.html" target="_blank" style="position: initial;"><i class="iconfont icon-speedr"></i>
+                                             &nbsp;&nbsp;次日达&nbsp;&nbsp;</a>
+                                        <span class="gray">
+                                                <!-- 19:00 -->
+                                                <!-- 前付款,预计明天(11月3日)送达。 -->
+                                            <span class="contents _timer red"> 请于24小时 </span>内未付款，将自动取消订单。</span>
+
+                                    </p>
+                                </div>
+
+                                <div class="right f-fr">
+                                    <a class="payNow opreat-btn" target="_blank" href="{{:U('Order/pay', ['id'=>$v['id']])}}">立即付款</a>
+                                    <!-- <a class="cancel right opreat-btn" href="javascript:;">取消订单</a> -->
+                                    <a href=javascript:; class="cancel right opreat-btn" onclick="cancelOrder({{$v.id}})";>取消订单</a>
+                                </div>
+                            </div>
+
+                    </div>
+                            </if> 
+                    <div class="item product" id="products">
+                        <div class="title clearfix">&nbsp;&nbsp;&nbsp;&nbsp;订单号：
+                            <span>{{$v.oid}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;支付方式：<span></span>
+                            <div class="f-fr blue">（供应商：魅族）</div>
+                        </div>
+                        <table>
+                            <tbody><tr>
+                                <td colspan="2"></td>
+                                <td class="product">商品</td>
+                                <td>单价</td>
+                                <td>数量</td>
+                                <td>优惠</td>
+                                <td>小计</td>
+                                <td>状态</td>
+
+
+                            </tr>
+                                <tr>
+                                    <td><a href="__ROOT__/Home/Detail/index.html?id={{$v.g_id}}" target="_blank">
+                                        <img src="__PUBLIC__/Uploads/{{$v.pic_path}}"></a></td>
+                                    <td colspan="2" class="product"><span><a href="__ROOT__/Home/Detail/index.html?id={{$v.g_id}}" target="_blank">
+                                    {{$v.g_name}}<br>
+                                    {{$v.g_attr_str}}<br>
+                                    <span class="package-color"></span>
+                                    </a></span>
+                                    </td>
+
+                                    <td class="price">
+                                        <span>￥{{$v.g_price}}</span>
+                                    </td>
+                                    <td>{{$v.g_number}}</td>
+
+                                    <td class="cut">
+
+
+                                            --
+
+
+                                    </td>
+
+                                    <td class="bold back-two"> ￥{{$v.price}}</td>
+
+                                    <td>
+                                        <i class="wuliu seeDeliverBox">
+                                            <input type="hidden" class="orderSnSon" value="21110146221711793011">
+                                            {{$v.pay_status}}<br>{{$v.post_status}}
+                                            <br>
+                                        </i>
+                                        <i class="iconfont"></i><br>
+
+                                    </td>
+
+
+                                </tr>
+
+                        </tbody></table>
+                    </div>
+
+                    <div class="item makeOrder">
+                        <input type="hidden" id="pageId" value="1">
+                        <input type="hidden" id="isOld" value="0">
+                        <input type="hidden" value="2">
+                        <ul>
+                            <li><span>总金额</span><span>￥{{$v.price}}</span>
+                            </li>
+                            <li><span>回购券抵扣</span><span class="big-red">-￥0</span>
+                            </li>
+                            <li><span>运费</span><span>￥0</span>
+                            </li>
+                            <li class="end"><span>应付</span><span class="total big-red">￥{{$v.price}}</span>
+                            </li>
+                        </ul>
+                        <input type="hidden" id="orderSn" value="21110146221711792011">
+                            <input type="hidden" id="overTime" value="1478078566000">
+                            <input type="hidden" id="systemTime" value="1478068313373">
+                        <input type="hidden" id="addressId" value="6070176384000">
+                        <input type="hidden" id="zipCode" value="300202">
+                    </div>
+
+                    <div class="editBox title">
+                        <span class="title">收货人信息&nbsp;&nbsp;</span>
+                            <!-- <a class="edit blue" href="javascript:;">修改</a> -->
+                            <if condition="$v.post_status eq '未发货'">
+                                <a class="edit blue" href="javascript:;" onclick="editaddres({{$v.uid}})">修改</a>
+                            </if>    
+
+                    </div>
+                    <div class="address">
+                        <p>收货人：{{$v.getman}}</p>
+                        <p>地址：{{$v.province}}{{$v.city}}{{$v.district}}{{$v.detailed}}</p>
+                        <p>电话：{{$v.phone}}</p>
+                        <!-- <p>邮编：300202</p> -->
+                    </div>
+
+                   <!--  <div class="edit-order" style="display:none">
+                        <form id="valid-form">
+                            <div class="contents">
+                                <div class="row namePhone clearfix">
+                                    <div class="f-fl addressName">
+                                        <span>收货人姓名<i class="mark">*</i></span>
+                                        <input id="name" class="varify" name="receiver" type="text" placeholder="长度不超过15个字" maxlength="12" value="431243214132">
+                                    </div>
+                                    <div class="f-fl addressPhone">
+                                        <span>收货人手机号<i class="mark">*</i></span>
+                                        <input id="phone" name="telNumber" class="varify" type="text" placeholder="请输入11位手机号" maxlength="11" value="13341324132">
+                                    </div>
+                                </div>
+                                <div class="row clearfix receverAddress">
+                                    <span class="f-fl">收货人地址<i class="mark">*</i></span>
+                                    <div class="mzui_select mzui_select_province f-fl">
+                                        <input type="text" readonly="true" class="mzui_select_trigger province" placeholder="省/直辖市">
+                                        <select class="provinceId" name="provinceId">
+                                                    <option value="2911">北京</option>
+                                                    <option value="14848" selected="selected">天津</option>
+                                                    <option value="7450">吉林省</option>
+                                                    <option value="8452">辽宁省</option>
+                                                    <option value="16860">浙江省</option>
+                                                    <option value="1">福建省</option>
+                                                    <option value="16624">上海</option>
+                                                    <option value="18482">广东省</option>
+                                                    <option value="21612">海南省</option>
+                                                    <option value="41143">湖北省</option>
+                                                    <option value="42634">湖南省</option>
+                                                    <option value="36793">安徽省</option>
+                                                    <option value="15121">江苏省</option>
+                                                    <option value="1214">江西省</option>
+                                                    <option value="27304">四川省</option>
+                                                    <option value="35714">重庆</option>
+                                                    <option value="34187">云南省</option>
+                                                    <option value="23366">贵州省</option>
+                                                    <option value="20238">广西壮族自治区</option>
+                                                    <option value="32166">西藏自治区</option>
+                                                    <option value="11241">山东省</option>
+                                                    <option value="38498">河南省</option>
+                                                    <option value="21894">甘肃省</option>
+                                                    <option value="3251">河北省</option>
+                                                    <option value="10088">内蒙古自治区</option>
+                                                    <option value="25024">宁夏回族自治区</option>
+                                                    <option value="25305">青海省</option>
+                                                    <option value="13289">山西省</option>
+                                                    <option value="25761">陕西省</option>
+                                                    <option value="32939">新疆维吾尔自治区</option>
+                                                    <option value="5700">黑龙江省</option>
+                                        </select>
+                                    </div>
+                                    <div class="mzui_select mzui_select_city f-fl">
+                                        <input type="text" readonly="true" class="mzui_select_trigger city" placeholder="城市">
+                                        <select class="cityId" name="cityId">
+                                            <option value="" style="display:none"></option>
+                                                    <option value="14849" selected="selected">天津市</option>
+                                        </select>
+                                    </div>
+                                    <div class="mzui_select mzui_select_area f-fl">
+                                        <input type="text" readonly="true" class="mzui_select_trigger area" placeholder="区/县">
+                                        <select class="areaId" name="areaId">
+                                            <option value="" style="display:none"></option>
+                                                    <option value="14850">和平区</option>
+                                                    <option value="14857">河东区</option>
+                                                    <option value="14871" selected="selected">河西区</option>
+                                                    <option value="14885">南开区</option>
+                                                    <option value="14898">河北区</option>
+                                                    <option value="14909">红桥区</option>
+                                                    <option value="14920">东丽区</option>
+                                                    <option value="14931">西青区</option>
+                                                    <option value="14942">津南区</option>
+                                                    <option value="14952">北辰区</option>
+                                                    <option value="14966">武清区</option>
+                                                    <option value="14997">宝坻区</option>
+                                                    <option value="15022">滨海新区</option>
+                                                    <option value="15059">宁河县</option>
+                                                    <option value="15074">静海县</option>
+                                                    <option value="15093">蓟县</option>
+                                        </select>
+                                    </div>
+                                    <div class="mzui_select mzui_select_town f-fl">
+                                        <input type="text" readonly="true" class="mzui_select_trigger town" placeholder="乡镇/街道">
+                                        <select class="townId" name="townId">
+                                            <option value="" style="display:none"></option>
+                                                    <option value="14872">大营门街道</option>
+                                                    <option value="14873">下瓦房街道</option>
+                                                    <option value="14874" selected="selected">桃园街道</option>
+                                                    <option value="14875">挂甲寺街道</option>
+                                                    <option value="14876">马场街道</option>
+                                                    <option value="14877">越秀路街道</option>
+                                                    <option value="14878">友谊路街道</option>
+                                                    <option value="14879">天塔街道</option>
+                                                    <option value="14880">尖山街道</option>
+                                                    <option value="14881">陈塘庄街道</option>
+                                                    <option value="14882">柳林街道</option>
+                                                    <option value="14883">东海街道</option>
+                                                    <option value="14884">梅江街道</option>
+                                                    <option value="0">其他</option>
+                                        </select>
+                                    </div>
+                                    <div class="mzui_select_other hide">
+                                        <input type="text" class="otherAddress _otherAddress" placeholder="其他">
+                                    </div>
+                                </div>
+                                <div class="row  detailAddress">
+                                    <span>详细地址<i class="mark">*&nbsp;&nbsp;&nbsp;</i></span>
+                                    <input id="detailAddress" name="address" class="varify" type="text" placeholder="请输入不超过50个字的详细地址，例如街道，门牌号，房间号等" maxlength="50" value="41324321413241324132">
+                                </div>
+                                <div class="opreat">
+                                    <a href="javascript:;" class="saveAddress">保存</a><a href="javascript:;" class="cancle-edit">取消</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div> -->
+
+                    <!-- <div class="item ticket">
+                        <span class="title">发票信息</span>
+                        <p class="specail">
+                            <span class="space">发票类型：</span><span><b class="text"><span class="blue">
+                                电子发票
+                            </span></b>
+                        </span>
+                        </p>
+                            <p><span class="space">发票抬头：</span><span>431243214132</span>
+                            </p>
+                    </div> -->
+                    <div class="item remark">
+                        <span class="title">订单备注</span>
+                        <p><span class="space">买家留言：{{$v.message}}</span><span></span></p>
+                        <p><span class="space">客服留言：</span><span></span>
+                        </p>
+                    </div>
+                </div>
+                </foreach>
+
+            </div>
+    </div>
+</div>
+
+    <!-- common js -->
+
+<script src="__PUBLIC__/Home/js/layout-7e9d743d4f.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Home/js/common.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Home/js/memberCommon.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Home/js/order-newPayment.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script>
+//取消订单
+function cancelOrder(id){
+$.ajax({
+         url: "{{:U('Admin/Orders/changeStatus')}}",  
+         type: "GET",
+         data:{"id":id},
+         dataType: "json",
+         error: function(){
+            alert(data.info)
+         },  
+         success: function(data){
+            alert(data.info)
+            location.reload()
+         },
+     });
+} 
+
+// 修改地址
+function editaddres(id)
+{
+    layer.open({
+        type: 2,
+        //skin: 'layui-layer-lan',
+        title: '修改收货地址',
+        fix: false,
+        shadeClose: true,
+        maxmin: true,
+        area: ['700px', '450px'],
+        // content: "{{:U('Order/editAddres', ['id'=>['"+ id +"']])}}",
+        content: "__URL__/editaddres/id/"+id,
+    });
+}      
+</script>    
+
+
+</block>    

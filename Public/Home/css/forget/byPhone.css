@@ -1,0 +1,91 @@
+.title{
+	margin: 0px auto;
+	height: 35px;
+	width: 215px;
+	margin-top: 55px;
+	overflow: hidden;
+}
+.title i{
+	background: url(/resources/uc/web/member/images/title.png) no-repeat;
+	_background-image: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/resources/uc/web/member/images/title.png');
+}
+.flow{
+	margin: 0px auto;
+	height: 70px;
+	width: 630px;
+	margin-top: 45px;
+	margin-bottom: 60px;
+	overflow: hidden;
+}
+.flow i{
+	background: url(/resources/uc/web/member/images/step2.png) no-repeat;
+	_background-image: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/resources/uc/web/member/images/step2.png');
+}
+ .middle{
+ 	width: 343px;
+ 	margin: 0px auto;
+ }
+ .mainForm{
+ 	width: 670px;
+ 	margin: 0px auto;
+ }
+ #imgKey {
+	vertical-align: text-top;
+	width: 88px;
+	height: 36px;
+	margin-top: -7px;
+}
+#kapkey {
+	font-size: 16px;
+	width: 220px;
+	border: none;
+	outline: none;
+	height: 50px;
+	line-height: 22px;
+	*height: 50px;
+	*line-height: 49px;
+}
+#getKey {
+	width: 81px;
+	border: none;
+	outline: none;
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	position: absolute;
+	right: 10px;
+	top: 0px;
+}
+.form-line {
+	color: #d9d9d9;
+	height: 40px;
+	display: inline-block;
+	border-left: 1px solid #dadada;
+	position: absolute;
+	right: 100px;
+	top: 5px;
+}
+#vcode{
+	width: 220px;
+}
+#phone,#vcode{
+	line-height: 22px;
+	padding: 14px 0;
+	height: 22px;
+	*height: 21px;	
+}
+/*reset*/
+span.error, span.otherError{
+	display: block;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+
+.alertDialogContent .normalInput {position: relative; display: inline-block; padding: 0 10px; width: 320px; height: 50px; line-height: 22px; font-size: 16px; text-align:left; margin:10px 0 20px -7px; border: 1px solid #dadada; outline: none; color: #474747; zoom: 1; overflow: hidden;}
+.alertDialogContent .normalInput .kapkey{font-size: 16px; width: 220px; border: none; outline: none; line-height: 22px; overflow: hidden;}
+.alertDialogContent .normalInput #imgKey{width: 88px; height: 36px; float: right; top:15px; overflow: hidden; position: absolute; margin-left: 13px; margin-top:0;}
+.alertDialog .alertDialogBtnField{_margin-top:0;}
+
+.cycode-box .inputTip {display: none !important}

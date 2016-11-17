@@ -1,0 +1,25 @@
+<extend name="Public/base" />
+<block name="main">
+	<center>
+    <div class="row-fluid" id="main">
+        <div class="span8 offset2"> 
+            <form class="form-horizontal" action="__URL__/assignSave" method="post">
+                <input type="hidden" name="id" value="{{$id}}" />
+                <h3>分配角色</h3>
+                <!-- 遍历出所有的角色 -->
+                <foreach name="list" item="v">
+                    <label><input type="checkbox" <if condition="in_array($v['id'], $roleId)">checked</if> name="role[]" value="{{$v['id']}}" />{{$v['name']}}</label><br/><br/>
+                </foreach>
+                <div class="control-group">
+                    <div class="controls">
+                        <label class="checkbox">
+                            &nbsp;
+                        </label>
+                        <button class="btn btn-large btn-primary form-submit" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提交&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    </div>
+                </div>
+            </form>         
+        </div>
+    </div>
+    </center>
+</block>

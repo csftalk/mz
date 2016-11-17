@@ -1,0 +1,239 @@
+﻿<extend name="Public/base" />
+
+
+
+<block name="title">订单管理</block>
+
+<block name="main">
+
+
+<style>
+.b-page {
+  background: #fff;
+  box-shadow: 0px 1px 2px 0px #E2E2E2;
+}
+.page {
+  width: 100%;
+  padding: 30px 15px;
+  background: #FFF;
+  text-align: center;
+  overflow: hidden;
+}
+.page .first,
+.page .prev,
+.page .current,
+.page .num,
+.page .current,
+.page .next,
+.page .end {
+  padding: 4px 8px;
+  margin: 0px 5px;
+  display: inline-block;
+  color: #008CBA;
+  border: 1px solid #F2F2F2;
+  border-radius: 5px;
+}
+.page .first:hover,
+.page .prev:hover,
+.page .current:hover,
+.page .num:hover,
+.page .current:hover,
+.page .next:hover,
+.page .end:hover {
+  text-decoration: none;
+  background: #F8F5F5;
+}
+.page .current {
+  background-color: #008CBA;
+  color: #FFF;
+  border-radius: 5px;
+  border: 1px solid #008CBA;
+}
+.page .current:hover {
+  text-decoration: none;
+  background: #008CBA;
+}
+.page .not-allowed {
+  cursor: not-allowed;
+}
+
+</style>
+
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 订单管理 <span class="c-gray en">&gt;</span> 订单列表 
+<!-- <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="" title="导出Execel" ><i class="Hui-iconfont">导出Execel</i></a> -->
+<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<div class="cl pd-5 bg-1 bk-gray">
+	
+		<form action="{{:U('Orders/index')}}">
+			<!-- <ul>
+				<li style="float:left" class="btn btn-primary radius size-S">全部订单</li>
+				<li style="float:left;margin-left:5px" class="btn btn-primary-outline radius size-S">未付款</li>
+				<li style="float:left;margin-left:5px" class="btn btn-primary-outline radius size-S">待发货</li>
+				<li style="float:left;margin-left:5px" class="btn btn-primary-outline radius size-S">成交订单</li>
+			</ul> -->
+			<!-- <a href="" class="btn btn-primary-outline radius size-S">全部订单</a> -->
+			<!-- <a href="" class="btn btn-primary radius size-S">全部订单</a>  -->
+			<!-- <a href="" class="btn btn-primary-outline radius size-S">未付款</a>
+			<a href="" class="btn btn-primary-outline radius size-S">待发货</a>
+			<a href="" class="btn btn-primary-outline radius size-S">已发货</a>
+			<a href="" class="btn btn-primary-outline radius size-S">成交订单</a> -->
+
+			<div class="f-r">
+					订单编号：<input type="text" name="oid" id="" value="{{$Think.get.oid}}" class="input-text radius size-S mr-10" style="width:12%">
+					联系人：<input type="text" name="getman" id="" value="{{$Think.get.getman}}" class="input-text radius size-S mr-10" style="width:12%">
+					联系电话：<input type="text" name="phone" id="" value="{{$Think.get.phone}}" class="input-text radius size-S" style="width:12%">
+
+					  订单状态：<select class="input-text radius size-S" size="1" name="demo1" style="width:100px;" value="{{$Think.get.post_status}}">
+					    <option value="" selected>全部订单</option>
+					    <option value="2">已发货</option>
+					    <option value="3">已成交</option>
+					    <option value="3">已收货</option>
+					  </select>
+
+					<input type="submit" value="搜索" class="btn btn-success radius size-S">
+				<button formaction="{{:U('Orders/out')}}" class="btn btn-secondary radius size-S">导出Execel</button>
+				<!-- <a type="button" value="导出Execel" class="btn btn-success radius size-S"> -->
+			</div>
+		</form>
+
+
+	</ul>
+	
+	</div>
+	<table class="table table-border table-bordered table-hover table-bg">
+		<thead>
+			<!-- <tr>
+				<th scope="col" colspan="6">订单管理</th>
+			</tr> -->
+			<tr class="text-c">
+				<th width="80">ID</th>
+				<th width="150">订单编号</th>
+				<th width="150">下单时间</th>
+				<th width="350">商品名细</th>
+				<th width="80">订单总价</th>
+				<!-- <th>联系人/联系手机</th> -->
+				<th>订单状态</th>
+				<th width="80">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		<if condition="$list eq null">
+			<tr class="text-c">
+				<td colspan="8">亲，查无数据！！</td>
+			</tr>
+		</if>
+
+		<foreach name="list" item="v">
+			<tr class="text-c">
+				<td>{{$v['id']}}</td>
+				<td>{{$v['oid']}}</td>
+				<td >{{$v['addtime']}}</td>
+				<td><a target="_blank" href="__ROOT__/Home/Detail/index.html?id={{$v['g_id']}}">{{$v['g_name']}}&ensp;{{$v['g_attr_str']}}</a></td>
+				<td class="text-r"><font color="red">{{$v['price']}}</font></td>
+				<td>
+					<if condition="($v.pay_status eq 0) AND ($v.post_status eq 0)">
+						<form action="{{:U('Orders/pay')}}" method="post">
+						<a title="点击支付" href="javascript:;" onclick="admin_role_edit('确认支付','{{:U(\'Orders/pay\', [\'id\'=>$v[\'id\']])}}','1')"><span class="btn btn-danger radius size-MINI">&ensp;点击支付&ensp;</span></a>
+						</form>
+
+					<else />
+						<if condition="($v.pay_status eq 1) AND ($v.post_status eq 0)">
+						<form action="{{:U('Orders/delivery')}}" method="post">
+						<a title="点击发货" href="javascript:;" onclick="admin_role_edit('确认发货','{{:U(\'Orders/delivery\', [\'id\'=>$v[\'id\']])}}','1')"><span class="btn btn-success radius size-MINI">&ensp;点击发货&ensp;</span></a>
+						</form>
+	
+						<elseif condition="($v.pay_status eq 1) AND ($v.post_status eq 1)" />
+							<bottom class="btn btn-primary-outline radius disabled size-MINI">&ensp;&ensp;已发货&ensp;&ensp;</bottom>
+						<elseif condition="$v.post_status eq 2" />
+							<bottom class="btn disabled radius size-MINI">&ensp;完成订单&ensp;</bottom>
+						<else />
+							<bottom class="btn disabled radius size-MINI">&ensp;取消订单&ensp;</bottom>
+						</if>
+					</if>
+				</td>
+				
+				
+				</td>
+
+				<td class="f-14">
+					<a title="订单详情" href="javascript:;" onclick="admin_role_edit('订单详情','{{:U(\'Orders/details\', [\'oid\'=>$v[\'id\']])}}','1')" style="text-decoration:none"><i class="Hui-iconfont">&#xe695;</i></a>
+
+					<a title="修改订单" href="javascript:;" onclick="admin_role_edit('修改订单','{{:U(\'Orders/edit\', [\'oid\'=>$v[\'id\']])}}','1')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+
+					<a title="改变订单状态" href="{{:U('Orders/changeStatus', ['id'=>$v['id']])}}"  class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe631;</i></a></td>
+
+					<!-- <a title="删除" href="{{:U('Orders/del', ['id'=>$v['id']])}}"  class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td> -->
+			</tr>
+		</foreach>
+			
+		</tbody>
+	</table>
+	{{$btn}}
+</div>
+
+
+	<!-- 确认支付弹窗 -->
+	<!-- <div id="pay" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	 	<div class="modal-header">
+	    	<h3 id="myModalLabel">确认支付</h3><a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+	 	</div>
+	  	<div class="modal-body">
+	  	<div class="Huialert Huialert-danger"><i class="icon-remove"></i>经确认如下订单已付款</div>
+	 		<p>订单编号：{{$v['oid']}}</p>
+	 		<p>商品明细：{{$v['g_name']}}&ensp;{{$v['g_attr_str']}}</p>
+	 		<p>商品总价：<font color="red">{{$v['price']}}</font></p>
+
+	 	</div>
+	  	<div class="modal-footer">
+	 		<button class="btn btn-primary">确定</button> <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+	 	</div>
+	</div>
+	<div id="ajaxModal" class="modal hide fade" tabindex="-1" data-width="700"></div> -->
+	<!-- 确认支付弹窗 -->
+
+
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/layer/2.1/layer.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui.admin/js/H-ui.admin.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/bootstrap-modal/2.2.4/bootstrap-modalmanager.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/bootstrap-modal/2.2.4/bootstrap-modal.js"></script> 
+
+<script>
+	// $('li').click(function(){
+		//装逼写法
+		// $(this).addClass('cur').siblings().removeClass('cur').parent().next().children().eq($(this).index()).css('display', 'block').siblings().css('display', 'none');
+		
+		//1.改变li的背景颜色
+		// $(this).addClass('btn btn-primary radius size-S').siblings().removeClass('cur');
+		//2.显示相应的div
+		// $('btn btn-primary-outline radius size-S').eq($(this).index()).css('display','block').siblings().css('display','none')
+	// });
+</script>	
+
+<script type="text/javascript">
+/*管理员-角色-添加*/
+function admin_role_add(title,url,w,h){
+	layer_show(title,url,w,h);
+}
+/*管理员-角色-编辑*/
+function admin_role_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*管理员-角色-删除*/
+function admin_role_del(obj,id){
+	layer.confirm('商品删除须谨慎，确认要删除吗？',function(index){
+		//此处请求后台程序，下方是成功后的前台处理……
+		
+		
+		$(obj).parents("tr").remove();
+		layer.msg('已删除!',{icon:1,time:1000});
+	});
+}
+</script>
+
+
+</block>

@@ -1,0 +1,68 @@
+﻿<extend name="Public/base" />
+
+<block name="title">商品分类</block>
+
+<block name="main">
+
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> 产品分类 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<div class="cl pd-5 bg-1 bk-gray"> <span class="f-18">分类管理</strong><span class="l f-r">  <a class="btn btn-primary radius" href="javascript:;" onclick="admin_role_add('添加分类','__URL__/add.html','800')"><i class="Hui-iconfont">&#xe600;</i> 添加分类</a> </span> <span></span></div>
+	<table class="table table-border table-bordered table-hover table-bg">
+		<thead>
+			<!-- <tr>
+				<th scope="col" colspan="6">分类管理</th>
+			</tr> -->
+			<tr class="text-c">
+				<th width="40">ID</th>
+				<th width="200">父ID(PID)</th>
+				<!-- <th width="200">路径</th> -->
+				<th>分类名称</th>
+				<th width="150">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- <foreach name="list" item="v"> -->
+		<volist name="list" id="vo">
+			<tr class="text-c">
+				<td>{{$vo['id']}}</td>
+				<td>{{$vo['pid']}}</td>
+				<!-- <td>{{$vo['path']}}</td> -->
+				<td class="text-l">{{$vo.id]}}{{$vo.level|str_repeat="&ensp;&ensp;&ensp;",###}}{{$vo.name}}</td>
+				<td class="f-14">
+					<a title="查看类属性" href="javascript:;" onclick="admin_role_edit('查看类属性','{{:U('TypeAtt/index')}}?id={{$vo.id}}','1')" style="text-decoration:none"><i class="Hui-iconfont">&#xe665;</i></a>
+
+					<a title="编辑分类" href="javascript:;" onclick="admin_role_edit('编辑分类','{{:U(\'Type/edit\', [\'id\'=>$vo[\'id\']])}}','1')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+
+					<a title="删除" href="{{:U('Type/del', ['id'=>$vo['id']])}}"  class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+			</tr>
+		</volist>
+			
+		</tbody>
+	</table>
+</div>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/layer/2.1/layer.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui.admin/js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+/*管理员-角色-添加*/
+function admin_role_add(title,url,w,h){
+	layer_show(title,url,w,h);
+}
+/*管理员-角色-编辑*/
+function admin_role_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*管理员-角色-删除*/
+function admin_role_del(obj,id){
+	layer.confirm('商品删除须谨慎，确认要删除吗？',function(index){
+		//此处请求后台程序，下方是成功后的前台处理……
+		
+		
+		$(obj).parents("tr").remove();
+		layer.msg('已删除!',{icon:1,time:1000});
+	});
+}
+</script>
+</block>

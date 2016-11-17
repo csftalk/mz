@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加收货地址</title>
+	<link href="__PUBLIC__/Admin/static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/lib/Hui-iconfont/1.0.7/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/lib/icheck/icheck.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/static/h-ui.admin/css/style.css" />
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<style>
+	*{box-sizing: content-box;}
+	.saoMa{float: left;width: 250px;padding: 20px 50px 25px 45px;}
+	.saoMa p{font-size: 18px;text-align: center;line-height: 32px;margin-bottom: 16px;}
+	.modal-qr{padding-top: 20px;border: 1px solid #ddd;}
+	.qrcode{width: 210px;height: 210px;display: block;margin: 0 auto 20px;}
+	.modal-info{height: 14px;color: #f80;font-size: 12px;line-height: 1;padding: 13px 0;text-align: center;background-color: #f7f7f7;}
+	.modal-right{float: left;}
+	/*.qrcode{padding:50px;}*/
+</style>
+</head>
+<body>
+	<div class="saoMa">
+		<p><span>请使用 </span><span class="orange">微信 </span><i class="icon icon-qrcode"></i>
+		<span class="orange"> 扫一扫</span><br>扫描二维码支付</p>
+		<div class="modal-qr">
+			<img src="{{:U('Weixinpay/index', ['id'=>$id])}}" class="qrcode">
+			<div class="modal-info"><span>二维码有效时长为2小时, 请尽快支付</span></div>
+		</div>	
+	</div>
+	<div class="modal-right"><i class="icon icon-close"></i><img src="__PUBLIC__/Home/images/weixin-qrcode.1xf1oN.jpg" alt="微信扫码"></div>
+<php>
+    
+</php>
+
+
+
+</body>
+</html>

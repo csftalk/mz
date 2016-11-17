@@ -1,0 +1,30 @@
+<table class="table table-border table-bordered table-bg table-hover table-sort" id="example">
+            
+				<thead>
+					<tr class="text-c">
+						<th width="25"><input type="checkbox" name="" value=""></th>
+						<th width="80">ID</th>
+						<th width="100">角色名</th>
+						<th width="40">用户列表</th>
+						<th width="100">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+                    <if condition="!empty($list)">
+                
+                <foreach name="list" item="v">
+					<tr class="text-c">
+						<td><input type="checkbox" value="1" name=""></td>
+						<td>{{$v['uid']}}</td>
+						<td>{{$v['name']}}</td>
+						<td>{{$v['username']}}</td>
+						<td class="td-manage"></a> <a title="分配属性" href="{{:U('Adminusers/assignSave', ['id'=>$v['uid']])}}"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" href="{{:U('Adminusers/assignDel', ['id'=>$v['uid']])}}" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+					</tr>
+				</foreach>
+                    <else />
+                        <tr><td>空</td></tr>
+                    
+                    </if>
+				</tbody>
+			</table>
+            

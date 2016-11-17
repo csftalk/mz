@@ -1,0 +1,109 @@
+body{
+	background-color:#BFCEDC;
+	margin:0px;	
+}
+.block{
+	width:100%;
+	height:50px;
+	border-top:1px solid #999999;;
+	line-height:50px;
+	float:left;
+}
+.hotPost{
+	float:left;
+	margin-left:50px;
+	font-size:20px;
+	
+}
+.number{
+	float:right;
+	margin-right:50px;
+}
+.a1{
+	font-size:20px;
+}
+.content{
+	float:left;
+margin-left:100px;	
+font-size:16px;
+width:200px;
+}
+.top{
+	float:left;
+	margin-left:10px;
+
+width:50px;
+}
+.add{
+	float:left;
+	margin-left:10px;
+
+width:50px;
+}
+.say{
+		float:left;
+margin-left:100px;	
+font-size:20px;
+}
+.form{
+		float:left;
+margin-left:50px;	
+font-size:20px;
+}
+.time{
+	float:left;
+margin-left:50px;	
+font-size:16px;
+width:200px;
+}
+.name{
+	float:left;
+margin-left:100px;	
+font-size:16px;
+width:50px;
+color:#999999;
+}
+.score{
+	float:left;
+	margin-left:50px;	
+	font-size:16px;
+	width:100px;
+	
+}
+.reply{
+	float:left;
+margin-left:50px;	
+font-size:16px;
+width:100px;
+}
+.editor{
+	
+	display:none;
+	width:100%;
+	
+}
+
+.title{
+	position:relative;
+	background-color:#BFCEDC;
+	width:200px;
+	height:25px;
+}
+#editor{
+	width:100%;
+	height:300px;
+	font-size:16px;
+	font-family:华文彩云;
+	background-color:#BFCEDC;
+	
+}
+.submit{
+	width:100px;
+}
+
+
+
+
+
+
+

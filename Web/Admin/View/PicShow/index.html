@@ -1,0 +1,67 @@
+<extend name="Public/base" />
+<block name="title">产品展示图</block>
+<block name="main">
+<div class="page-container">
+	<div class="cl pd-5 bg-1 bk-gray mt-20">
+   		 <div class="f-l"><a class="btn btn-default" href="{{:U('add')}}?gid={{$gid}}">新增</a></div>
+   	 </div>
+<div class="mt-20">
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+		<thead>
+			<tr class="text-c">
+				<th width="80">ID</th>
+				<th width="100">展示图</th>
+				<th width="70">排序</th>
+				<th width="100">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		<if condition="$list eq null">
+			此产品暂无展示图
+		<else/>
+			<foreach name="list" item="vo">
+				<tr class="text-c">
+					<td width="80">{{$vo.id}}</td>
+					<td><a href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')"><img width="100" class="picture-thumb" src="__PUBLIC__/Uploads/{{$vo.pic_path}}"></a></td>
+					<td width="70">
+	                 				 <input type="text" value="{{$vo.sort}}" name="sort" onblur="save_sort(this,{{$vo.sort}})" />  
+	                			</td>
+					<td width="100"><a href="javascript:;" onclick="member_del(this,{{$vo.id}})">删除</td>
+				</tr>
+			</foreach>
+		</if>
+		</tbody>
+	</table>
+	</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui.admin/js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+/*删除*/
+function member_del(obj,id){
+	layer.confirm('确认要删除吗？',function(index){
+		$(obj).parents("tr").remove();
+		$.get('{{:U('PicShow/del')}}', {id:id}, function(res){
+			if (res == 1) {
+				layer.msg('已删除!',{icon:1,time:1000});	
+			}else{
+				layer.msg('删除失败!',{icon:5,time:1500});	
+			}
+		});
+		
+	});
+}
+/*修改排序*/
+function save_sort(obj,id){
+	$.get('{{:U('PicShow/save')}}', {id:id,sort:$(obj).val()}, function(res){
+		if (res == 1) {
+			layer.msg('修改成功！',{icon:1,time:1000});
+		} else {
+			layer.msg('修改失败!',{icon:5,time:1500});	
+		}
+	});
+}
+</script> 
+</block>

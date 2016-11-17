@@ -1,0 +1,87 @@
+﻿<extend name="Public/base"/>
+<block name="title">欢迎面</block>
+<block name="main">
+    <div class="page-container">
+	<p class="f-20 text-success">欢迎来到仿魅族 1.0 后台！</p>
+	
+	<p>本次登录IP：{{$Think.server.remote_addr}}</p>
+	
+	<table class="table table-border table-bordered table-bg mt-20">
+		<thead>
+			<tr>
+				<th colspan="2" scope="col">服务器信息</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th width="30%">服务器计算机名</th>
+				<td><span id="lbServerName">{{$Think.server.server_admin}}</span></td>
+			</tr>
+			<tr>
+				<td>服务器IP地址</td>
+				<td>{{$Think.server.server_addr}}</td>
+			</tr>
+			<tr>
+				<td>服务器域名</td>
+				<td>{{$Think.server.server_name}}</td>
+			</tr>
+			<tr>
+				<td>服务器端口 </td>
+				<td>{{$Think.server.server_port}}</td>
+			</tr>
+			<tr>
+				<td>服务器信息 </td>
+				<td>{{$Think.server.server_signature}}</td>
+			</tr>
+			<tr>
+				<td>本文件所在文件夹 </td>
+				<td>{{$Think.server.path_translated}}</td>
+			</tr>
+			<tr>
+				<td>服务器操作系统 </td>
+				<td><?PHP echo PHP_OS; ?></td>
+			</tr>
+			<tr>
+				<td>系统所在文件夹 </td>
+				<td>__ROOT__</td>
+			</tr>
+			<tr>
+				<td>服务器脚本超时时间 </td>
+				<td><?PHP echo get_cfg_var("max_execution_time")."秒 "; ?></td>
+			</tr>
+			
+			<tr>
+				<td>服务器当前时间 </td>
+				<td><?PHP date_default_timezone_set (PRC); echo date("Y-m-d G:i:s");?></td>
+			</tr>
+			
+			
+			<tr>
+				<td>当前在线人数 </td>
+				<td>{{$count}}</td>
+			</tr>
+			
+			
+		</tbody>
+	</table>
+</div>
+
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui/js/H-ui.js"></script> 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?080836300300be57b7f34f4b3e97d911";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F080836300300be57b7f34f4b3e97d911' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+
+</block>
+

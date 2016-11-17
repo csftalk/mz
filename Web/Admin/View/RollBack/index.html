@@ -1,0 +1,186 @@
+<extend name="Public/base"/>
+<block name="title">商品显示</block>
+<block name="css">
+
+#pagebtn{
+    
+    width:200px;
+    height:33px;
+   line-height:33px;
+}
+
+</block>
+<block name="main">
+
+
+<div style="width:1168px">
+	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> 产品列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	<div class="page-container">
+		<div class="text-c"> <!-- 日期范围：
+			<input type="text" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}'})" id="logmin" class="input-text Wdate" style="width:120px;">
+			-
+			<input type="text" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d'})" id="logmax" class="input-text Wdate" style="width:120px;"> -->
+			<input type="text" name="search" id="" placeholder=" 产品名称" style="width:250px" class="input-text">
+			<button name="" id="searchBtn" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜产品</button>
+		</div>
+		<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" href="{{:U('Goods/add')}}"><i class="Hui-iconfont">&#xe600;</i> 添加产品</a></span> <span class="r">共有数据：<strong id="count">0</strong> 条</span> </div>
+      
+		<div class="mt-20" style="position:relative;">
+           <div style="position:absolute;"> 
+           <span>产品类型:</span> 
+           <select name="type">
+                <option value="0">-所有-</option>
+                <foreach name="list" item="k">
+                <option value="{{$k.id}}">{{$k.name}}</option>
+                
+                </foreach>>
+           </select>&nbsp;
+           <span>商品状态:</span> 
+           <select name="status">
+                <option value="0">-所有-</option>
+                <option value="1">新添加</option>
+                <option value="2">在出售</option>
+                <option value="3">已下架</option>
+           </select>
+           </div>
+           <div id ="centent">
+			
+            
+            </div>
+		</div>
+        
+			
+	</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/zTree/v3/js/jquery.ztree.all-3.5.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui.admin/js/H-ui.admin.js"></script> 
+<script>
+				$('.f-r a').unwrap('div').wrap('<li class="f-l"></li>').addClass('btn btn-link');
+				$('.f-r span').wrap('<li class=" f-l btn-link"></li>');
+			</script>
+<script type="text/javascript">
+
+
+
+$(document).ready(function() {
+	getSelect();
+});
+//商品状态
+//console.log($('select[name="status"]').val());
+$('select[name="status"]').on('change', getSelect);
+$('select[name="type"]').on('change', getSelect);
+$('#searchBtn').click(getSelect);
+
+
+function getSelect(){
+    var index = layer.load();
+    var status = $('select[name="status"]').val();
+    var tid = $('select[name="type"]').val();
+    var search = $('input[name="search"]').val();
+
+    $.get('{{:U('select')}}', {status:status, tid:tid, search:search},function(res){
+        if (res) {
+        	
+             layer.close(index); 
+            $('#centent').html(res[0]);
+           
+            $('#example').dataTable({
+	        "bPaginate": true,//分页按钮
+	        "bLengthChange": false,//每行显示记录数
+	        "bFilter": true,//搜索栏
+	        "bSort": true,//排序
+    	});
+
+            $('#count').text(res[1]);
+        }
+        
+    }, 'json');
+}
+
+
+//批量删除
+
+function datadel(){
+	layer.confirm('确认要批量删除吗？',function(){
+	    var arr = [];
+	    var i = $('input:checked').length;
+	    $('input:checked').each(function(){  if ($(this).val()) {arr[arr.length] = $(this).val();};});
+
+	   
+	   $.get('{{:U('del')}}', {"data[]":arr}, function(res){
+	          if(res == 1){
+	            $('input:checked').each(function(){  
+	            if ($(this).val()) {
+	                $(this).parents("tr").remove();
+	                layer.msg('批量删除成功!',{icon: 6,time:1000});
+	          
+	            } 
+	          });
+	          }else {
+	                layer.msg('批量删除失败!',{icon: 5,time:1500});
+	             }
+	           
+	    }); 
+	            
+	        
+       
+     } );
+
+}
+
+
+
+
+
+$('.table-sort').dataTable({
+	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+	"bStateSave": true,//状态保存
+	"aoColumnDefs": [
+	  {"orderable":false,"aTargets":[0,7]}// 制定列不参与排序
+	]
+});
+
+/*图片-删除*/
+function product_del(obj,id){
+	layer.confirm('确认要删除吗？',function(index){
+        var arr = [id];
+        
+        $.get('{{:U('del')}}', {"data[]":arr}, function(res){
+          if(res == 1){
+            $(obj).parents("tr").remove();
+            layer.msg('已删除!',{icon:1,time:1000});
+          }else {
+                layer.msg('删除失败!',{icon: 6,time:1000});
+             }
+           
+    });
+        	
+	});
+}
+
+
+
+
+
+//还原产品
+function rollBack(obj,id){
+	$.get('{{:U('rollBack')}}', {id:id}, function(res){
+		if(res == 1){
+			$(obj).parents("tr").remove();
+	            	 	layer.msg('还原成功!',{icon:1,time:1000});
+	             }else {
+	                           layer.msg('还原失败!',{icon: 6,time:1000});
+	             }
+	});	
+}
+ 
+</script>
+
+
+
+</block>

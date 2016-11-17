@@ -1,0 +1,348 @@
+<extend name="Public/base" />
+<block name="title">我的订单-魅族商城</block>
+<block name="head">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/layout-a3af69f6f7.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/aoi.css" type="text/css" charset="UTF-8">
+<style>
+    .sureGet .ui-pop-main .ui-pop-cont{
+        line-height: 28px !important;
+        margin: 64px auto 30px !important;
+        padding:0 30px;
+    }
+    .font-14{
+        font-size: 14px;
+    }
+    .big-font{
+        font-size: 18px;
+    }
+</style> 
+<!-- 分页 -->
+<style>
+.b-page {
+  background: #fff;
+  box-shadow: 0px 1px 2px 0px #E2E2E2;
+}
+.page {
+  width: 100%;
+  padding: 30px 15px;
+  background: #FFF;
+  text-align: center;
+  overflow: hidden;
+}
+.page .first,
+.page .prev,
+.page .current,
+.page .num,
+.page .current,
+.page .next,
+.page .end {
+  padding: 4px 8px;
+  margin: 0px 5px;
+  display: inline-block;
+  color: #008CBA;
+  border: 1px solid #F2F2F2;
+  border-radius: 5px;
+}
+.page .first:hover,
+.page .prev:hover,
+.page .current:hover,
+.page .num:hover,
+.page .current:hover,
+.page .next:hover,
+.page .end:hover {
+  text-decoration: none;
+  background: #F8F5F5;
+}
+.page .current {
+  background-color: #008CBA;
+  color: #FFF;
+  border-radius: 5px;
+  border: 1px solid #008CBA;
+}
+.page .current:hover {
+  text-decoration: none;
+  background: #008CBA;
+}
+.page .not-allowed {
+  cursor: not-allowed;
+}
+
+</style>   
+
+</block>
+
+<block name="main">
+
+    <div class="store-wrap">
+        <div class="crumbs">
+            <a href="http://store.meizu.com/index.html">首页&gt;</a><a href="http://me.meizu.com/member/index">我的商城&gt;</a><a href="http://ordercenter.meizu.com/list/index.html?type=99" class="active">我的订单</a>
+        </div>
+        <div class="main clearfix">
+    <div class="left-nav f-fl">
+        <div class="nav-main">
+            <a href="javascript:;" class="type-title"><i class="iconfont icon-orderCenter"></i>订单中心</a>
+            <a href="{{:U('Order/index')}}" class="ml active">我的订单</a>
+            <a href="{{:U('Order/address')}}" class="ml">地址管理</a>
+            <a href="###" class="ml ">以下待开发</a>
+            <a href="###" class="ml ">我的回购单</a>
+            <a href="###" class="ml ">我的意外保</a>
+            <a href="javascript:;" class="type-title"><i class="iconfont icon-selfCenter"></i>个人中心</a>
+            <a href="###" class="ml ">我的收藏</a>
+            <a href="###" class="ml ">消息提醒</a>
+            <a href="###" class="ml ">建议反馈</a>
+            <a href="javascript:;" class="type-title"><i class="iconfont icon-moneyCenter"></i>资产中心</a>
+            <a href="###" class="ml ">我的优惠券</a>
+            <a href="###" class="ml ">我的红包</a>
+            <a href="###" class="ml ">我的回购券</a>
+            <a href="javascript:;" class="type-title"><i class="iconfont icon-serverCenter"></i>服务中心</a>
+            <a href="###" class="ml" style="width: 105px">退款/退换货跟踪</a>
+            <a href="###" class="ml ">意外保</a>
+            <a href="###" class="ml ">以旧换新</a>
+        </div>
+    </div>
+        <div class="right-content f-fr">
+                <div class="order-main">
+                    <a class="orderSearch" href="http://ordercenter.meizu.com/list/phone.html" target="_blank">找不到订单？用手机号查询试试&gt;&gt;</a>
+                    <div class="type-tab-btn">
+                        <a href="javascript:;" class="allOrder active" onclick="allorders(0)">全部订单</a><i class="line">|</i>
+                        <a class="waitPay" href="javascript:;" onclick="getNotPay(0)" >待付款<span class="amount _actAmount"></span></a><i class="line">|</i>
+                        <a class="waitDeliver" href="javascript:;" onclick="getNoPostStatus(0)">待发货</a><i class="line">|</i>
+                        <a class="hasDeliver" href="javascript:;" onclick="getYsetPostStatus(1)">已发货</a><i class="line">|</i>
+                        <a class="other" href="javascript:;" data-type="99">其他</a>
+                    </div>
+                    <div class="list-head">
+                        <ul class="clearfix">
+                            <li class="w50">订单明细</li>
+                            <li class="w125">商品物流</li>
+                            <li class="w125">实付金额</li>
+                            <li class="w125">状态</li>
+                            <li class="w125">操作</li>
+                        </ul>
+                    </div>
+                    <div id="tableList" class="type-contain ui-load-container">
+                    <div class="ui-load-content"><input id="unPayNum" type="hidden" value="0">
+
+<div id="xstab">
+<table class="orderItem">
+    <tbody>
+    <foreach name="orders" item="v">
+    <if condition="$v eq false">
+      <div id="tableList" class="type-contain ui-load-container"><div class="ui-load-content J_no_data"><p class="J_no_data_des">您暂无此类订单，赶快去下单吧！</p></div></div>
+    </if>
+    <tr class="trHead">
+        <td colspan="5" class="title clearfix">
+            <div class="f-fl">下单时间：<span class="time">{{$v.addtime}}</span>订单号：<span class="orderNumber">{{$v.oid}}</span>
+            </div>
+            <!-- <span class="brand f-fr">
+                魅族
+                <i class="service">由“魅族”负责发货，并提供售后服务</i>
+                <i class="icon"></i>
+            </span> -->
+        </td>
+      </tr>
+    <tr class="list-box b-l b-r b-b">
+        <td class="list b-r">
+                        <div class="item clearfix">
+                            <a class="productDetail nameWidth" href="__ROOT__/Home/Detail/index.html?id={{$v.g_id}}" target="_blank">
+                            <img src="__PUBLIC__/Uploads/{{$v.pic_path}}" class="f-fl"></a>
+                            <div class="describe f-fl">
+                                <div class="vertic clearfix">
+                                    <span class="clearfix">
+                                        <a class="productDetail nameWidth" href="__ROOT__/Home/Detail/index.html?id={{$v.g_id}}" target="_blank">
+                                        {{$v.g_name}}&ensp;{{$v.g_attr_str}} </a>
+                                        <p>￥{{$v.g_price}}&ensp; X &ensp;{{$v.g_number}}</p>
+                                    </span>
+                                </div>
+                            </div> 
+                            <div class="seeDeliverBox">
+                                
+                                <input class="isOldProduct" type="hidden" value="false">
+                                <input class="orderSn" type="hidden" value="21103124420045336021">
+                                <input class="orderSnSon" type="hidden" value="21103124420045337021">
+                                <div class="content"></div>
+                            </div>
+                            
+                        </div>
+        </td>   
+        <td class="b-r w125 center price">  
+            <div class="priceDiv">
+                ￥ {{$v.price}}
+                
+            </div>
+        </td>  
+        <td class="b-r w125 center state">
+            <div class="stateDiv">
+                <div style="margin-bottom:5px">{{$v.pay_status}}<br>{{$v.post_status}}</div>
+              
+            </div>
+        </td> 
+        <td class="w125 center opreat">
+          <ul>
+            <if condition="($v.pay_status eq '未支付') AND ($v.post_status eq '未发货')">
+              <li class="goPay"><a href="{{:U('Order/pay', ['id'=>$v['id']])}}" target="_blank">立即付款</a></li>
+            <elseif condition="($v.pay_status eq '已支付') AND ($v.post_status eq '已发货')" />
+              <li class="goPay" style="background:#2AC4F6;"><a href=javascript:; onclick="takegoods({{$v.id}})";>确认收货</a></li>
+
+              <!-- <a href=javascript:; onclick="cancelOrder({{$v.id}})";>取消订单</a> -->
+            </if> 
+                <li class="more"><a href="{{:U('Order/details', ['id'=>$v['id']])}}">查看详情</a></li>
+
+            </ul>
+        </td> 
+    </tr>
+    <tr class="empty">
+        <td></td>
+    </tr>
+    </foreach>
+</tbody>
+</table>
+{{$btn}}
+</div>
+
+
+
+<!-- </div>  -->
+<!-- 选项卡    -->
+</div>
+
+</div>
+                    <input type="hidden" id="pageId" value="0">
+                </div>
+            </div>
+    </div>
+</div>
+
+    <!-- common js -->
+
+<script src="__PUBLIC__/Home/js/layout-7e9d743d4f.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Home/js/common.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Home/js/memberCommon.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Home/js/order-newPayment.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script>
+    $('.type-tab-btn a').click(function(){
+       $(this).addClass('active').siblings('a').removeClass('active' );
+       
+        //2、显示相应的div
+        // $('#box div').eq($(this).index()).css('display', 'block').siblings().css('display', 'none');
+        
+    })
+</script>
+
+<script>
+//查询未付款订单
+function getNotPay(status)
+{
+  $.ajax({
+     url: "{{:U('Order/paycheck')}}",  
+     type: "GET",
+     data:{"notpay":status},
+     dataType: "json",
+     error: function(res){  
+         alert('Error loading res document'); 
+         alert(res) ;
+     },  
+     success: function(data){ 
+     // console.log(data);
+         // alert($('#xstab table').html());
+         $('#xstab').html(data);
+
+         // $("#"+id).remove();
+  }
+  });} 
+
+//已支付待发货
+function getNoPostStatus(status)
+{
+  $.ajax({
+     url: "{{:U('Order/postno')}}",  
+     type: "GET",
+     data:{"post_status":status},
+     dataType: "json",
+     error: function(res){  
+         alert('Error loading res document'); 
+         alert(res) ;
+     },  
+     success: function(data){ 
+         // alert($('#xstab table').html());
+          // alert(data);
+         $('#xstab').html(data);
+
+         // $("#"+id).remove();
+    }
+  });
+} 
+
+ //已支付已发货
+function getYsetPostStatus(status)
+{
+  $.ajax({
+     url: "{{:U('Order/postyes')}}",  
+     type: "GET",
+     data:{"post_status":status},
+     dataType: "json",
+     error: function(){  
+         alert('Error loading res document'); 
+         // alert(res) ;
+     },  
+     success: function(data){ 
+         // alert($('#xstab table').html());
+         $('#xstab').html(data);
+
+         // $("#"+id).remove();
+  }
+  });
+}  
+
+  // var obj = {{:json_encode($orders)}} ;
+  // console.dir(obj[3]);
+  // function orders()
+  // {
+  //   // alert(JSON.parse(obj));
+
+  //   $.each(obj, function(i, val){
+  //       obj = obj + i;
+  //   });
+  //   console.dir(obj);
+  // }
+  
+function allorders(status)
+{
+  $.ajax({
+     url: "{{:U('Order/allorders')}}",  
+     type: "GET",
+     data:{"post_status":status},
+     dataType: "json",
+     error: function(){  
+         alert('Error loading res document'); 
+         alert(res) ;
+     },  
+     success: function(data){ 
+         // alert($('#xstab table').html());
+         
+        $('#xstab').html(data);
+
+         // $("#"+id).remove();
+  }
+  });}
+</script>   
+<script>
+//确认收货
+function takegoods(id){
+$.ajax({
+         url: "{{:U('Order/takegoods')}}",  
+         type: "GET",
+         data:{"id":id},
+         dataType: "json",
+         error: function(){  
+            alert(data.info);  
+         },  
+         success: function(data){ 
+            alert(data.info);
+            location.reload();
+         }
+     });
+}    
+</script>
+
+</block>    

@@ -1,0 +1,43 @@
+<extend name="Public/base" />
+
+<block name="title">查看图片</block>
+
+<block name="main">
+
+<div class="page-container">
+	<div class="cl pd-5 bg-1 bk-gray mt-20">
+   		 <div class="f-l"><a class="btn btn-default" href="{{:U('add')}}?pid={{$pid}}&gid={{$gid}}">新增/修改</a></div>
+   		 <div class="f-r">返回<a class="btn btn-default" href="{{:U('PriceStore/index')}}?id={{$gid}}" >查看产品价格/库存</a></div>
+   	 </div>
+	<div class="portfolio-content">
+		<ul class="cl portfolio-area">
+		<if condition="$list == null">
+			产品图片(无);
+		<else />
+		<foreach name="list" item="vo">
+			<li class="item">
+				<div class="portfoliobox">
+					
+					<div class="picbox"><a href="__PUBLIC__/common/images/goodsDesc/{{$vo.pic_path}}" data-lightbox="gallery" ><img src="__PUBLIC__/Uploads/{{$vo.pic_path}}"></a></div>
+					<div class="textbox"> </div>
+				</div>
+			</li>
+		</foreach>
+		</if>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/layer/2.1/layer.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/lightbox2/2.8.1/js/lightbox-plus-jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui.admin/js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+$(function(){
+	$.Huihover(".portfolio-area li");
+});
+</script>
+
+
+
+</block>

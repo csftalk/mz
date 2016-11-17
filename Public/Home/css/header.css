@@ -1,0 +1,159 @@
+.container{
+	padding: 0;
+}
+a:hover{
+	text-decoration: none;
+}
+.container_fluid{
+	height: 120px;
+	background: #FAFAFC;
+}
+.top{
+	/*border:1px solid green;*/
+	height: 40px;
+	font-size: 12px;
+	line-height: 40px;
+}
+.top a{
+	color: #666;
+}
+.top a:hover{
+	color: #00c3f5;
+	text-decoration: none;
+}
+.top_right{
+	text-align: right;
+}
+.header{
+	/*border:1px solid green;*/
+	height: 80px;
+	line-height: 80px;
+}
+.nav{
+	width: 100%;
+	border-bottom: 1px solid #efefef;
+	background: #FFF;
+}
+.nav_1{
+	height: 100%;
+}
+.nav_1>a{
+	color: #333;
+	display: block;
+	font-size: 16px;
+}
+.nav_1>a:hover{
+	color: #00c3f5;
+}
+
+.shopping{
+	background: url(../images/shop.png) 10px 10px no-repeat;
+	margin-top: 19px;
+	color: #333;
+	padding-left: 30px;
+	float: right;
+	width: 120px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	display: block;
+	font-size: 14px;
+	border: 1px solid #DEDEDE;
+	border-radius: 5px;
+	z-index: 55;
+}
+.shop_2{
+	width: 300px;
+	height: 100px;
+	border: 1px solid #DEDEDE;
+	z-index: 33;
+	position: absolute;
+	text-align: center;
+	line-height: 100px;
+	top:58px;
+	right: 15px;
+	background: #FFF;
+	display: none;
+}
+
+.slide{
+	width: 100%;
+	height: 200px;
+	z-index: 111111;
+	background:transparent;
+	position: absolute;
+	top:119px;
+	/*border:1px solid red;*/
+	background-color: rgba(255,255,255,0.8);
+}
+.slide .row{
+	border-top: 1px solid #EFEFEF;
+}
+
+.slide_1{
+	width: 190px;
+	height: 195px;
+	/*border: 1px solid red;*/
+	display: inline-block;
+}
+.slide_2{
+	width: 162px;
+	height:144px;
+	margin:0 auto;
+	margin-top: 5px;
+}
+.slide_2 img{
+	display: block;
+	margin: 0 auto;
+	width: 126px;
+	height: 126px;
+}
+.slide_2 div{
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	margin-top:5px;
+	text-align: center; 
+}
+.slide a{
+	display: block;
+	color: #333;
+	margin-top:5px;
+}
+.slide a:hover{
+	color: #00c3f5;
+}
+
+.hidden{
+	display: none;
+}
+.display{
+	display: block;
+}
+
+
+/* 新增 */
+.header_top{
+	height: 40px;
+	line-height: 40px;
+	width:100%;
+}
+.header_top .row{
+	padding: 0;
+	margin: 0;
+}
+.header_top .row div{
+	margin-left: 85px;
+	font-size: 12px;
+	font-weight: 400px;
+	color: #666;
+	margin-right: -50px;
+}
+#top_right1,#top_right2{
+	margin: 0;
+	float: right;
+	width: 70px;
+}
+#top_right1{
+	margin-right: 60px;
+}

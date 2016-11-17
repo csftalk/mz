@@ -1,0 +1,107 @@
+/* country code */
+.show-cycode #cycode,
+.show-cycode #account,
+.show-cycode #phone {
+    padding: 0;
+}
+.cycode-box {
+    poaition: relative;
+}
+.cycode-box .clearfix:after {
+    display: block;
+    content: "\20";
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+}
+.cycode-selectbox .cycode-selected {
+    display: none;
+}
+.show-cycode .cycode-selected {
+    display: inline-block;
+    width: 60px;
+    border-right: 1px solid #DDD;
+    cursor: pointer;
+}
+.cycode-selected .arrow-down {
+    display: inline-block;
+    width: 14px;
+    height: 8px;
+    background: url(../images/arrow-down.png) no-repeat center;
+}
+.cycode-selectbox input {
+    vertical-align: middle;
+    font-size: 14px;
+    margin-bottom: 0 !important;
+}
+.cycode-selected .ipt-cycode {
+    height: 20px;
+    line-height: 20px;
+    width: 60%;
+    color: grey;
+    text-align: center;
+    cursor: pointer;
+}
+.cycode-box .ipt-phone,
+.show-cycode .ipt-account {
+    width: 74%;
+    text-indent: 8px;
+}
+.cycode-box .cycode-container {
+    width: 100%;
+    height: 210px;
+    line-height: 30px;
+    background: #FFF;
+    border: 1px solid #E8E8E8;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    left: -1px;
+    top: 50px;
+    z-index: 500;
+    display: none;
+    color: #000;
+}
+.country-code .head {
+    background: #F9F9F9;
+    padding-left: 10px;
+}
+.country-code li {
+    padding: 0 10px;
+    clear: both;
+    overflow: hidden;
+    cursor: pointer;
+}
+.country-code li:hover {
+    background: #F2F2F2;
+}
+.country-code li span {
+    height: 30px;
+    overflow: hidden;
+}
+.country-code .record-code {
+    float: right;
+    max-width: 20%;
+}
+.country-code .record-country {
+    float: left;
+    max-width: 74%;
+    cursor: pointer;
+}
+
+.cycode-box + #err-tips-phone {
+    display: none;
+}
+
+.cycode-box.error + #err-tips-phone {
+    display: block;
+}
+
+#err-tips-phone {
+	margin-top: -10px;
+}
+
+.cycode-box span.inputTip {
+	display: none !important;
+}

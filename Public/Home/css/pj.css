@@ -1,0 +1,67 @@
+
+	*{
+		margin:0px auto;
+		padding:0px;
+		/* background:#F2F2F2; */
+
+	}
+	.pj_one{
+		margin-top: 40px;
+		border:1px solid red;
+	}
+	.pj_two{
+		height:60px;
+		width:1000px;
+		border:1px solid #E1E1E1;
+		font-size:26px;
+		font-weight:bold;
+		line-height: 60px;
+		background:#FAFAFA;
+	}
+	.pj_three{
+		height:40px;
+		width:1000px;
+		background: #FFFBF8;
+	}
+	.pj_four{
+		border-top:1px solid #E1E1E1;
+		border-bottom:1px solid #E1E1E1;
+		width:1000px;
+		height:300px;
+		background:#fff;
+	}
+	.pj_four .left{
+		width:620px;
+		float:left;
+		height:260px;
+		margin-top: 40px;
+		background:#fff;
+	}
+	.pj_four .left .shang{
+		
+		height:100px;
+		background:#fff;
+	}
+	.pj_four .left .xia{
+		
+		height:150px;
+		background:#fff;
+	}
+	.pj_four .right{
+		width:350px;
+		height:260px;
+		float:left;
+		border-left:1px solid #E1E1E1;
+		margin-top: 40px;
+		background:#fff;
+	}
+	.pj_four .right ul{
+		list-style:none;
+		background:#fff;
+	}
+	.pj_four .right li{
+		margin-left: 30px;
+		height:40px;
+		font-size: 14px;
+		background:#fff;
+	}

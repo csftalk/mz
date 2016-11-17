@@ -1,0 +1,42 @@
+ @media screen and (max-width: 750px){
+        input{outline:none!important;}
+        .ucSimpleHeader,.title,.flow,.footerWrap,.go2appeal{display:none;}
+        body{width:100%;min-height: 500px!important;}
+        //.content{margin-top: 40%;}
+        .middle{box-sizing: border-box; padding: 10px;width: 100%;}
+        form{box-sizing: border-box;}
+        .normalInput{width: 100%;padding: 0px;}
+        #answer1, #answer2{width:92%}
+        .box-input{box-sizing: border-box;padding-left: 10px;}
+        .lineWrap{padding:0px}
+        #account, #kapkey {padding: 13px 0px;}
+        #imgKey{margin-top:11px;margin-left:0px;width: 83px;position: absolute;right: 0;top: 0;}
+        #kapkey{width: 100%;height:21px}
+        a.fullBtnBlue{width: 100%;}
+        .mzdialog{height:210px!important;width:300px!important;margin-left:-150px;margin-right:-150px;left:50%!important}
+        .alertDialogMain{margin:0px;width:300px;box-sizing: border-box;padding: 5px;}
+        .alertDialogContent{margin-left:0px;width:100%;padding-top: 20px;padding-bottom: 20px;}
+        .alertDialogContent .normalInput {width: 238px;margin: 0px;height: 40px;margin-top: 10px;}
+        .alertDialogContent .normalInput .kapkey{padding-left: 10px;height: 40px;}
+        .alertDialogContent .normalInput #imgKey{top: 2px;right: 4px;}
+        .alertDialogBtnField{padding: 0px 20px;}
+
+        #email{padding-left: 10px;width: 95%;}
+        #vcode{width: 100%;padding: 0px;margin-top: 14px;}
+        #mail{left: 10px!important;}
+
+        .btnWrap{width:100%}
+        #reset.fullBtnBlue{width:45%;}
+        a.fullBtnGray{float:right;}
+        #cancel{width:45%;}
+        .reset-password-div{box-sizing: border-box;padding: 0px 10px;}
+        #resetPassword, #repeatPassword{height:20px;line-height:20px}
+         .blue{width:100%}
+         #mz_Float{display: none!important;}
+   }
+
+    @media all and (orientation : landscape) and (max-width: 750px) {
+
+          //.content{margin-top: 5%;}
+          #vcode,#kapkey{width:100%}
+    }

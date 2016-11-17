@@ -1,0 +1,36 @@
+
+<foreach name="list" item="v" >
+	<if condition="$v.is_only eq 1">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>{{$v.key}}：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="" id="" name="att{{$v.id}}">
+			</div>
+		</div>
+
+	<else />
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>{{$v.key}}(多选)</label>
+			<div class="formControls col-xs-8 col-sm-9"> 
+				<!-- <select name="" class="select"></select> -->
+					<foreach name="v.value" item="k">
+						<!-- <option value="{{$k}}">{{$k}}</option> -->
+						<input type="checkbox" name="att{{$v.id}}[]" value="{{$k}}" />{{$k}} &nbsp;&nbsp;
+					</foreach>
+					
+					
+				
+				 </div>
+		</div>
+
+
+	</if>
+
+
+</foreach>
+
+
+
+
+
+

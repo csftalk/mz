@@ -1,0 +1,115 @@
+.top{
+	width:100%;
+	height:80%;
+	
+}
+.bottom{
+	width:100%;
+	height:20%;
+	
+	
+}
+body{
+	margin:0px;
+	height:800px;
+}
+.title{
+	width:100%;
+	height:100px;
+	
+	margin-top:50px;
+}
+.top div>img{
+	margin-top:50px;
+	margin-left:150px;
+}
+.a {
+	position:relative;
+	top:-5px;
+	left:700px;
+}
+.login{
+	height:600px;
+	width:600px;
+	
+	margin-left:425px;
+}
+.password{
+	width:300px;
+	height:50px;
+	margin-top:50px;
+	margin-left:50px;
+	font-size:20px;
+	float:left;
+}
+.repassword{
+	width:300px;
+	height:50px;
+	margin-top:20px;
+	margin-left:50px;
+	font-size:20px;
+	float:left;
+}
+
+
+.remember{
+	margin-left:50px;
+	margin-top:20px;
+}
+.fullblue{
+	width:300px;
+	height:50px;
+	margin-left:50px;
+	font-size:20px;
+	margin-top:20px;
+	background-color:#32A5E7;
+	color:white;
+	
+}
+
+.href{
+	margin-top:100px;
+	margin-left:100px;
+}
+.aa{
+	text-decoration:none;
+	color:black;
+}
+.welcome{
+	text-align:center;
+	letter-spacing:10px;
+	font-size:20px;
+}
+
+
+#pwd{
+	width:230px;
+	height:50px;
+	margin-left:10px;
+	margin-top:50px;
+	float:left;
+	font-size:18px;
+}
+
+
+
+#repwd{
+	display:inline-block;
+	
+	width:230px;
+	height:50px;
+	margin-left:10px;
+	margin-top:25px;
+	font-size:18px;
+	float:left;
+}
+
+
+
+
+
+
+
+
+
+

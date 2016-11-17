@@ -1,0 +1,229 @@
+﻿.phoneText{
+	padding-top: 10px;
+	*padding-top: 0px;
+}
+.content{
+	width: 100%;
+}
+#toLogin{
+	color: #474747;
+	cursor: pointer;
+}
+input[type="checkbox"]{
+	margin: 0px 0px 30px 5px;
+	float: left;
+	cursor: pointer;
+	width: 18px;
+	height: 18px;
+	border: solid 1px #dadada;
+}
+.checkChk{
+	background-position: -1px -53px;
+	cursor: pointer;
+	margin-bottom: 5px;
+}
+.checkUnchk{
+	background-position: -1px -73px;
+}
+#nextAutoLogin{
+	margin-left: -115px;
+}
+.number{
+	font-size: 16px;
+  margin-bottom: 28px;
+  width: 300px;
+  text-align: center;
+}
+#mainForm{
+	margin-top: 100px;
+	width: 300px;
+	margin: 100px auto 0px;
+	/*overflow: hidden;*/
+}
+.rememberField{
+	margin-bottom: 30px;
+	height: 20px;
+	line-height: 20px;
+}
+#getKey{
+	width: 84px;
+	text-align: center;
+	border: none;
+	outline: none;
+	height: 46px;
+	line-height: 46px;
+	font-size: 14px;
+	position: absolute;
+	right: 10px;
+	top: 0px;
+}
+.form-line{
+	color: #d9d9d9;
+	height: 22px;
+	display: inline-block;
+	border-left: 1px solid #dadada;
+	position: absolute;
+	right: 100px;
+	top: 12px;
+}
+.register-line{
+	color: #d9d9d9;
+	display: inline-block;
+	border: 1px solid #dadada;
+	border-left: 1px;
+	height: 16px;
+	line-height: 20px;
+	margin-right: 50px;
+	margin-left: 50px;
+}
+#kapkey{
+	width: 160px;
+	border: none;
+	outline: none;
+	height: 46px;
+	font-size: 14px;
+	line-height: 22px;
+	*height: 45px;
+	*line-height: 46px;
+}
+.lineWrap{
+	position: relative;
+	zoom: 1;
+}
+#password, #password1{
+	float: left;
+	width: 200px;
+}
+#pwdBtn{
+	margin-top: 13px;
+	margin-bottom: 10px;
+}
+.pwdBtn,.pwdBtnShow{
+	outline: none;
+	position: relative;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	overflow: hidden;
+	float: right;
+	margin-right: 5px;
+}
+.pwdBtnShow i, .pwdBtn i{
+	background: url("../images/elements_1.png") no-repeat;
+	_background-image: none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/elements_1.png');
+}
+.pwdBtn i {
+	background-position: -60px -93px;
+	_margin-left: -60px;
+	_margin-top: -93px;
+}
+.pwdBtnShow i {
+	background-position: -30px -92.65px;
+	_margin-left: -30px;
+	_margin-top: -93px;
+}
+#mainForm input{
+	line-height: 22px;
+	padding: 14px 0;
+	height: 18px;
+	*height: 16px;
+	*padding: 0px 0;
+}
+.cycode-height{
+	height: 20px;
+}
+
+/*reset*/
+span.error, span.otherError{
+	display: block;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+#password1::-ms-reveal {
+	display: none;
+}
+#password::-ms-clear {
+	display: none;
+}
+
+.cycodePhone {
+	line-height: 0px;
+}
+
+/*验证码弹框*/
+.alertDialogContent .normalInput {position: relative; display: inline-block; padding: 0 10px; width: 320px; height: 50px; line-height: 22px; font-size: 16px; text-align:left; margin:10px 0 20px -7px; border: 1px solid #dadada; outline: none; color: #474747; zoom: 1; overflow: hidden;}
+.alertDialogContent .normalInput .kapkey{font-size: 16px; width: 220px; border: none; outline: none;overflow: hidden;}
+.alertDialogContent .normalInput #imgKey{width: 88px; height: 36px; float: right; top: 14px; overflow: hidden; position: absolute; margin-left: 13px;}
+
+
+::-ms-clear{display: none;}
+::-ms-reveal{display: none;}
+
+.a_mregister{width: 50%;display: inline-block;text-align: right;}
+.a_login{color:#939393;width: 50%;display: inline-block;text-align: left;}
+
+ @media screen and (max-width: 500px){
+		html{height:100%}
+        body{width:100%;min-height: inherit!important;}
+        form{box-sizing: border-box;}
+		input{outline:none!important;}
+		footer{display:block!important;}
+		.ucSimpleHeader,.title,.flow,.footerWrap,.number{display:none;}
+		//.content{margin-top: 100px}
+        .normalInput{width: 100%;padding: 0px;}
+        .box-input{box-sizing: border-box;padding-left: 10px;}
+        a.fullBtnBlue{width: 100%;}
+
+        .mzdialog{height:210px!important;width:300px!important;margin-left:-150px;margin-right:-150px;left:50%!important}
+        .alertDialogMain{margin:0px;width:300px;box-sizing: border-box;padding: 5px;}
+        .alertDialogContent{margin-left:0px;width:100%;padding-top: 20px;padding-bottom: 20px;}
+        .alertDialogContent .normalInput {width: 238px;margin: 0px;height: 40px;margin-top: 10px;}
+        .alertDialogContent .normalInput .kapkey{padding-left: 10px;height: 40px;}
+        .alertDialogContent .normalInput #imgKey{top: 2px;right: 4px;}
+        .alertDialogBtnField{padding: 0px 20px;}
+
+        .btnWrap{width:100%}
+		 #mainForm{margin: 10px auto;}
+		 #mainForm input{line-height: 15px;height: 15px;}
+		 #kapkey{width: 100%;height:21px;}
+		 .logo{display: block;width: 8rem;max-width: 438px;margin: 46px auto;}
+		 .a_acount_login{color: #909090;display:inline-block}
+
+		 .phoneText{line-height: 46px;height: 46px;padding-top:0px}
+		 .show-cycode .cycode-selected,.phone_num{line-height: 28px!important;height: 28px!important;}
+
+
+   }
+
+@media screen and (min-width: 500px) and (max-width: 800px) and (orientation : landscape)  {
+	    html{height:100%}
+        body{width:100%;min-height: inherit!important;}
+        form{box-sizing: border-box;}
+		input{outline:none!important;}
+		footer{display:block!important;}
+		.ucSimpleHeader,.title,.flow,.footerWrap,.number{display:none;}
+		//.content{margin-top: 10px;}
+        .normalInput{width: 100%;padding: 0px;}
+        .box-input{box-sizing: border-box;padding-left: 10px;}
+        a.fullBtnBlue{width: 100%;}
+
+        .mzdialog{height:210px!important;width:300px!important;margin-left:-150px;margin-right:-150px;left:50%!important}
+        .alertDialogMain{margin:0px;width:300px;box-sizing: border-box;padding: 5px;}
+        .alertDialogContent{margin-left:0px;width:100%;padding-top: 20px;padding-bottom: 20px;}
+        .alertDialogContent .normalInput {width: 238px;margin: 0px;height: 40px;margin-top: 10px;}
+        .alertDialogContent .normalInput .kapkey{padding-left: 10px;height: 40px;}
+        .alertDialogContent .normalInput #imgKey{top: 2px;right: 4px;}
+        .alertDialogBtnField{padding: 0px 20px;}
+
+        .btnWrap{width:100%}
+		 #mainForm{margin: 10px auto;}
+		 #mainForm input{line-height: 15px;height: 15px;}
+		 #kapkey{width: 100%;height:21px;}
+		 .logo{display: block;width: 8rem;max-width: 438px;margin: 46px auto;}
+		 .a_acount_login{color: #909090;display: inline-block;}
+
+		 .phoneText{line-height: 46px;height: 46px;padding-top:0px}
+         .show-cycode .cycode-selected,.phone_num{line-height: 28px!important;height: 28px!important;}
+}

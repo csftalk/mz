@@ -1,0 +1,40 @@
+
+
+/* Component containers
+----------------------------------*/
+.ui-widget { font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size: 1.1em; }
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size: 1em; }
+.ui-widget-content { border: 1px solid #dddddd; color: #333333; display:none;}
+.ui-widget-content a { color: #333333; }
+.ui-widget-header {   color: #ffffff; font-weight: bold; }
+.ui-widget-header a { color: #ffffff; }
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default, .ui-widget-content .ui-state-default { border: 1px solid #cccccc; font-weight: bold; color: #4f4f4f; outline: none; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #1c94c4; text-decoration: none; outline: none;border: 1px solid #ABE1F9; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus { border: 1px solid #ABE1F9;  font-weight: bold; color: #4f4f4f;background:#ffffff; outline: none; }
+.ui-state-hover a, .ui-state-hover a:hover { color: #4f4f4f; text-decoration: none; outline: none;border: 1px solid #ABE1F9; background-color:#Efffff;}
+.ui-state-active, .ui-widget-content .ui-state-active { border: 1px solid #ABE1F9; font-weight: bold; color: #4f4f4f; outline: none;background-color:#Efffff; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #4f4f4f; outline: none; text-decoration: none;background-color:#Efffff; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

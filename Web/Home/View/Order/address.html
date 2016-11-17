@@ -1,0 +1,277 @@
+<extend name="Public/base" />
+<block name="title">我的地址-魅族商城</block>
+<block name="head">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/layout-a3af69f6f7.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/aoi.css" type="text/css" charset="UTF-8">
+<script type="text/javascript" src="__PUBLIC__/Home/layer/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Home/layer/layer.js"></script> 
+<style>
+    .sureGet .ui-pop-main .ui-pop-cont{
+        line-height: 28px !important;
+        margin: 64px auto 30px !important;
+        padding:0 30px;
+    }
+    .font-14{
+        font-size: 14px;
+    }
+    .big-font{
+        font-size: 18px;
+    }
+    .saveAddress {
+    width: 100px;
+    height: 36px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 36px;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    cursor: pointer;
+    background: rgb(0, 195, 245);
+    border-radius: 4px;
+    outline: 0px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+}
+</style> 
+
+</style>   
+
+</block>
+
+<block name="main">
+
+    <div class="store-wrap">
+        <div class="crumbs">
+            <a href="http://store.meizu.com/index.html">首页&gt;</a><a href="http://me.meizu.com/member/index">我的商城&gt;</a><a href="http://ordercenter.meizu.com/list/index.html?type=99" class="active">我的订单</a>
+        </div>
+        <div class="main clearfix">
+    <div class="left-nav f-fl">
+        <div class="nav-main">
+            <a href="javascript:;" class="type-title"><i class="iconfont icon-orderCenter"></i>订单中心</a>
+            <a href="{{:U('Order/index')}}" class="ml">我的订单</a>
+            <a href="{{:U('Order/address')}}" class="ml active">地址管理</a>
+            <a href="###" class="ml ">以下待开发</a>
+            <a href="###" class="ml ">我的回购单</a>
+            <a href="###" class="ml ">我的意外保</a>
+            <a href="javascript:;" class="type-title"><i class="iconfont icon-selfCenter"></i>个人中心</a>
+            <a href="###" class="ml ">我的收藏</a>
+            <a href="###" class="ml ">消息提醒</a>
+            <a href="###" class="ml ">建议反馈</a>
+            <a href="javascript:;" class="type-title"><i class="iconfont icon-moneyCenter"></i>资产中心</a>
+            <a href="###" class="ml ">我的优惠券</a>
+            <a href="###" class="ml ">我的红包</a>
+            <a href="###" class="ml ">我的回购券</a>
+            <a href="javascript:;" class="type-title"><i class="iconfont icon-serverCenter"></i>服务中心</a>
+            <a href="###" class="ml" style="width: 105px">退款/退换货跟踪</a>
+            <a href="###" class="ml ">意外保</a>
+            <a href="###" class="ml ">以旧换新</a>
+        </div>
+    </div>
+<div class="right-content f-fr">
+            <div class="address-main">
+                <div class="main">
+                    <div class="row">
+                        <span class="title rollit">新增收货地址</span>
+                        <!-- <span class="gray">（您目前已有地址<i class="already">2</i>个，最多还可以增加<i class="settle">8</i>个）</span> -->
+                    </div>
+                    <form id="valid-form">
+                        <!-- 修改地址时要用的地址id -->
+                        <input class="addressId" type="hidden" value="">
+
+                        <div class="content">
+                            <!-- <div class="row namePhone clearfix">
+                                <div class="f-fl addressName">
+                                    <span>收货人姓名<i class="mark">*</i></span>
+                                    <input id="name" class="varify" name="receiver" type="text" placeholder="长度不超过12个字" maxlength="12">
+                                </div>
+                                <div class="f-fl addressPhone">
+                                    <span>收货人手机号<i class="mark">*</i></span>
+                                    <input id="phone" name="telNumber" class="varify" type="text" placeholder="请输入11位手机号" maxlength="11">
+                                </div>
+                            </div> -->
+                            <!-- <div class="row clearfix receverAddress">
+                                <span class="f-fl">收货人地址<i class="mark">*</i></span>
+                                <div class="mzui_select mzui_select_province f-fl">
+                                    <input type="text" readonly="true" class="mzui_select_trigger province" placeholder="省/直辖市">
+                                    <select class="provinceId" name="provinceId">
+                                        <option value="" style="display:none"></option>
+                                                <option value="2911">北京</option>
+                                                <option value="14848">天津</option>
+                                                <option value="7450">吉林省</option>
+                                                <option value="8452">辽宁省</option>
+                                                <option value="16860">浙江省</option>
+                                                <option value="1">福建省</option>
+                                                <option value="16624">上海</option>
+                                                <option value="18482">广东省</option>
+                                                <option value="21612">海南省</option>
+                                                <option value="41143">湖北省</option>
+                                                <option value="42634">湖南省</option>
+                                                <option value="36793">安徽省</option>
+                                                <option value="15121">江苏省</option>
+                                                <option value="1214">江西省</option>
+                                                <option value="27304">四川省</option>
+                                                <option value="35714">重庆</option>
+                                                <option value="34187">云南省</option>
+                                                <option value="23366">贵州省</option>
+                                                <option value="20238">广西壮族自治区</option>
+                                                <option value="32166">西藏自治区</option>
+                                                <option value="11241">山东省</option>
+                                                <option value="38498">河南省</option>
+                                                <option value="21894">甘肃省</option>
+                                                <option value="3251">河北省</option>
+                                                <option value="10088">内蒙古自治区</option>
+                                                <option value="25024">宁夏回族自治区</option>
+                                                <option value="25305">青海省</option>
+                                                <option value="13289">山西省</option>
+                                                <option value="25761">陕西省</option>
+                                                <option value="32939">新疆维吾尔自治区</option>
+                                                <option value="5700">黑龙江省</option>
+                                    </select>
+                                </div>
+                                <div class="mzui_select mzui_select_city f-fl">
+                                    <input type="text" readonly="true" class="mzui_select_trigger city" placeholder="城市">
+                                    <select class="cityId" name="cityId">
+                                    </select>
+                                </div>
+                                <div class="mzui_select mzui_select_area f-fl">
+                                    <input type="text" readonly="true" class="mzui_select_trigger area" placeholder="区/县">
+                                    <select class="areaId" name="areaId">
+                                    </select>
+                                </div>
+                                <div class="mzui_select mzui_select_town f-fl">
+                                    <input type="text" readonly="true" class="mzui_select_trigger town" placeholder="乡镇/街道">
+                                    <select class="townId" name="townId">
+                                    </select>
+                                </div>
+                                <div class="mzui_select_other hide">
+                                    <input type="text" class="otherAddress _otherAddress" placeholder="其他">
+                                </div>
+                            </div> -->
+                            <!-- <div class="row  detailAddress">
+                                <span>详细地址<i class="mark">*&nbsp;&nbsp;&nbsp;</i></span>
+                                <input id="detailAddress" name="address" class="varify" type="text" placeholder="请输入不超过50个字的详细地址，例如：路名，门牌号" maxlength="50">
+                            </div> -->
+                            <!-- <div class="opreat"> -->
+                                <!-- <label for="default">
+                                    <input id="default" class="setDefault" type="checkbox" name="isDefault">设为默认
+                                </label> -->
+                                <a href="javascript:;" class="saveAddress" id="addaddres">新增地址</a>
+                            <!-- </div> -->
+                        </div>
+                    </form>
+          
+                    <div class="list">
+                        <div class="row">
+                            <div class="title">
+                                <div>已有地址</div>
+                                <div class="upload hide">
+                                    <i class="iconfont icon-zhuyi"></i>
+                                    <span>因配送地址库数据升级，请点击地址进行升级，让您享受更好的配送服务！</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="listHead">
+                            <span class="center w15">收货人姓名</span><span class="center w35">收货人地址</span><span class="center w25">收货人手机号</span><span class="center w10">操作</span>
+                        </div>
+                        <ul id="tableList" class="">
+    <foreach name="address" item="v">                    
+    <li class="addres{{$v.id}}">
+    <input class="addressId" type="hidden" value="6070176384000">
+    <input class="isOld" type="hidden" value="0">
+
+    <span class="center w15">{{$v.getman}}</span>
+    <span class="completeAddress center w35">{{$v.province}}{{$v.city}}{{$v.district}}{{$v.detailed}}</span>
+    <span class="center w25">{{$v.phone}}</span>
+    <span class="center w10">
+      <a class="edit" href="javascript:;" onclick="editaddres({{$v.id}})">修改</a>
+      <!-- <a class="delete" href="javascript:;">删除</a> -->
+      <a href=javascript:; class="delete" onclick="dellink({{$v.id}})";>删除</a>
+    </span>
+    <span class="left w15">
+        <!-- <i class="iconfont icon-default"></i> -->
+        <!-- <i class="defaultAddress">默认地址</i> -->
+    </span>
+</li>
+</foreach>
+
+</ul>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- common js -->
+
+<script src="__PUBLIC__/Home/js/layout-7e9d743d4f.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Home/js/common.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Home/js/memberCommon.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Home/js/order-newPayment.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script>
+//添加新地址
+$('#addaddres').on('click', function(){
+ layer.open({
+        type: 2,
+        //skin: 'layui-layer-lan',
+        title: '添加收货地址',
+        fix: false,
+        shadeClose: true,
+        maxmin: true,
+        area: ['700px', '450px'],
+        content: '__URL__/addaddres.html',
+        closeBtn: 1,
+       
+       end: function () {
+                location.reload();
+            }
+    });
+});
+
+//删除用户地址
+function dellink(id){
+$.ajax({
+         url: "{{:U('Order/delAddres')}}",  
+         type: "GET",
+         data:{"id":id},
+         dataType: "json",
+         error: function(){  
+            alert(data.info);  
+         },  
+         success: function(data){ 
+            alert(data.info);
+            $(".addres"+id).remove();
+         }
+     });
+} 
+
+// 修改地址
+function editaddres(id)
+{
+    layer.open({
+        type: 2,
+        //skin: 'layui-layer-lan',
+        title: '修改收货地址',
+        fix: false,
+        shadeClose: true,
+        maxmin: true,
+        area: ['700px', '450px'],
+        // content: "{{:U('Order/editAddres', ['id'=>['"+ id +"']])}}",
+        content: "__URL__/editaddres/id/"+id,
+    });
+}   
+</script>    
+   
+
+</block>    

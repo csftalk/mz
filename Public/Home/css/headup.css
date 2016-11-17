@@ -1,0 +1,57 @@
+.headWrap{position: relative; height: 70px; width: 1000px; margin: 0px auto; overflow: hidden; clear: both; font-size: 14px; padding-bottom: 30px;background-color: white;}
+.headLogo{
+	margin-top: 38px; float: left; margin-right: 65px; display: block; width: 112px; height: 45px; border: none; overflow: hidden;
+}
+.i_icon{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.headLogo i, .headLeft i{
+	background: url("/resources/uc/web/base/images/base.png") -2px 0px no-repeat;
+	_background-image: none;
+	_margin-left: -4px;
+	_margin-top: 0px;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/resources/uc/web/base/images/base.png');
+}
+
+.headLeft{margin-top: 39px; float: left; z-index: 2; width: 580px; height: 26px; overflow: hidden;}
+.headLeft li{float: left; height: 24px; position: relative; margin-right: 50px;}
+.headLeft a{display: block; width: 100%; height: 24px; border: none; float: left; position: relative; overflow: hidden; cursor: pointer;}
+
+li.head-store{width:73px;}.head-store a i{background-position: -168px 0px; _margin-left: -168px; _margin-top: 0px;}
+li.head-products{width:37px;}.head-products a i{background-position:-288px 0px; _margin-left: -288px; _margin-top: 0px;}
+li.head-retail{width:55px;}.head-retail a i{background-position: -374px 0px; _margin-left: -374px; _margin-top: 0px;}
+li.head-flyme{width:60px;}.head-flyme a i{background-position: -473px 0px; _margin-left: -475px; _margin-top: 0px;}
+li.head-services{width:39px;}.head-services a i{background-position: -577px 0px; _margin-left: -577px; _margin-top: 0px;}
+li.head-bbs{width:39px; margin-right: 0px;}.head-bbs a i{background-position: -661px 0px; _margin-left: -661px; _margin-top: 0px;}
+
+.head-store a:hover i{background-position: -168px -27px; _margin-top: -27px;}
+.head-products a:hover i{background-position:-288px -27px; _margin-top: -27px;}
+.head-retail a:hover i{background-position: -374px -27px; _margin-top: -27px;}
+.head-flyme a:hover i{background-position: -473px -27px; _margin-top: -27px;}
+.head-services a:hover i{background-position: -577px -27px; _margin-top: -27px;}
+.head-bbs a:hover i{background-position: -661px -27px; _margin-top: -27px;}
+
+.head-store a.headCurrent i{background-position: -168px -57px; _margin-top: -57px;}
+.head-products a.headCurrent i{background-position:-288px -57px; _margin-top: -57px;}
+.head-retail a.headCurrent i{background-position: -374px -57px; _margin-top: -57px;}
+.head-flyme a.headCurrent i{background-position: -475px -57px; _margin-top: -57px;}
+.head-services a.headCurrent i{background-position: -577px -57px; _margin-top: -57px;}
+.head-bbs a.headCurrent i{background-position: -661px -57px; _margin-top: -57px;}
+
+.headRight{margin-top: 38px; float: right; width: 210px; text-align: right;}
+.headRight .line_head{display:inline-block; font-size: 12px; margin: 0 5px; color: #d8d8d8; 
+vertical-align: middle;}
+.headRight a{display:inline-block; height: 20px; line-height: 20px;vertical-align: middle;}
+#head-name{
+	max-width:150px;
+	_width:150px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+	-webkit-text-overflow:ellipsis;
+	-moz-text-overflow:ellipsis;
+	white-space:nowrap;
+}

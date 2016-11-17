@@ -1,0 +1,38 @@
+<extend name="Public/base" />
+<block name="title">用户信息</block>
+<block name="main">
+<foreach name = "list" item="v">
+	<div class="cl pd-20" style=" background-color:#5bacb6">
+  <img class="avatar size-XL l" src="__PUBLIC__/Uploads/{{$v['pic_head']}}">
+  <dl style="margin-left:80px; color:#fff">
+    <dt><span class="f-18">{{$v['name']}}</span> <span class="pl-10 f-12"></span></dt>
+    <dd class="pt-10 f-12" style="margin-left:0">这家伙很懒，什么也没有留下</dd>
+  </dl>
+</div>
+<div class="pd-20">
+  <table class="table">
+    <tbody>
+      <tr>
+        <th class="text-r" width="80">性别：</th>
+        <td>{{$v['sex']}}</td>
+      </tr>
+      <tr>
+        <th class="text-r">手机：</th>
+        <td>{{$v['phone']}}</td>
+      </tr>
+      <tr>
+        <th class="text-r">QQ：</th>
+        <td>{{$v['qq']}}</td>
+      </tr>
+      <tr>
+        <th class="text-r">添加时间：</th>
+        <td>{{$v['addtime']}}</td>
+      </tr>
+    </tbody>
+  </table>
+</foreach>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script>
+</block>

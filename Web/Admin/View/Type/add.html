@@ -1,0 +1,79 @@
+<extend name="Public/basef" />
+
+<block name="title">添加商品分类</block>
+
+<block name="mainF">
+<div class="page-container">
+  <form action="__URL__/add" method="post" class="form form-horizontal" id="form-user-add">
+    <!-- <input type="hidden" name="pid" value={{$pid}} />
+    <input type="hidden" name="path" value={{$path}} /> -->
+    <div class="row cl va-m">
+      <!-- <label class="form-label col-2"><span class="c-red">*</span>分类名称：</label>
+      <div class="formControls col-5">
+        <input type="text" class="input-text" value="" placeholder="" id="user-name" name="name">
+      </div>
+      <div class="col-5"> </div> -->
+   
+    
+    <table class="table table-border table-bordered radius">
+      <tr>
+        <td class="text-r" style="background:#F8F8F8">上一级分类：</td>
+        <td>
+          <span class="select-box">
+           <select name="pid" class="select" size="1">
+              <option value="0">==顶级分类==</option>
+                <volist name="list" id='vo'>
+                  <option value="{{$vo.id}}">
+                    {{$vo.id]}}{{$vo.level|str_repeat="&ensp;&ensp;&ensp;",###}}{{$vo.name}}
+                  </option>
+                </volist>
+            </select>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td class="text-r" style="background:#F8F8F8">分类名称：</td>
+        <td>
+          <input type="text" class="input-text va-m" name="name" id="" />
+        </td>
+      </tr>
+
+      <tr>
+        <td class="text-c text-r" style="background:#F8F8F8">
+         <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+        </td>
+        <td></td>
+      </tr>
+    
+
+    </table>
+  
+
+    
+
+    </div>
+    <!-- <div class="row cl">
+      <label class="form-label col-2">备注：</label>
+      <div class="formControls col-5">
+        <textarea name="" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,100)"></textarea>
+        <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+      </div>
+      <div class="col-5"> </div>
+    </div> -->
+    <div class="row cl">
+      <div class="col-9 col-offset-2">
+       
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui.admin/js/H-ui.admin.js"></script>
+
+</block>
+

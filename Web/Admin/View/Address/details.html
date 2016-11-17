@@ -1,0 +1,84 @@
+<extend name="Public/basef" />
+<br><br>
+<block name="title">订单详情</block>
+
+
+<block name="mainF">
+
+<div class="bk-gray f-16 text-c" style="background:#F2F2F2;">订单编号：<font color="red">{{$listdata.oid}}</font></div> 
+
+<div style="width:95%; margin:auto;">
+
+<table class="table table-bordered radius mt-10 f-14">
+  <tr>
+    <td>
+      <p class="lh-16">2016-10-18 21:39：订单创建成功，订单编号：1610180001</p>
+      <p  class="lh-16">2016-10-18 21:41：买家付款成功，支付金额：351323.9元</p>
+      <p  class="lh-16">2016-10-18 21:41：买家付款成功，支付金额：351323.9元</p>
+    </td>
+  </tr>
+</table>
+
+
+
+  <!-- <form action="__URL__/add" method="post" class="form form-horizontal" id="form-user-add"> -->
+  
+    <table class="table table-border table-bordered radius mt-10">
+      <th style="background:#F2F2F2;">商品详情</th>
+      <th width="100"style="background:#F2F2F2;">商品单价</th>
+      <th width="100" style="background:#F2F2F2;">商品总金额</th>
+      <tr>
+        <td class="text-l">{{$listdata['g_name']}}&ensp;{{$listdata['g_attr_str']}}</td>
+        <td>{{$listdata['g_number']}}</td>
+        <td><font color="red">{{$listdata['g_price']}}</font></td>
+      </tr>
+    </table>
+    <form action="">
+      <table class="table table-bordered radius mt-10">
+        <tr>
+          <th style="background:#F2F2F2;">收货信息</th>
+        </tr>
+        <tr>
+          <td>
+            <!-- <p>会员帐号： admin（ID：1）</p> -->
+            <p>会员账号：{{$user.username}} &ensp;&ensp;(ID:{{$user.id}})</p>
+            <p>收货姓名：{{$list.getman}} &ensp;&ensp;联系电话：{{$list.phone}}</p>
+            <p>收货地址：{{$list.sheng}}{{$list.shi}}{{$list.xian}}{{$list.detailed}}</p>
+            <p>买家留言：{{$list.message}}</p>
+          </td>
+        </tr> 
+      </table> 
+    </form>
+</div> 
+
+
+  </form>
+</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/Admin/static/h-ui.admin/js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(function(){
+  $('.skin-minimal input').iCheck({
+    checkboxClass: 'icheckbox-blue',
+    radioClass: 'iradio-blue',
+    increaseArea: '20%'
+  });
+  
+  $("#form-user-add").Validform({
+    tiptype:2,
+    callback:function(form){
+      form[0].submit();
+      var index = parent.layer.getFrameIndex(window.name);
+      parent.$('.btn-refresh').click();
+      parent.layer.close(index);
+    }
+  });
+});
+</script>
+</block>
+

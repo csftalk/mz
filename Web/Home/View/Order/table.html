@@ -1,0 +1,71 @@
+<div>
+<table class="orderItem">
+    <tbody>
+    <foreach name="orders" item="v">
+    <tr class="trHead">
+        <td colspan="5" class="title clearfix">
+            <div class="f-fl">下单时间：<span class="time">{{$v.addtime}}</span>订单号：<span class="orderNumber">{{$v.oid}}</span>
+            </div>
+            <!-- <span class="brand f-fr">
+                魅族
+                <i class="service">由“魅族”负责发货，并提供售后服务</i>
+                <i class="icon"></i>
+            </span> -->
+        </td>
+      </tr>
+    <tr class="list-box b-l b-r b-b">
+        <td class="list b-r">
+                        <div class="item clearfix">
+                            <a class="productDetail nameWidth" href="__ROOT__/Home/Detail/index.html?id={{$v.g_id}}" target="_blank">
+                            <img src="__PUBLIC__/Uploads/{{$v.pic_path}}" class="f-fl"></a>
+                            <div class="describe f-fl">
+                                <div class="vertic clearfix">
+                                    <span class="clearfix">
+                                        <a class="productDetail nameWidth" href="__ROOT__/Home/Detail/index.html?id={{$v.g_id}}" target="_blank">
+                                        {{$v.g_name}}&ensp;{{$v.g_attr_str}} </a>
+                                        <p>￥{{$v.g_price}}&ensp; X &ensp;{{$v.g_number}}</p>
+                                    </span>
+                                </div>
+                            </div> 
+                            <div class="seeDeliverBox">
+                                
+                                <input class="isOldProduct" type="hidden" value="false">
+                                <input class="orderSn" type="hidden" value="21103124420045336021">
+                                <input class="orderSnSon" type="hidden" value="21103124420045337021">
+                                <div class="content"></div>
+                            </div>
+                            
+                        </div>
+        </td>   
+        <td class="b-r w125 center price">  
+            <div class="priceDiv">
+                ￥ {{$v.price}}
+                
+            </div>
+        </td>  
+        <td class="b-r w125 center state">
+            <div class="stateDiv">
+                <div style="margin-bottom:5px">{{$v.pay_status}}<br>{{$v.post_status}}</div>
+              
+            </div>
+        </td> 
+        <td class="w125 center opreat">
+          <ul>
+            <if condition="($v.pay_status eq '未支付') AND ($v.post_status eq '未发货')">
+              <li class="goPay"><a href="{{:U('Order/pay', ['id'=>$v['id']])}}" target="_blank">立即付款</a></li>
+            <elseif condition="($v.pay_status eq '已支付') AND ($v.post_status eq '已发货')" />
+              <li class="goPay" style="background:#2AC4F6"><a href="javascript:;" onclick="takegoods({{$v.id}})">确认收货</a></li>
+            </if> 
+                <li class="more"><a href="{{:U('Order/details', ['id'=>$v['id']])}}">查看详情</a></li>
+
+            </ul>
+        </td> 
+    </tr>
+    <tr class="empty">
+        <td></td>
+    </tr>
+    </foreach>
+</tbody>
+</table>
+{{$btn}}
+</div>

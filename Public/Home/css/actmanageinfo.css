@@ -1,0 +1,523 @@
+body,.mz_header{background:none;background-color: #fff;}
+html{overflow-y: scroll;}
+.top-leftWrap{
+	float: left;
+	width:100px;
+	height: 100px;
+	position: relative;
+}
+.top-rightWrap{
+	float: left;
+	/*padding-top: 20px;*/
+	padding-left: 20px;
+	width: 80%;
+}
+.getFunnyNameTitle{
+	color: white;
+	width: 65px;
+	height: 35px;
+	line-height: 35px;
+	background-color: #32a4e5;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.getFunnyName{
+	height: 57px;
+	width: 450px;
+	margin: -15px 0 0 -18px;
+	position: relative;
+	z-index: 99;
+}
+#nickNameCon,#setaccount{
+	position: relative;
+	z-index: 10000;
+	height:auto;
+	overflow:hidden;
+}
+#setaccount div{height:auto;overflow:hidden}
+#setaccount .fBtnleft{margin-bottom: 0px;}
+#funnyNameClose{
+	margin-top: -40px;
+	margin-left: -25px;
+	width: 340px;
+	height: 135px;
+	background: url('/resources/uc/web/member/images/close.png') -8px -67px no-repeat;
+}
+.funnyNameClose{
+    position: absolute;
+    right: 15px;
+    _right:28px;
+    top: 0px;
+	width: 25px;
+	height: 20px;
+	line-height:25px;
+	display: inline-block;
+}
+.funnyNameClose i{
+	background: url('/resources/uc/web/member/images/close.png') no-repeat;
+	background-position: -2px -4px;
+}
+.funnyNameClose:hover i{
+	background-position: -26px -4px;
+	_margin-left: -26px;
+	_margin-top: -4px;
+}
+.funnyNameWrap{
+	width: 340px;
+	height: 135px;
+	line-height: 135px;
+	color: white;
+	margin-left: 88px;
+}
+#userImg{
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left:0;
+	top:0;
+	z-index: 4;
+}
+.nickname{position: relative; height: 30px; }
+.nickname_tips{position: relative;width: 300px; overflow: hidden;}
+#nickName{
+	font-size: 18px;
+	float: left;
+}
+#nickNameEdite{
+	display: inline-block;
+	overflow: hidden;
+	margin: 4px 0 0 5px;
+	width: 16px;
+	height: 17px;
+	float: left;
+	position: relative;
+}
+#nickNameEdite a{
+	margin-left: 5px;
+	display: inline-block;
+	overflow: hidden;
+	width: 16px;
+	height: 17px;
+}
+#nickNameEdite i{
+	background: url(/resources/uc/web/base/images/elements.png) 0px 0px no-repeat;
+	_background-image: none;
+	_margin-left: 0px;
+	_margin-top: 0px;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/resources/uc/web/base/images/elements.png');
+}
+#safeLevelTip {
+	display: inline-block;
+	overflow: hidden;
+	width: 25px;
+	height: 21px;
+	margin-left: 5px;
+	vertical-align: -4px;
+	*height: 26px;
+}
+#safeLevelTip i {
+	background: url(/resources/uc/web/base/images/elements.png) -65px -62px no-repeat;
+	_background-image: none;
+	_margin-left: -65px;
+	_margin-top: -62px;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/resources/uc/web/base/images/elements.png');
+}
+.edit{
+	margin-top: 20px;
+}
+.mainWrap{
+	width: 800px;
+}
+.titleWrap{
+	height: 72px;
+	line-height: 72px;
+	font-size: 18px;
+}
+/*.bodyWrap{
+	margin-top: 20px;
+}*/
+.title-leftWrap{
+	float: left;
+}
+.title-rightWrap{
+	float: right;
+}
+.mainWrap .lineWrap{
+	height: 75px;
+}
+.item-left{
+	height: 100%;
+	width: 115px;
+	float: left;
+}
+.item-middle{
+	height: 100%;
+	float: left;
+}
+.item-right{
+	height: 100%;
+	float: right;
+}
+#changeEmailWrap-unactive,#bindEmailWrap,#changeTelWrap-unactive,#bindTelWrap{
+	padding-left: 17px;
+}
+.cEmail-titleWrap,.bindEmail-titleWra,.cTel-titleWrap,.bindTel-titleWrap,.bindEmail-titleWrap,.setQuestion-titleWrap,.cQuestion-titleWrap{
+	font-size: 18px;
+	height: 80px;
+	line-height: 80px;
+}
+.cTel-bodyWrap{
+	margin-left: 104px;
+}
+.bodyWrap form label{
+	display: inline-block;
+	width: 114px;
+}
+a.save_form,a.cancel_form{
+	width: 158px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 18px;
+}
+a.cancel_form{
+	margin-left: 25px;
+}
+#changeEmailWrap-unactive,#bindEmailWrap,#changeTelWrap-unactive,#bindTelWrap,#changeTelWrap-code{
+	margin-bottom: 30px;
+}
+#kapkey,#ce-u-passwordvalidate_code,#ce-u-passwordvalidate_codeone,#ce-u-passwordvalidate_codetwo,#kapkeyEmail,#kapkeyTelNew{
+	font-size: 16px;
+	width: 220px;
+	border: none;
+	outline: none;
+	height: 50px;
+	line-height: 22px;
+	*height: 49px;
+	*line-height: 50px;
+	line-height: 22px;
+	padding: 14px 0;
+	height: 22px;
+	*height: 21px;
+}
+.get_kapkey{
+	width: 80px;
+	border: none;
+	outline: none;
+	height: 50px;
+	line-height: 50px;
+	*height: 49px;
+	*line-height: 50px;
+	font-size: 16px;
+	position: absolute;
+	right: 10px;
+	top: 0px;
+	display: inline-block;
+	white-space: nowrap;
+}
+.kapkey_requested{
+	position: absolute;
+	left: 250px;
+	white-space: nowrap;
+	top:0;
+}
+#flyme{
+	width: 220px;
+	height: 100%;
+}
+span.flymeSpan{
+	height: 50px;
+	line-height: 50px;
+	width: 50px;
+}
+.form-line {
+	color: #d9d9d9;
+	height: 40px;
+	display: inline-block;
+	border-left: 1px solid #dadada;
+	position: absolute;
+	right: 100px;
+	top: 5px;
+	_top:0;
+}
+.current_email{
+	border: 0px solid #dadada;
+	height: 40px;
+	line-height: 40px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.center{
+	text-align: center;
+}
+.questionSelect{
+	height: 52px;
+	line-height: 52px;
+	width: 342px;
+}
+.ftipright{
+	margin-right: 30px;
+}
+.username {
+	width: 220px;
+	border: none;
+	outline: none;
+	font-size: 16px;
+	height: 20px;
+	line-height: 20px;
+}
+.leftLabel{
+	display: inline-block;
+	width: 96px;
+}
+.leftWrap{
+	float: left;
+	height: 52px;
+	line-height: 52px;
+}
+.questionlineWrap,#currentEmail .leftWrap{
+    height: 40px;
+}
+#currentEmail{
+	height: 50px;
+}
+.questionlineWrap .leftWrap,#currentEmail .leftLabel{
+	float: left;
+	height: 40px;
+	line-height: 40px;
+}
+.fBtnleft{
+	/*margin-left: 96px;*/
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#editSave,#editCancel,#newSave,#newCancel{
+	margin-bottom: 0px;
+}
+.fTipleft{
+	margin-left: 19px;
+}
+.fTipValidate{
+	margin-right: 15px;
+}
+.normalInput span.error{
+	position: absolute;
+	left:340px;
+	top:15px;
+	white-space: nowrap;
+	font-size: 14px;
+}
+#nickNameCon form{
+	width: 880px;
+}
+#nickNameCon form span{
+	vertical-align: middle;
+	display: inline-block;
+	height: 52px;
+	line-height: 52px;
+}
+.topWrap{margin: 20px auto;margin-left: 17px;}
+.topWrap .top-leftWrap:hover a{
+	display:block;
+	color:#fff;
+}
+.modifyIconTip{
+	color:#fff;
+	width:100px;
+	height: 20px;
+	text-align: center;
+	bottom: 0;
+	_bottom: -3px;
+	cursor: pointer;
+	z-index:200;
+	display: none;
+	position: absolute;
+}
+.modifyIconTip-bg{
+	display: none;
+	width: 100px;
+	height: 20px;
+	left: 0;
+	bottom: 0;
+	background: #000;
+	opacity:.2;
+	overflow: hidden;
+	filter: alpha(opacity=20);
+	z-index:100;
+	cursor: pointer;
+	position: absolute;
+}
+.ftop{
+	margin-top: 10px;
+}
+.btnField{
+	width: 342px;
+	height: 52px;
+	float: left;
+	position: relative;
+}
+#setQuestionSave{
+	display: block;
+	margin: 0 auto;
+}
+.grayTip{
+	height: 50px;
+	vertical-align:top;
+	display:inline-block;
+	width:100%;
+}
+.NewFunnyName{
+	border: 0px solid #dadada;
+	float: left;
+	width: 115px;
+	padding: 0px 0px;
+
+}
+#NewFunnyName{
+	display: inline-block;
+	margin-top: 14px;
+	margin-bottom: 11px;
+	height: 30px;
+	line-height: 30px;
+}
+#setUserNameWrap{height: 30px;}
+a.getFunnyNameTitle:hover {
+	background-color: #2b8cc5;
+	color: #fff;
+}
+.nameWrapTop{
+	margin-top: 10px;
+	height:30px;
+}
+.nickNameTitle{
+	margin-top: 5px;
+}
+.bodyWrap .modify_content{
+	margin-bottom: 20px;
+}
+.pwdWrapTop{
+	margin-top: 20px;
+}
+.nickNameCon{
+	margin-bottom: 0px;
+}
+#flyme,#kapkey,#kapkeyEmail{
+	line-height: 22px;
+	padding: 14px 0;
+	height: 22px;
+	*height: 21px;
+}
+#newnickName,#ce-u-current_pwd,#ce-u-active_email,#ce-u-cTelNew,#ce-u-passwordNew,#ce-u-new_pwd,#ce-u-bind_email,#setQuestion_pwd,#qanswer1,#qanswer2,#answer1,#answer2,#resetanswer1,#resetanswer2,#ce-u-new_pwd1,#ce-u-new_pwd2{
+	line-height: 22px;
+	padding: 14px 10px;
+	height: 22px;
+	*height: 21px;
+}
+#nickNameCon, #setaccount{
+	clear:both;
+}
+#setTelCheckPass{width:770px;}
+.flymeTip{
+	padding-left: 0px;
+	color: red;
+}
+
+/*明文密文切换*/
+#pwdBtn{
+	margin-top: 13px;
+	margin-bottom: 10px;
+}
+.pwdBtn,.pwdBtnShow{
+	outline: none;
+	position: relative;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	overflow: hidden;
+	float: right;
+	margin-right: 5px;
+}
+.pwdBtnShow i, .pwdBtn i{
+	background: url("/resources/uc/web/base/images/elements.png") no-repeat;
+	_background-image: none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/resources/uc/web/base/images/elements.png');
+}
+.pwdBtn i {
+	background-position: -60px -92.5px;
+	_margin-left: -60px;
+	_margin-top: -92.5px;
+}
+.pwdBtnShow i {
+	background-position: -30px -93px;
+	_margin-left: -30px;
+	_margin-top: -93px;
+}
+#ce-u-new_pwd1, #ce-u-new_pwd2{
+	float: left;
+	width: 255px;
+	line-height: 22px;
+	padding-left: 0px;
+}
+#ce-u-new_pwd1::-ms-clear {
+	display: none;
+}
+#ce-u-new_pwd2::-ms-clear {
+	display: none;
+}
+#ce-u-new_pwd2::-ms-reveal {
+	display: none;
+}
+
+/*reset*/
+/*.lineWrap{
+	margin-bottom: 20px;
+}*/
+.normalInput{
+	margin-bottom: 0px;
+	vertical-align: middle;
+}
+.pwd_position{
+	height:50px !important;
+	margin-top:25px !important;
+}
+.grayBorderTop{
+	border-top: 0px solid #f2f2f2;
+}
+.red{color: red;}
+.orange{color: orange;}
+.green{color: green;}
+.top-rightWrap{padding-left: 17px;}
+.title-leftWrap span,.bodyWrap .item-left,#changePasswordWrap,#changeEmailWrap-activeone,#setQuestion-stepOne,#changeEmailWrap-active-two,#setQuestion-stepTwo,#changeQuestionWrap,#resetQuestion,#changeTelWrap-activeNew,#setTelCheckPass{
+	padding-left: 17px;
+}
+
+.dropdown{height: 52px; text-align:left; padding-left:10px; margin:0; line-height: 52px; width: 342px; border: 1px solid #dadada; color: #474747; outline: none; font-size: 16px; vertical-align: middle; background:#fff; }
+
+.dropdown_arrow{width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #777; border-bottom:5px solid transparent; _border-bottom:5px solid black; _border-right:5px solid black; _border-left:5px solid black; _filter:chroma(color=black);  font-size: 0; line-height: 0; position:absolute; }
+.dropdown_menu{margin:0; padding:0; border:#a6c1d7 solid 1px; border-top:0; background:#fff; box-shadow: 0 5px 10px #ccc; display:none;}
+.dropdown_menu li{list-style:none; margin:0; padding:0; height:30px; line-height:30px; color:#333; background:#fff; text-align:left; padding-left:10px; cursor:pointer}
+.dropdown_menu li.disable{ color : #bbb;}
+.dropdown_menu li.cursor{ background:#eee; }
+
+.alertDialogContent .normalInput {position: relative; display: inline-block; padding: 0 10px; width: 320px; height: 50px; line-height: 22px; font-size: 16px; text-align:left; margin:10px 0 20px -7px; border: 1px solid #dadada; outline: none; color: #474747; zoom: 1; overflow: hidden;}
+.alertDialogContent .normalInput .kapkey{font-size: 16px; width: 220px; border: none; outline: none;overflow: hidden;}
+.alertDialogContent .normalInput #imgKey{width: 88px; height: 36px; float: right; top: 14px; overflow: hidden; position: absolute; margin-left: 13px;}
+
+.cycode-box {
+	display: inline-box;
+}
+
+.show-cycode input[name="phone"] {
+	width: 78%;
+	height: auto;
+	line-height: 40px;
+}
+
+#kapkeyTelOld {
+	width: 220px;
+}
+
+#kapkeyTel-check-phone {
+	width: 220px;
+}
